@@ -10,6 +10,7 @@ import { ShoppingCart, Leaf } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useCart } from "@/context/cart-context";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "@/hooks/use-translation";
 
 interface ProductCardProps {
   product: ImagePlaceholder;
@@ -18,6 +19,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleAddToCart = () => {
     addToCart({
@@ -29,8 +31,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
       description: product.description,
     });
     toast({
-      title: "Added to cart",
-      description: `${product.name} has been added to your cart.`,
+      title: t('product.toastAddedTitle'),
+      description: t('product.toastAddedDescription', { productName: product.name }),
     });
   };
 
@@ -51,7 +53,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </Link>
         <Badge variant="secondary" className="absolute top-2 right-2 bg-green-100 text-green-800 border-green-200">
             <Leaf className="mr-1 h-3 w-3" />
-            Low Carbon
+            {t('product.lowCarbonBadge')}
         </Badge>
       </CardHeader>
       <CardContent className="flex-grow p-4">
@@ -61,17 +63,17 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </Link>
         </CardTitle>
         <p className="mt-1 text-sm text-muted-foreground">
-          by {product.farmer || "Local Farmer"}
+          {t('product.byFarmer')} {product.farmer || "Local Farmer"}
         </p>
       </CardContent>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
         <p className="text-xl font-bold text-primary">
           ₹{product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
-          <span className="text-sm font-normal text-muted-foreground"> / kg</span>
+          <span className="text-sm font-normal text-muted-foreground"> / {t('product.perKg')}</span>
         </p>
         <Button size="sm" variant="secondary" onClick={handleAddToCart}>
           <ShoppingCart className="mr-2 h-4 w-4" />
-          Add
+          {t('product.addButton')}
         </Button>
       </CardFooter>
     </Card>

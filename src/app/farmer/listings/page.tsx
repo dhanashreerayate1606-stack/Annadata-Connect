@@ -40,6 +40,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { useTranslation } from "@/hooks/use-translation";
 
 const productListings = [
   {
@@ -77,49 +78,51 @@ const statusVariant = {
 } as const;
 
 export default function FarmerListingsPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle>My Product Listings</CardTitle>
-              <CardDescription>Manage your active and draft listings.</CardDescription>
+              <CardTitle>{t('listings.title')}</CardTitle>
+              <CardDescription>{t('listings.description')}</CardDescription>
             </div>
             <Dialog>
               <DialogTrigger asChild>
                  <Button>
-                  <PlusCircle className="mr-2 h-4 w-4" /> Add New Product
+                  <PlusCircle className="mr-2 h-4 w-4" /> {t('listings.addProductButton')}
                 </Button>
               </DialogTrigger>
               <DialogContent>
                 <DialogHeader>
-                  <DialogTitle>Add a New Product</DialogTitle>
-                  <DialogDescription>Fill in the details below to create a new listing.</DialogDescription>
+                  <DialogTitle>{t('listings.dialogTitle')}</DialogTitle>
+                  <DialogDescription>{t('listings.dialogDescription')}</DialogDescription>
                 </DialogHeader>
                 <div className="grid gap-4 py-4">
                   <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="product-name" className="text-right">Name</Label>
-                    <Input id="product-name" placeholder="e.g., Organic Tomatoes" className="col-span-3" />
+                    <Label htmlFor="product-name" className="text-right">{t('listings.dialogNameLabel')}</Label>
+                    <Input id="product-name" placeholder={t('listings.dialogNamePlaceholder')} className="col-span-3" />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="price" className="text-right">Price (per kg)</Label>
-                    <Input id="price" type="number" placeholder="e.g., 50" className="col-span-3" />
+                    <Label htmlFor="price" className="text-right">{t('listings.dialogPriceLabel')}</Label>
+                    <Input id="price" type="number" placeholder={t('listings.dialogPricePlaceholder')} className="col-span-3" />
                   </div>
                    <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="stock" className="text-right">Stock (kg)</Label>
-                    <Input id="stock" type="number" placeholder="e.g., 200" className="col-span-3" />
+                    <Label htmlFor="stock" className="text-right">{t('listings.dialogStockLabel')}</Label>
+                    <Input id="stock" type="number" placeholder={t('listings.dialogStockPlaceholder')} className="col-span-3" />
                   </div>
                    <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="description" className="text-right">Description</Label>
-                    <Textarea id="description" placeholder="Describe your product" className="col-span-3" />
+                    <Label htmlFor="description" className="text-right">{t('listings.dialogDescriptionLabel')}</Label>
+                    <Textarea id="description" placeholder={t('listings.dialogDescriptionPlaceholder')} className="col-span-3" />
                   </div>
                 </div>
                 <DialogFooter>
                   <DialogClose asChild>
-                    <Button type="button" variant="secondary">Cancel</Button>
+                    <Button type="button" variant="secondary">{t('listings.dialogCancelButton')}</Button>
                   </DialogClose>
-                  <Button type="button">Save Product</Button>
+                  <Button type="button">{t('listings.dialogSaveButton')}</Button>
                 </DialogFooter>
               </DialogContent>
             </Dialog>
@@ -129,14 +132,14 @@ export default function FarmerListingsPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px] sm:table-cell">Image</TableHead>
-                <TableHead>Name</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="hidden md:table-cell">Price</TableHead>
-                <TableHead className="hidden md:table-cell">Stock</TableHead>
-                <TableHead className="hidden md:table-cell">Total Sales</TableHead>
+                <TableHead className="w-[100px] sm:table-cell">{t('listings.tableImage')}</TableHead>
+                <TableHead>{t('listings.tableName')}</TableHead>
+                <TableHead>{t('listings.tableStatus')}</TableHead>
+                <TableHead className="hidden md:table-cell">{t('listings.tablePrice')}</TableHead>
+                <TableHead className="hidden md:table-cell">{t('listings.tableStock')}</TableHead>
+                <TableHead className="hidden md:table-cell">{t('listings.tableSales')}</TableHead>
                 <TableHead>
-                  <span className="sr-only">Actions</span>
+                  <span className="sr-only">{t('listings.tableActions')}</span>
                 </TableHead>
               </TableRow>
             </TableHeader>
@@ -155,7 +158,7 @@ export default function FarmerListingsPage() {
                   <TableCell className="font-medium">{product.name}</TableCell>
                   <TableCell>
                     <Badge variant={statusVariant[product.status as keyof typeof statusVariant]}>
-                      {product.status}
+                      {t(`listings.status${product.status}`)}
                     </Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">₹{product.price.toFixed(2)}</TableCell>
@@ -166,18 +169,18 @@ export default function FarmerListingsPage() {
                       <DropdownMenuTrigger asChild>
                         <Button aria-haspopup="true" size="icon" variant="ghost">
                           <MoreHorizontal className="h-4 w-4" />
-                          <span className="sr-only">Toggle menu</span>
+                          <span className="sr-only">{t('listings.toggleMenu')}</span>
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                        <DropdownMenuLabel>{t('listings.tableActions')}</DropdownMenuLabel>
                         <DropdownMenuItem>
                           <Edit className="mr-2 h-4 w-4" />
-                          Edit
+                          {t('listings.actionEdit')}
                         </DropdownMenuItem>
                         <DropdownMenuItem className="text-destructive">
                           <Trash className="mr-2 h-4 w-4" />
-                          Delete
+                          {t('listings.actionDelete')}
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>

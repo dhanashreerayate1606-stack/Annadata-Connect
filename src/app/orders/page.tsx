@@ -1,3 +1,6 @@
+
+'use client';
+
 import {
   Card,
   CardContent,
@@ -15,6 +18,7 @@ import {
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "@/hooks/use-translation";
 
 const orders = [
   {
@@ -50,29 +54,31 @@ const statusVariant = {
 } as const;
 
 export default function OrdersPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold tracking-tight font-headline">My Orders</h1>
+        <h1 className="text-4xl font-bold tracking-tight font-headline">{t('orders.title')}</h1>
         <p className="mt-2 text-lg text-muted-foreground">
-          View your order history and track current shipments.
+          {t('orders.subtitle')}
         </p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Transaction History</CardTitle>
-          <CardDescription>A list of your recent orders.</CardDescription>
+          <CardTitle>{t('orders.historyTitle')}</CardTitle>
+          <CardDescription>{t('orders.historyDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">Order ID</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Total</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
+                <TableHead className="w-[100px]">{t('orders.idColumn')}</TableHead>
+                <TableHead>{t('orders.dateColumn')}</TableHead>
+                <TableHead>{t('orders.statusColumn')}</TableHead>
+                <TableHead className="text-right">{t('orders.totalColumn')}</TableHead>
+                <TableHead className="text-right">{t('orders.actionsColumn')}</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -82,13 +88,13 @@ export default function OrdersPage() {
                   <TableCell>{order.date}</TableCell>
                   <TableCell>
                     <Badge variant={statusVariant[order.status as keyof typeof statusVariant]}>
-                      {order.status}
+                      {t(`orders.status${order.status}`)}
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
                   <TableCell className="text-right">
                     <Button variant="outline" size="sm">
-                      View Details
+                      {t('orders.viewDetailsButton')}
                     </Button>
                   </TableCell>
                 </TableRow>

@@ -17,9 +17,11 @@ import { Trash2, ShoppingBag } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/context/cart-context";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function CartPage() {
   const { cartItems, updateQuantity, removeFromCart } = useCart();
+  const { t } = useTranslation();
 
   const handleQuantityChange = (id: string, quantity: number) => {
     if (quantity < 1) return;
@@ -38,10 +40,10 @@ export default function CartPage() {
     return (
       <div className="container mx-auto px-4 py-12 md:py-16 text-center">
         <ShoppingBag className="mx-auto h-24 w-24 text-muted-foreground" />
-        <h1 className="mt-6 text-2xl font-bold tracking-tight font-headline">Your cart is empty</h1>
-        <p className="mt-2 text-muted-foreground">Looks like you haven't added anything to your cart yet.</p>
+        <h1 className="mt-6 text-2xl font-bold tracking-tight font-headline">{t('cart.emptyTitle')}</h1>
+        <p className="mt-2 text-muted-foreground">{t('cart.emptyDescription')}</p>
         <Button asChild className="mt-6">
-          <Link href="/">Start Shopping</Link>
+          <Link href="/">{t('cart.startShoppingButton')}</Link>
         </Button>
       </div>
     )
@@ -49,7 +51,7 @@ export default function CartPage() {
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
-      <h1 className="text-4xl font-bold tracking-tight text-center font-headline">Your Shopping Cart</h1>
+      <h1 className="text-4xl font-bold tracking-tight text-center font-headline">{t('cart.title')}</h1>
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <Card>
@@ -57,10 +59,10 @@ export default function CartPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="w-1/2">Product</TableHead>
-                    <TableHead>Price</TableHead>
-                    <TableHead>Quantity</TableHead>
-                    <TableHead>Total</TableHead>
+                    <TableHead className="w-1/2">{t('cart.productColumn')}</TableHead>
+                    <TableHead>{t('cart.priceColumn')}</TableHead>
+                    <TableHead>{t('cart.quantityColumn')}</TableHead>
+                    <TableHead>{t('cart.totalColumn')}</TableHead>
                     <TableHead></TableHead>
                   </TableRow>
                 </TableHeader>
@@ -105,24 +107,24 @@ export default function CartPage() {
         <div>
           <Card className="sticky top-20">
             <CardHeader>
-              <CardTitle>Order Summary</CardTitle>
+              <CardTitle>{t('cart.summaryTitle')}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="flex justify-between">
-                <span>Subtotal</span>
+                <span>{t('cart.summarySubtotal')}</span>
                 <span>₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>Taxes (5%)</span>
+                <span>{t('cart.summaryTaxes')}</span>
                 <span>₹{tax.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
-                <span>Total</span>
+                <span>{t('cart.summaryTotal')}</span>
                 <span>₹{total.toFixed(2)}</span>
               </div>
               <Button asChild className="w-full" size="lg" disabled={cartItems.length === 0}>
-                <Link href="/checkout">Proceed to Checkout</Link>
+                <Link href="/checkout">{t('cart.checkoutButton')}</Link>
               </Button>
             </CardContent>
           </Card>

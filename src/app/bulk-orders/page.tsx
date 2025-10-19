@@ -1,8 +1,10 @@
+
 "use client"
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useTranslation } from "@/hooks/use-translation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -47,6 +49,8 @@ const heroImage = PlaceHolderImages.find(p => p.id === 'bulk-hero');
 
 export default function BulkOrdersPage() {
   const { toast } = useToast();
+  const { t } = useTranslation();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -61,8 +65,8 @@ export default function BulkOrdersPage() {
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
     toast({
-      title: "Enquiry Submitted!",
-      description: "Thank you for your interest. We will get back to you within 2 business days.",
+      title: t('bulk.toastSuccessTitle'),
+      description: t('bulk.toastSuccessDescription'),
     });
     form.reset();
   }
@@ -71,18 +75,18 @@ export default function BulkOrdersPage() {
     <div className="container mx-auto max-w-5xl px-4 py-12 md:py-16">
       <div className="text-center">
         <h1 className="text-4xl font-bold tracking-tight font-headline">
-          Bulk & Corporate Orders
+          {t('bulk.title')}
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Partner with us to source fresh, local produce for your business. We cater to restaurants, housing societies, schools, and more.
+          {t('bulk.subtitle')}
         </p>
       </div>
       
       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
         <Card>
           <CardHeader>
-            <CardTitle>Submit Your Enquiry</CardTitle>
-            <CardDescription>Fill out the form below, and our team will contact you with a customized quote.</CardDescription>
+            <CardTitle>{t('bulk.formTitle')}</CardTitle>
+            <CardDescription>{t('bulk.formDescription')}</CardDescription>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -92,9 +96,9 @@ export default function BulkOrdersPage() {
                   name="businessName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Business/Society Name</FormLabel>
+                      <FormLabel>{t('bulk.businessNameLabel')}</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., The Grand Hotel or Harmony Apartments" {...field} />
+                        <Input placeholder={t('bulk.businessNamePlaceholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -106,9 +110,9 @@ export default function BulkOrdersPage() {
                     name="contactName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Contact Person</FormLabel>
+                        <FormLabel>{t('bulk.contactNameLabel')}</FormLabel>
                         <FormControl>
-                          <Input placeholder="Your full name" {...field} />
+                          <Input placeholder={t('bulk.contactNamePlaceholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -119,9 +123,9 @@ export default function BulkOrdersPage() {
                     name="phone"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Phone Number</FormLabel>
+                        <FormLabel>{t('bulk.phoneLabel')}</FormLabel>
                         <FormControl>
-                          <Input type="tel" placeholder="Your phone number" {...field} />
+                          <Input type="tel" placeholder={t('bulk.phonePlaceholder')} {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -133,9 +137,9 @@ export default function BulkOrdersPage() {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Email Address</FormLabel>
+                      <FormLabel>{t('bulk.emailLabel')}</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="you@example.com" {...field} />
+                        <Input type="email" placeholder={t('bulk.emailPlaceholder')} {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -146,18 +150,18 @@ export default function BulkOrdersPage() {
                   name="businessType"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Type of Business</FormLabel>
+                      <FormLabel>{t('bulk.businessTypeLabel')}</FormLabel>
                        <Select onValueChange={field.onChange} defaultValue={field.value}>
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue placeholder="Select your business type" />
+                              <SelectValue placeholder={t('bulk.businessTypePlaceholder')} />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
-                            <SelectItem value="housing-society">Housing Society</SelectItem>
-                            <SelectItem value="school">School / College</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="restaurant">{t('bulk.businessTypeRestaurant')}</SelectItem>
+                            <SelectItem value="housing-society">{t('bulk.businessTypeHousing')}</SelectItem>
+                            <SelectItem value="school">{t('bulk.businessTypeSchool')}</SelectItem>
+                            <SelectItem value="other">{t('bulk.businessTypeOther')}</SelectItem>
                           </SelectContent>
                         </Select>
                       <FormMessage />
@@ -169,18 +173,18 @@ export default function BulkOrdersPage() {
                   name="requirements"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Your Requirements</FormLabel>
+                      <FormLabel>{t('bulk.requirementsLabel')}</FormLabel>
                       <FormControl>
-                        <Textarea placeholder="Tell us about the produce you need, expected quantity, and frequency." {...field} />
+                        <Textarea placeholder={t('bulk.requirementsPlaceholder')} {...field} />
                       </FormControl>
                       <FormDescription>
-                        The more details you provide, the better we can assist you.
+                        {t('bulk.requirementsDescription')}
                       </FormDescription>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full sm:w-auto">Submit Enquiry</Button>
+                <Button type="submit" className="w-full sm:w-auto">{t('bulk.submitButton')}</Button>
               </form>
             </Form>
           </CardContent>

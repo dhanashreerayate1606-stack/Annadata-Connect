@@ -65,7 +65,7 @@ export default function LoginPage() {
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="c-email">{t('login.emailLabel')}</Label>
-                  <Input id="c-email" type="email" placeholder="you@example.com" required />
+                  <Input id="c-email" type="email" placeholder={t('login.emailPlaceholder')} required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="c-password">{t('login.passwordLabel')}</Label>
@@ -92,7 +92,7 @@ export default function LoginPage() {
               <CardContent className="space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="f-aadhaar">{t('login.aadhaarLabel')}</Label>
-                  <Input id="f-aadhaar" placeholder="xxxx-xxxx-xxxx" required />
+                  <Input id="f-aadhaar" placeholder={t('login.aadhaarPlaceholder')} required />
                 </div>
                 <Button type="submit" className="w-full">{t('login.sendOtp')}</Button>
                 <div className="space-y-2">

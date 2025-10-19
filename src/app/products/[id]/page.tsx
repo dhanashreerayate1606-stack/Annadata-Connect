@@ -17,6 +17,7 @@ import {
 import { useCart } from "@/context/cart-context";
 import { useToast } from "@/hooks/use-toast";
 import { notFound } from "next/navigation";
+import { useTranslation } from "@/hooks/use-translation";
 
 
 // This is a server component, so we can fetch data here in a real app
@@ -24,6 +25,7 @@ import { notFound } from "next/navigation";
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const { t } = useTranslation();
   const product = PlaceHolderImages.find((p) => p.id === params.id);
 
   if (!product) {
@@ -41,8 +43,8 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         description: product.description,
       });
       toast({
-        title: "Added to cart",
-        description: `${product.name} has been added to your cart.`,
+        title: t('product.toastAddedTitle'),
+        description: t('product.toastAddedDescription', { productName: product.name }),
       });
     }
   };
@@ -66,7 +68,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
         <div>
           <h1 className="text-4xl font-bold tracking-tight font-headline">{product.name}</h1>
           <p className="mt-2 text-lg text-muted-foreground">
-            From <span className="text-secondary font-semibold">{product.farmer}</span>
+            {t('product.from')} <span className="text-secondary font-semibold">{product.farmer}</span>
           </p>
           <div className="mt-4 flex items-center">
             <div className="flex items-center">
@@ -74,40 +76,40 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                 <Star key={i} className="h-5 w-5 text-accent fill-current" />
               ))}
             </div>
-            <p className="ml-2 text-sm text-muted-foreground">(125 reviews)</p>
+            <p className="ml-2 text-sm text-muted-foreground">{t('product.reviews', { count: 125 })}</p>
           </div>
           <Separator className="my-6" />
           <p className="text-3xl font-bold text-primary">
             ₹{product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
-            <span className="ml-2 text-base font-normal text-muted-foreground">/ kg</span>
+            <span className="ml-2 text-base font-normal text-muted-foreground">/ {t('product.perKg')}</span>
           </p>
           <p className="mt-4 text-base text-foreground/80 leading-relaxed">
-            Discover the exceptional taste of our {product.name}, grown with care at {product.farmer}. Harvested at peak ripeness, these are perfect for any meal, providing a burst of natural flavor and nutrients.
+            {t('product.description', { productName: product.name, farmerName: product.farmer })}
           </p>
           <div className="mt-8 flex items-center gap-4">
             <Button size="lg" className="flex-1" onClick={handleAddToCart}>
-              <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
+              <ShoppingCart className="mr-2 h-5 w-5" /> {t('product.addToCartButton')}
             </Button>
             <Dialog>
               <DialogTrigger asChild>
                 <Button size="lg" variant="outline">
-                  <QrCode className="mr-2 h-5 w-5" /> Trace Origin
+                  <QrCode className="mr-2 h-5 w-5" /> {t('product.traceOriginButton')}
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                  <DialogTitle>Product Traceability</DialogTitle>
+                  <DialogTitle>{t('product.qrTitle')}</DialogTitle>
                   <DialogDescription>
-                    Scan the QR code or view the details below to trace the origin of your {product.name}.
+                    {t('product.qrDescription', { productName: product.name })}
                   </DialogDescription>
                 </DialogHeader>
                 <div className="flex flex-col items-center gap-4 py-4">
                   <Image src={qrUrl} width={200} height={200} alt="Product QR Code" />
                   <div className="text-sm text-muted-foreground space-y-1 text-center">
-                      <p><strong>Product:</strong> {product.name}</p>
-                      <p><strong>Farmer:</strong> {product.farmer}</p>
-                      <p><strong>Location:</strong> Nashik, Maharashtra</p>
-                      <p><strong>Harvested:</strong> Oct 25, 2023</p>
+                      <p><strong>{t('product.qrProduct')}:</strong> {product.name}</p>
+                      <p><strong>{t('product.qrFarmer')}:</strong> {product.farmer}</p>
+                      <p><strong>{t('product.qrLocation')}:</strong> Nashik, Maharashtra</p>
+                      <p><strong>{t('product.qrHarvested')}:</strong> Oct 25, 2023</p>
                   </div>
                 </div>
               </DialogContent>

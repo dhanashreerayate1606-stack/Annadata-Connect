@@ -1,4 +1,6 @@
 
+'use client';
+
 import {
   Accordion,
   AccordionContent,
@@ -11,6 +13,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Landmark } from "lucide-react";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import Image from "next/image";
+import { useTranslation } from "@/hooks/use-translation";
 
 const schemes = [
   {
@@ -48,6 +51,8 @@ const categoryVariant = {
 const heroImage = PlaceHolderImages.find(p => p.id === 'schemes-hero');
 
 export default function SchemesPage() {
+  const { t } = useTranslation();
+
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
       {heroImage && (
@@ -62,10 +67,10 @@ export default function SchemesPage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
             <h1 className="text-4xl font-bold tracking-tight font-headline">
-              Government Schemes for Farmers
+              {t('schemes.title')}
             </h1>
             <p className="mt-4 max-w-2xl text-lg">
-              Stay informed about the latest government initiatives and financial support programs available to you.
+              {t('schemes.subtitle')}
             </p>
           </div>
         </div>
@@ -73,8 +78,8 @@ export default function SchemesPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Available Programs</CardTitle>
-          <CardDescription>Browse through the schemes and find the ones you are eligible for.</CardDescription>
+          <CardTitle>{t('schemes.cardTitle')}</CardTitle>
+          <CardDescription>{t('schemes.cardDescription')}</CardDescription>
         </CardHeader>
         <CardContent>
           <Accordion type="single" collapsible className="w-full">
@@ -86,23 +91,23 @@ export default function SchemesPage() {
                            <Landmark className="w-6 h-6 text-primary" />
                         </div>
                         <div className="text-left">
-                           <h3 className="font-semibold">{scheme.title}</h3>
-                           <p className="text-sm text-muted-foreground">{scheme.description}</p>
+                           <h3 className="font-semibold">{t(`schemes.${scheme.id}.title`)}</h3>
+                           <p className="text-sm text-muted-foreground">{t(`schemes.${scheme.id}.description`)}</p>
                         </div>
                     </div>
                 </AccordionTrigger>
                 <AccordionContent>
                   <div className="pl-14 space-y-4">
-                    <Badge variant={categoryVariant[scheme.category as keyof typeof categoryVariant]}>{scheme.category}</Badge>
+                    <Badge variant={categoryVariant[scheme.category as keyof typeof categoryVariant]}>{t(`schemes.category${scheme.category.replace(' ', '')}`)}</Badge>
                     <div>
-                        <h4 className="font-semibold">Eligibility</h4>
-                        <p className="text-muted-foreground text-sm">{scheme.eligibility}</p>
+                        <h4 className="font-semibold">{t('schemes.eligibilityTitle')}</h4>
+                        <p className="text-muted-foreground text-sm">{t(`schemes.${scheme.id}.eligibility`)}</p>
                     </div>
                     <div>
-                        <h4 className="font-semibold">Key Benefits</h4>
-                        <p className="text-muted-foreground text-sm">{scheme.benefits}</p>
+                        <h4 className="font-semibold">{t('schemes.benefitsTitle')}</h4>
+                        <p className="text-muted-foreground text-sm">{t(`schemes.${scheme.id}.benefits`)}</p>
                     </div>
-                    <Button size="sm">Learn More & Apply</Button>
+                    <Button size="sm">{t('schemes.applyButton')}</Button>
                   </div>
                 </AccordionContent>
               </AccordionItem>
