@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users, Handshake, Landmark } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Logo from "@/components/icons/logo";
 import { cn } from "@/lib/utils";
 
@@ -64,6 +64,7 @@ const Header = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="left">
+            <SheetTitle className="sr-only">Menu</SheetTitle>
             <Link href="/" className="mr-6 flex items-center space-x-2">
               <Logo />
               <span className="font-bold font-headline">Annadata Connect</span>
