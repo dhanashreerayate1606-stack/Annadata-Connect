@@ -7,6 +7,7 @@ import Footer from '@/components/layout/footer';
 export const metadata: Metadata = {
   title: 'Annadata Connect',
   description: 'Connecting farmers directly with consumers.',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
