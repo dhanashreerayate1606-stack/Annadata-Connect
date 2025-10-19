@@ -4,7 +4,7 @@
       "id": "hero-market",
       "category": "hero",
       "description": "A vibrant and colorful Indian farmer's market stall filled with fresh vegetables.",
-      "imageUrl": "https://images.unsplash.com/photo-1622332152843-11a3a69a23c3",
+      "imageUrl": "https://images.unsplash.com/photo-1622332152843-11a3a69a23c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXJzJTIwbWFya2V0fGVufDB8fHx8MTc2MDg4MTU2OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "indian market"
     },
     {
@@ -23,7 +23,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba657",
+      "imageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba657?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyYXclMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc2ODB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "raw potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
@@ -34,7 +34,7 @@
       "category": "product",
       "productType": "grains",
       "description": "Long-grain Basmati rice in a burlap sack",
-      "imageUrl": "https://images.unsplash.com/photo-1586201375765-c124a9539d5e",
+      "imageUrl": "https://images.unsplash.com/photo-1586201375765-c124a9539d5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5Njc3MTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "basmati rice",
       "name": "बासमती चावल (Basmati Rice)",
       "price": "120",
@@ -45,7 +45,7 @@
       "category": "product",
       "productType": "fruits",
       "description": "Ripe Alphonso mangoes in a basket",
-      "imageUrl": "https://images.unsplash.com/photo-1591078312213-568e6b0f0814",
+      "imageUrl": "https://images.unsplash.com/photo-1591078312213-568e6b0f0814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwODc4MzA3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh mangoes",
       "name": "आम (Alphonso Mango)",
       "price": "800",
@@ -56,7 +56,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Fresh green spinach leaves",
-      "imageUrl": "https://images.unsplash.com/photo-1576045057995-568f588f21fb",
+      "imageUrl": "https://images.unsplash.com/photo-1576045057995-568f588f21fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMHNwaW5hY2h8ZW58MHx8fHwxNzYwOTY3NzI5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh spinach",
       "name": "पालक (Spinach)",
       "price": "20",
@@ -78,7 +78,7 @@
       "category": "product",
       "productType": "spices",
       "description": "Turmeric powder and roots",
-      "imageUrl": "https://images.unsplash.com/photo-1596035242942-ecb8a7c1b5e2",
+      "imageUrl": "https://images.unsplash.com/photo-1596035242942-ecb8a7c1b5e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpYyUyMHJvb3RzfGVufDB8fHx8MTc2MDk2Nzc2M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "turmeric roots",
       "name": "हल्दी (Turmeric)",
       "price": "250",
@@ -89,7 +89,7 @@
       "category": "product",
       "productType": "fruits",
       "description": "A ripe pomegranate",
-      "imageUrl": "https://images.unsplash.com/photo-1631771967237-f1c422c15989",
+      "imageUrl": "https://images.unsplash.com/photo-1631771967237-f1c422c15989?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb21lZ3JhbmF0ZSUyMGZydWl0fGVufDB8fHx8MTc2MDk2Nzc3Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "pomegranate fruit",
       "name": "अनार (Pomegranate)",
       "price": "150",
@@ -100,7 +100,7 @@
       "category": "product",
       "productType": "pulses",
       "description": "Bowl of red lentils",
-      "imageUrl": "https://images.unsplash.com/photo-1583349642643-a6294a8f9b97",
+      "imageUrl": "https://images.unsplash.com/photo-1583349642643-a6294a8f9b97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBsZW50aWxzfGVufDB8fHx8MTc2MDk2Nzc5MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "red lentils",
       "name": "मसूर दाल (Masoor Dal)",
       "price": "90",
@@ -111,7 +111,7 @@
       "category": "product",
       "productType": "flowers",
       "description": "Bright orange marigold flowers",
-      "imageUrl": "https://images.unsplash.com/photo-1594290358414-81413a7384a5",
+      "imageUrl": "https://images.unsplash.com/photo-1594290358414-81413a7384a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYXJpZ29sZCUyMGZsb3dlcnN8ZW58MHx8fHwxNzYwOTY3ODA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "marigold flowers",
       "name": "गेंदा (Marigold)",
       "price": "50",
@@ -133,7 +133,7 @@
       "category": "learning",
       "name": "Effective Crop Management Techniques",
       "description": "A farmer inspecting crops in a field, representing a tutorial on crop management.",
-      "imageUrl": "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95",
+      "imageUrl": "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjBpbnNwZWN0aW5nJTIwY3JvcHN8ZW58MHx8fHwxNzYxMzA0MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farmer inspecting crops"
     },
     {
@@ -141,7 +141,7 @@
       "category": "learning",
       "name": "Webinar: Modern Farming Technologies",
       "description": "A person giving a presentation, representing a webinar on modern farming techniques.",
-      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4b248b",
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4b248b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHdlYmluYXJ8ZW58MHx8fHwxNzYxMzA0MTMwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business webinar"
     },
     {
@@ -149,7 +149,7 @@
       "category": "learning",
       "name": "Guide to Organic Farming",
       "description": "An open book with illustrations of plants, representing a downloadable guide.",
-      "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d",
+      "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reading book"
     },
     {
@@ -157,7 +157,7 @@
       "category": "learning",
       "name": "Improving Your Farm's Soil Health",
       "description": "Close up of hands holding rich soil.",
-      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f3659b4",
+      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f3659b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE1NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "soil health"
     },
     {
@@ -165,7 +165,7 @@
       "category": "learning",
       "name": "Agri-Tech: Using Technology on Your Farm",
       "description": "Farmer using a laptop in a field",
-      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b",
+      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8MTc2MTMwNDI4OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farmer with laptop"
     },
     {
@@ -173,7 +173,7 @@
       "category": "learning",
       "name": "Financial Planning for Farmers",
       "description": "A group of farmers in a meeting discussing finances.",
-      "imageUrl": "https://images.unsplash.com/photo-1516156008657-df4d98b2591a",
+      "imageUrl": "https://images.unsplash.com/photo-1516156008657-df4d98b2591a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYxMzA0MTMwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business meeting"
     },
     {
@@ -181,28 +181,28 @@
       "category": "learning",
       "name": "Seasonal Planting Calendar",
       "description": "A calendar with seasonal vegetables, representing a planting guide.",
-      "imageUrl": "https://images.unsplash.com/photo-1526319238109-524eecb9b913",
+      "imageUrl": "https://images.unsplash.com/photo-1526319238109-524eecb9b913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxlbmRhciUyMHBsYW5uaW5nfGVufDB8fHx8MTc2MTMwNDMwOHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "calendar planning"
     },
     {
       "id": "schemes-hero",
       "category": "hero",
       "description": "An Indian farmer smiling in a field.",
-      "imageUrl": "https://images.unsplash.com/photo-1617192213511-2c9a1a63de40",
+      "imageUrl": "https://images.unsplash.com/photo-1617192213511-2c9a1a63de40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXJ8ZW58MHx8fHwxNzYxMzA0MzMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "indian farmer"
     },
     {
       "id": "bulk-hero",
       "category": "hero",
       "description": "A crate of fresh vegetables ready for bulk delivery.",
-      "imageUrl": "https://images.unsplash.com/photo-1540914124281-3425879413d5",
+      "imageUrl": "https://images.unsplash.com/photo-1540914124281-3425879413d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2ZWdldGFibGUlMjBjcmF0ZXxlbnwwfHx8fDE3NjEzMDQzNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vegetable crate"
     },
     {
       "id": "subscription-hero",
       "category": "hero",
       "description": "A person holding a subscription box full of fresh produce.",
-      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4",
+      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "produce subscription box"
     }
   ]
