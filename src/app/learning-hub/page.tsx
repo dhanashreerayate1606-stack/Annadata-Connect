@@ -52,15 +52,15 @@ const LearningCard = ({ item, title, description, type }: { item: typeof tutoria
 
 const learningContent = {
     tutorials: [
-        { item: tutorials[0], title: 'Modern Soil Health Techniques', description: 'Learn to improve your soil fertility and increase yields.' },
-        { item: tutorials[1], title: 'Smart Irrigation Methods', description: 'Conserve water and maximize crop growth with smart irrigation.' },
-        { item: tutorials.find(i => i.id === 'tutorial3') || tutorials[0], title: 'Using Tech for Farming', description: 'Leverage technology to improve your farm\'s efficiency.' },
+        { item: tutorials.find(i => i.id === 'tutorial1')!, title: 'Modern Soil Health Techniques', description: 'Learn to improve your soil fertility and increase yields.' },
+        { item: tutorials.find(i => i.id === 'tutorial2')!, title: 'Smart Irrigation Methods', description: 'Conserve water and maximize crop growth with smart irrigation.' },
+        { item: tutorials.find(i => i.id === 'tutorial3')!, title: 'Using Tech for Farming', description: 'Leverage technology to improve your farm\'s efficiency.' },
     ],
     webinars: [
-        { item: webinars[0], title: 'Live Q&A: Pest Control', description: 'Join experts to discuss organic pest control. | 25th July, 4 PM' },
+        { item: webinars.find(i => i.id === 'webinar1')!, title: 'Live Q&A: Pest Control', description: 'Join experts to discuss organic pest control. | 25th July, 4 PM' },
     ],
     resources: [
-        { item: resources[0], title: 'Crop Rotation Guide', description: 'A comprehensive guide to effective crop rotation.' },
+        { item: resources.find(i => i.id === 'resource1')!, title: 'Crop Rotation Guide', description: 'A comprehensive guide to effective crop rotation.' },
     ]
 }
 
