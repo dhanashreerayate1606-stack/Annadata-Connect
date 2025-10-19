@@ -1,3 +1,7 @@
+
+"use client";
+
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -10,6 +14,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
+import { useToast } from "@/hooks/use-toast";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
 
 const orderSummary = {
   subtotal: 110,
@@ -19,6 +26,41 @@ const orderSummary = {
 };
 
 export default function CheckoutPage() {
+  const { toast } = useToast();
+  const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
+  const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+
+  const handlePlaceOrder = () => {
+    toast({
+      title: "Order Placed!",
+      description: "Thank you for your purchase. We've received your order.",
+    });
+  };
+
+  const handlePaymentConfirm = () => {
+    if (!paymentMethod) {
+      toast({
+        variant: "destructive",
+        title: "Payment Error",
+        description: "Please select a payment method first.",
+      });
+      return;
+    }
+    setPaymentConfirmed(true);
+    toast({
+      title: "Payment Confirmed",
+      description: "You can now place your order.",
+    });
+  };
+
+  const handlePaymentMethodChange = (value: string) => {
+    setPaymentMethod(value);
+    setPaymentConfirmed(false); // Reset confirmation when method changes
+     if (value === 'upi' || value === 'cod') {
+      setPaymentConfirmed(true);
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <h1 className="text-4xl font-bold tracking-tight text-center font-headline">Checkout</h1>
@@ -63,21 +105,31 @@ export default function CheckoutPage() {
             <CardHeader>
               <CardTitle>Payment Method</CardTitle>
               <CardDescription>
-                All transactions are secure and encrypted.
+                Select a payment method to proceed.
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <RadioGroup defaultValue="card" className="space-y-4">
+              <RadioGroup
+                defaultValue="card"
+                className="space-y-4"
+                onValueChange={handlePaymentMethodChange}
+                value={paymentMethod || ""}
+              >
                 <div>
                   <RadioGroupItem value="card" id="card" className="peer sr-only" />
                   <Label htmlFor="card" className="flex flex-col rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
                     <span>Credit/Debit Card</span>
                     <div className="mt-4 space-y-2">
-                      <Input placeholder="Card Number" />
+                      <Input placeholder="Card Number" disabled={paymentMethod !== 'card'} />
                       <div className="flex gap-4">
-                        <Input placeholder="MM/YY" />
-                        <Input placeholder="CVC" />
+                        <Input placeholder="MM/YY" disabled={paymentMethod !== 'card'} />
+                        <Input placeholder="CVC" disabled={paymentMethod !== 'card'} />
                       </div>
+                       {paymentMethod === 'card' && (
+                        <Button onClick={handlePaymentConfirm} className="mt-2" size="sm">
+                          Confirm Payment
+                        </Button>
+                      )}
                     </div>
                   </Label>
                 </div>
@@ -94,6 +146,15 @@ export default function CheckoutPage() {
                   </Label>
                 </div>
               </RadioGroup>
+              {paymentConfirmed && (
+                <Alert className="mt-6">
+                  <Terminal className="h-4 w-4" />
+                  <AlertTitle>Payment Confirmed!</AlertTitle>
+                  <AlertDescription>
+                    You are all set. You can now place your order.
+                  </AlertDescription>
+                </Alert>
+              )}
             </CardContent>
           </Card>
         </div>
@@ -121,7 +182,14 @@ export default function CheckoutPage() {
                 <span>Total</span>
                 <span>₹{orderSummary.total.toFixed(2)}</span>
               </div>
-              <Button className="w-full" size="lg">Place Order</Button>
+              <Button
+                className="w-full"
+                size="lg"
+                onClick={handlePlaceOrder}
+                disabled={!paymentConfirmed}
+              >
+                Place Order
+              </Button>
             </CardContent>
           </Card>
         </div>
