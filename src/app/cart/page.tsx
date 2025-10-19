@@ -1,3 +1,6 @@
+
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -13,8 +16,9 @@ import {
 import { Trash2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
 
-const cartItems = [
+const initialCartItems = [
   {
     id: "tomatoes",
     name: "देसी टमाटर (Desi Tomato)",
@@ -32,6 +36,21 @@ const cartItems = [
 ];
 
 export default function CartPage() {
+  const [cartItems, setCartItems] = useState(initialCartItems);
+
+  const handleQuantityChange = (id: string, quantity: number) => {
+    if (quantity < 1) return;
+    setCartItems(
+      cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: quantity } : item
+      )
+    );
+  };
+  
+  const handleRemoveItem = (id: string) => {
+    setCartItems(cartItems.filter(item => item.id !== id));
+  }
+
   const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const tax = subtotal * 0.05; // 5% tax
   const total = subtotal + tax;
@@ -63,7 +82,7 @@ export default function CartPage() {
                             alt={item.name}
                             width={80}
                             height={80}
-                            className="rounded-md"
+                            className="rounded-md object-cover"
                           />
                           <span className="font-medium">{item.name}</span>
                         </div>
@@ -73,13 +92,14 @@ export default function CartPage() {
                         <Input
                           type="number"
                           min="1"
-                          defaultValue={item.quantity}
+                          value={item.quantity}
                           className="w-20"
+                          onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
                         />
                       </TableCell>
                       <TableCell>₹{(item.price * item.quantity).toFixed(2)}</TableCell>
                       <TableCell>
-                        <Button variant="ghost" size="icon">
+                        <Button variant="ghost" size="icon" onClick={() => handleRemoveItem(item.id)}>
                           <Trash2 className="h-5 w-5 text-muted-foreground" />
                         </Button>
                       </TableCell>
@@ -109,7 +129,7 @@ export default function CartPage() {
                 <span>Total</span>
                 <span>₹{total.toFixed(2)}</span>
               </div>
-              <Button asChild className="w-full" size="lg">
+              <Button asChild className="w-full" size="lg" disabled={cartItems.length === 0}>
                 <Link href="/checkout">Proceed to Checkout</Link>
               </Button>
             </CardContent>

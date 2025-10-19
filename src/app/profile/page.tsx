@@ -1,4 +1,6 @@
 
+"use client";
+
 import {
   Card,
   CardContent,
@@ -12,8 +14,21 @@ import { Separator } from "@/components/ui/separator";
 import { User, MapPin, Edit, History, Star, Package, LineChart } from "lucide-react";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+  DialogClose,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
 
-const consumer = {
+const initialConsumer = {
   name: "Radhika Sharma",
   email: "radhika.sharma@example.com",
   avatar: "https://picsum.photos/seed/profile-avatar/200",
@@ -35,6 +50,16 @@ const farmer = {
 };
 
 export default function ProfilePage() {
+  const [consumer, setConsumer] = useState(initialConsumer);
+  const [editedName, setEditedName] = useState(consumer.name);
+  const [editedLocation, setEditedLocation] = useState(consumer.location);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleProfileSave = () => {
+    setConsumer({ ...consumer, name: editedName, location: editedLocation });
+    setIsDialogOpen(false);
+  };
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <Tabs defaultValue="consumer" className="max-w-4xl mx-auto">
@@ -76,10 +101,38 @@ export default function ProfilePage() {
                         <p><strong>Name:</strong> {consumer.name}</p>
                         <p><strong>Email:</strong> {consumer.email}</p>
                         <p><strong>Location:</strong> {consumer.location}</p>
-                        <Button variant="outline" size="sm" className="mt-2">
-                            <Edit className="w-4 h-4 mr-2"/>
-                            Edit Profile
-                        </Button>
+                        <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                          <DialogTrigger asChild>
+                            <Button variant="outline" size="sm" className="mt-2">
+                                <Edit className="w-4 h-4 mr-2"/>
+                                Edit Profile
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent>
+                            <DialogHeader>
+                              <DialogTitle>Edit Profile</DialogTitle>
+                              <DialogDescription>
+                                Make changes to your profile here. Click save when you're done.
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid gap-4 py-4">
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="name" className="text-right">Name</Label>
+                                <Input id="name" value={editedName} onChange={(e) => setEditedName(e.target.value)} className="col-span-3" />
+                              </div>
+                              <div className="grid grid-cols-4 items-center gap-4">
+                                <Label htmlFor="location" className="text-right">Location</Label>
+                                <Input id="location" value={editedLocation} onChange={(e) => setEditedLocation(e.target.value)} className="col-span-3" />
+                              </div>
+                            </div>
+                            <DialogFooter>
+                              <DialogClose asChild>
+                                <Button type="button" variant="secondary">Cancel</Button>
+                              </DialogClose>
+                              <Button type="button" onClick={handleProfileSave}>Save changes</Button>
+                            </DialogFooter>
+                          </DialogContent>
+                        </Dialog>
                     </CardContent>
                 </Card>
                  <Card className="bg-background">
