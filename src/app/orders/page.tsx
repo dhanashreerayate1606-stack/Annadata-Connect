@@ -21,25 +21,25 @@ const orders = [
     id: "ORD001",
     date: "2023-10-26",
     status: "Delivered",
-    total: 14.71,
+    total: 136.50,
   },
   {
     id: "ORD002",
     date: "2023-10-22",
     status: "Delivered",
-    total: 25.50,
+    total: 250.00,
   },
   {
     id: "ORD003",
     date: "2023-10-28",
     status: "Shipped",
-    total: 8.99,
+    total: 99.00,
   },
    {
     id: "ORD004",
     date: "2023-10-29",
     status: "Processing",
-    total: 19.20,
+    total: 192.00,
   },
 ];
 
@@ -85,7 +85,7 @@ export default function OrdersPage() {
                       {order.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">${order.total.toFixed(2)}</TableCell>
+                  <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
                   <TableCell className="text-right">
                     <Button variant="outline" size="sm">
                       View Details

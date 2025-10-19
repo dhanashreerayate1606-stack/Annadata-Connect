@@ -17,17 +17,17 @@ import { Separator } from "@/components/ui/separator";
 const cartItems = [
   {
     id: "tomatoes",
-    name: "Heirloom Tomatoes",
-    price: 3.50,
+    name: "देसी टमाटर (Desi Tomato)",
+    price: 40,
     quantity: 2,
-    image: "https://picsum.photos/seed/tomatoes/100/100",
+    image: "https://images.unsplash.com/photo-1591171551239-80a5eddd627a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmVzaCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDg3ODI5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
   },
   {
-    id: "carrots",
-    name: "Organic Carrots",
-    price: 2.80,
+    id: "potatoes",
+    name: "बटाटा (Potato)",
+    price: 30,
     quantity: 1,
-    image: "https://picsum.photos/seed/carrots/100/100",
+    image: "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
   },
 ];
 
@@ -68,7 +68,7 @@ export default function CartPage() {
                           <span className="font-medium">{item.name}</span>
                         </div>
                       </TableCell>
-                      <TableCell>${item.price.toFixed(2)}</TableCell>
+                      <TableCell>₹{item.price.toFixed(2)}</TableCell>
                       <TableCell>
                         <Input
                           type="number"
@@ -77,7 +77,7 @@ export default function CartPage() {
                           className="w-20"
                         />
                       </TableCell>
-                      <TableCell>${(item.price * item.quantity).toFixed(2)}</TableCell>
+                      <TableCell>₹{(item.price * item.quantity).toFixed(2)}</TableCell>
                       <TableCell>
                         <Button variant="ghost" size="icon">
                           <Trash2 className="h-5 w-5 text-muted-foreground" />
@@ -98,16 +98,16 @@ export default function CartPage() {
             <CardContent className="space-y-4">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Taxes (5%)</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>₹{tax.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
                 <span>Total</span>
-                <span>${total.toFixed(2)}</span>
+                <span>₹{total.toFixed(2)}</span>
               </div>
               <Button asChild className="w-full" size="lg">
                 <Link href="/checkout">Proceed to Checkout</Link>

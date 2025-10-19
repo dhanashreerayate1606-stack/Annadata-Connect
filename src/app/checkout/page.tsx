@@ -12,10 +12,10 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 
 const orderSummary = {
-  subtotal: 12.10,
-  shipping: 2.00,
-  tax: 0.61,
-  total: 14.71,
+  subtotal: 110,
+  shipping: 20,
+  tax: 6.5,
+  total: 136.5,
 };
 
 export default function CheckoutPage() {
@@ -106,20 +106,20 @@ export default function CheckoutPage() {
             <CardContent className="space-y-4">
               <div className="flex justify-between">
                 <span>Subtotal</span>
-                <span>${orderSummary.subtotal.toFixed(2)}</span>
+                <span>₹{orderSummary.subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Shipping</span>
-                <span>${orderSummary.shipping.toFixed(2)}</span>
+                <span>₹{orderSummary.shipping.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span>Taxes</span>
-                <span>${orderSummary.tax.toFixed(2)}</span>
+                <span>₹{orderSummary.tax.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
                 <span>Total</span>
-                <span>${orderSummary.total.toFixed(2)}</span>
+                <span>₹{orderSummary.total.toFixed(2)}</span>
               </div>
               <Button className="w-full" size="lg">Place Order</Button>
             </CardContent>

@@ -3,9 +3,9 @@
     {
       "id": "hero-market",
       "category": "hero",
-      "description": "A vibrant and colorful farmer's market stall filled with fresh vegetables.",
-      "imageUrl": "https://images.unsplash.com/photo-1514583079045-e928a4732ade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmYXJtZXIlMjdzJTIwbWFya2V0fGVufDB8fHx8MTc2MDg4MDE3OHww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "farmer's market"
+      "description": "A vibrant and colorful Indian farmer's market stall filled with fresh vegetables.",
+      "imageUrl": "https://images.unsplash.com/photo-1625902347585-8041d13700b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxpbmRpYW4lMjB2ZWdldGFibGUlMjBtYXJrZXR8ZW58MHx8fHwxNzYwOTY3NDI3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "indian vegetable market"
     },
     {
       "id": "tomatoes",
@@ -13,39 +13,39 @@
       "description": "Fresh red tomatoes on a vine",
       "imageUrl": "https://images.unsplash.com/photo-1591171551239-80a5eddd627a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmVzaCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDg3ODI5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh tomatoes",
-      "name": "Heirloom Tomatoes",
-      "price": "3.50",
-      "farmer": "Green Valley Farms"
+      "name": " देसी टमाटर (Desi Tomato)",
+      "price": "40",
+      "farmer": "Pawar Farms"
     },
     {
-      "id": "carrots",
+      "id": "potatoes",
       "category": "product",
-      "description": "A bunch of organic carrots with green tops",
-      "imageUrl": "https://images.unsplash.com/photo-1757332914679-0906a57881e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxvcmdhbmljJTIwY2Fycm90c3xlbnwwfHx8fDE3NjA4NDc3NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "organic carrots",
-      "name": "Organic Carrots",
-      "price": "2.80",
-      "farmer": "Sunrise Organics"
+      "description": "Earthy potatoes freshly harvested",
+      "imageUrl": "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "indian potatoes",
+      "name": "बटाटा (Potato)",
+      "price": "30",
+      "farmer": "Shinde Organics"
     },
     {
-      "id": "wheat",
+      "id": "basmati-rice",
       "category": "product",
-      "description": "Golden wheat grains in a wooden bowl",
-      "imageUrl": "https://images.unsplash.com/photo-1657704659793-fac008ba84e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d2hlYXQlMjBncmFpbnN8ZW58MHx8fHwxNzYwODA1NjgzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "wheat grains",
-      "name": "Whole Wheat Grain",
-      "price": "5.00",
+      "description": "Long-grain Basmati rice in a burlap sack",
+      "imageUrl": "https://images.unsplash.com/photo-1586201375765-c121a05c8349?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5Njc1Njl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "basmati rice",
+      "name": "बासमती चावल (Basmati Rice)",
+      "price": "120",
       "farmer": "Golden Fields"
     },
     {
-      "id": "apples",
+      "id": "mangoes",
       "category": "product",
-      "description": "Crisp red apples in a basket",
-      "imageUrl": "https://images.unsplash.com/photo-1601236007883-e8c3079bebe0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxyZWQlMjBhcHBsZXN8ZW58MHx8fHwxNzYwODgwMTc4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "red apples",
-      "name": "Red Delicious Apples",
-      "price": "4.20",
-      "farmer": "Orchard Fresh"
+      "description": "Ripe Alphonso mangoes in a basket",
+      "imageUrl": "https://images.unsplash.com/photo-1605352495394-3d5a4a55381f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbHBob25zbyUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwOTY3NjIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "alphonso mangoes",
+      "name": "आम (Alphonso Mango)",
+      "price": "800",
+      "farmer": "Ratnagiri Farms"
     },
     {
       "id": "spinach",
@@ -53,39 +53,39 @@
       "description": "Fresh green spinach leaves",
       "imageUrl": "https://images.unsplash.com/photo-1683536905403-ea18a3176d29?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMHNwaW5hY2h8ZW58MHx8fHwxNzYwODUxODk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh spinach",
-      "name": "Baby Spinach",
-      "price": "3.00",
-      "farmer": "Green Valley Farms"
+      "name": "पालक (Spinach)",
+      "price": "20",
+      "farmer": "Pawar Farms"
     },
     {
-      "id": "potatoes",
+      "id": "onions",
       "category": "product",
-      "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1741517922282-45b999eb9e49?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmcmVzaCUyMHBvdGF0b2VzfGVufDB8fHx8MTc2MDg1OTE5MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "fresh potatoes",
-      "name": "Russet Potatoes",
-      "price": "2.50",
-      "farmer": "Sunrise Organics"
+      "description": "Fresh red onions",
+      "imageUrl": "https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red onions",
+      "name": "प्याज (Onion)",
+      "price": "50",
+      "farmer": "Shinde Organics"
     },
     {
-      "id": "rice",
+      "id": "turmeric",
       "category": "product",
-      "description": "White long-grain rice",
-      "imageUrl": "https://images.unsplash.com/photo-1505216980056-a7b7b1c6e000?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8d2hpdGUlMjByaWNlfGVufDB8fHx8MTc2MDg4MDE3OXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "white rice",
-      "name": "Basmati Rice",
-      "price": "8.00",
+      "description": "Turmeric powder and roots",
+      "imageUrl": "https://images.unsplash.com/photo-1607599026453-65972abaa744?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpY3xlbnwwfHx8fDE3NjA5Njc3OTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "turmeric",
+      "name": "हल्दी (Turmeric)",
+      "price": "250",
       "farmer": "Golden Fields"
     },
     {
-      "id": "bananas",
+      "id": "pomegranate",
       "category": "product",
-      "description": "A bunch of ripe yellow bananas",
-      "imageUrl": "https://images.unsplash.com/photo-1620036924477-c3d6e9ce36fc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxyaXBlJTIwYmFuYW5hc3xlbnwwfHx8fDE3NjA3Njk2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "ripe bananas",
-      "name": "Cavendish Bananas",
-      "price": "1.90",
-      "farmer": "Orchard Fresh"
+      "description": "A ripe pomegranate",
+      "imageUrl": "https://images.unsplash.com/photo-1614135249624-958b16335122?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb21lZ3JhbmF0ZXxlbnwwfHx8fDE3NjA5Njc4NDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pomegranate",
+      "name": "अनार (Pomegranate)",
+      "price": "150",
+      "farmer": "Ratnagiri Farms"
     },
     {
       "id": "tutorial1",

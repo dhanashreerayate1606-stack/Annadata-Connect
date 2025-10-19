@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, ChevronRight } from 'lucide-react';
+import { Search, ChevronRight, Mic, Leaf } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
@@ -52,7 +52,10 @@ export default function Home() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input placeholder="Search for products..." className="pl-10" />
           </div>
-          <div className="flex gap-4">
+          <div className="flex gap-2">
+            <Button variant="outline" size="icon" aria-label="Voice Search">
+              <Mic className="h-5 w-5" />
+            </Button>
             <Select>
               <SelectTrigger className="w-full md:w-[180px]">
                 <SelectValue placeholder="Category" />
@@ -61,7 +64,7 @@ export default function Home() {
                 <SelectItem value="vegetables">Vegetables</SelectItem>
                 <SelectItem value="fruits">Fruits</SelectItem>
                 <SelectItem value="grains">Grains</SelectItem>
-                <SelectItem value="dairy">Dairy</SelectItem>
+                <SelectItem value="spices">Spices</SelectItem>
               </SelectContent>
             </Select>
             <Button>Filter</Button>
@@ -72,6 +75,33 @@ export default function Home() {
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+      </section>
+
+      <section className="bg-muted py-12 md:py-16">
+        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-3xl font-bold font-headline">Weekly Subscription Boxes</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Get a curated box of the freshest seasonal produce delivered to your doorstep every week. Customize your box and never run out of healthy options.
+            </p>
+            <Button asChild className="mt-6">
+              <Link href="/subscriptions">
+                Explore Subscriptions
+              </Link>
+            </Button>
+          </div>
+          <div>
+             <h2 className="text-3xl font-bold font-headline">Bulk Orders for Your Business</h2>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Running a restaurant, housing society, or school? Get special pricing and dedicated support for bulk orders of fresh produce.
+            </p>
+            <Button asChild className="mt-6">
+              <Link href="/bulk-orders">
+                Enquire Now
+              </Link>
+            </Button>
+          </div>
         </div>
       </section>
     </div>

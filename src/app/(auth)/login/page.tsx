@@ -11,6 +11,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Globe } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 export default function LoginPage() {
   return (
@@ -19,8 +26,21 @@ export default function LoginPage() {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl font-bold text-center text-primary-dark font-headline">Welcome Back</h2>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Globe className="w-4 h-4"/>
-              <span>English</span>
+            <Select defaultValue="en">
+              <SelectTrigger className="w-auto border-0 gap-2">
+                <Globe className="w-4 h-4" />
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="hi">हिन्दी (Hindi)</SelectItem>
+                <SelectItem value="mr">मराठी (Marathi)</SelectItem>
+                <SelectItem value="ta">தமிழ் (Tamil)</SelectItem>
+                <SelectItem value="te">తెలుగు (Telugu)</SelectItem>
+                <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
+                <SelectItem value="bn">বাংলা (Bengali)</SelectItem>
+              </SelectContent>
+            </Select>
           </div>
         </div>
         <Tabs defaultValue="consumer" className="w-full">

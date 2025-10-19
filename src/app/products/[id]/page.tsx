@@ -56,7 +56,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
           </div>
           <Separator className="my-6" />
           <p className="text-3xl font-bold text-primary">
-            ${product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
+            ₹{product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
             <span className="ml-2 text-base font-normal text-muted-foreground">/ kg</span>
           </p>
           <p className="mt-4 text-base text-foreground/80 leading-relaxed">

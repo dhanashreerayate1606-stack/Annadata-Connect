@@ -3,7 +3,8 @@ import Link from "next/link";
 import type { ImagePlaceholder } from "@/lib/placeholder-images";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Leaf } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 interface ProductCardProps {
   product: ImagePlaceholder;
@@ -12,7 +13,7 @@ interface ProductCardProps {
 const ProductCard = ({ product }: ProductCardProps) => {
   return (
     <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-      <CardHeader className="p-0">
+      <CardHeader className="p-0 relative">
         <Link href={`/products/${product.id}`} className="block">
           <div className="relative aspect-[3/2] w-full">
             <Image
@@ -25,6 +26,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
             />
           </div>
         </Link>
+        <Badge variant="secondary" className="absolute top-2 right-2 bg-green-100 text-green-800 border-green-200">
+            <Leaf className="mr-1 h-3 w-3" />
+            Low Carbon
+        </Badge>
       </CardHeader>
       <CardContent className="flex-grow p-4">
         <CardTitle className="text-lg font-bold font-headline leading-tight">
@@ -38,7 +43,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </CardContent>
       <CardFooter className="flex items-center justify-between p-4 pt-0">
         <p className="text-xl font-bold text-primary">
-          ${product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
+          ₹{product.price ? parseFloat(product.price).toFixed(2) : '0.00'}
           <span className="text-sm font-normal text-muted-foreground"> / kg</span>
         </p>
         <Button size="sm" variant="secondary">

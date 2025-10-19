@@ -60,6 +60,10 @@ export default function SignupPage() {
                             <SelectItem value="en">English</SelectItem>
                             <SelectItem value="hi">हिन्दी (Hindi)</SelectItem>
                             <SelectItem value="mr">मराठी (Marathi)</SelectItem>
+                            <SelectItem value="ta">தமிழ் (Tamil)</SelectItem>
+                            <SelectItem value="te">తెలుగు (Telugu)</SelectItem>
+                            <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
+                            <SelectItem value="bn">বাংলা (Bengali)</SelectItem>
                         </SelectContent>
                     </Select>
                 </div>

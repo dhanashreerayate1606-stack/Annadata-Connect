@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor } from "lucide-react";
+import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/", label: "Marketplace", icon: Tractor },
   { href: "/advisory", label: "Crop Advisory", icon: Leaf },
   { href: "/learning-hub", label: "Learning Hub", icon: BookOpen },
+  { href: "/community", label: "Community", icon: Users },
 ];
 
 const Header = () => {
