@@ -1,6 +1,9 @@
 
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import React, { useState, useRef } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -13,11 +16,91 @@ import {
 } from '@/components/ui/select';
 import { Search, ChevronRight, Mic, Leaf } from 'lucide-react';
 import ProductCard from '@/components/product-card';
+import { voiceSearch } from '@/ai/flows/voice-search-flow';
+import { useToast } from '@/hooks/use-toast';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
 const products = PlaceHolderImages.filter(p => p.category === 'product');
 
 export default function Home() {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isRecording, setIsRecording] = useState(false);
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const audioChunksRef = useRef<Blob[]>([]);
+  const { toast } = useToast();
+
+  const handleVoiceSearch = async () => {
+    if (isRecording) {
+      mediaRecorderRef.current?.stop();
+      setIsRecording(false);
+    } else {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mediaRecorderRef.current = new MediaRecorder(stream);
+        audioChunksRef.current = [];
+
+        mediaRecorderRef.current.ondataavailable = (event) => {
+          audioChunksRef.current.push(event.data);
+        };
+
+        mediaRecorderRef.current.onstop = async () => {
+          const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+          const reader = new FileReader();
+          reader.readAsDataURL(audioBlob);
+          reader.onloadend = async () => {
+            const base64Audio = reader.result as string;
+            
+            toast({
+              title: 'Processing your voice...',
+              description: 'Our AI is analyzing your request.',
+            });
+
+            try {
+              const result = await voiceSearch({ audio: base64Audio });
+              if (result.query) {
+                setSearchQuery(result.query);
+                toast({
+                  title: 'Search complete!',
+                  description: `Showing results for "${result.query}".`,
+                });
+              } else {
+                 toast({
+                  variant: 'destructive',
+                  title: 'Could not understand audio',
+                  description: 'Please try speaking again clearly.',
+                });
+              }
+            } catch (error) {
+               console.error('Voice search error:', error);
+               toast({
+                variant: 'destructive',
+                title: 'AI Voice Search Failed',
+                description: 'There was an error processing your voice command.',
+              });
+            }
+          };
+           // Stop all media tracks to turn off the microphone
+          stream.getTracks().forEach(track => track.stop());
+        };
+
+        mediaRecorderRef.current.start();
+        setIsRecording(true);
+        toast({
+          title: 'Listening...',
+          description: 'Speak now to search for a product.',
+        });
+
+      } catch (error) {
+        console.error('Error accessing microphone:', error);
+        toast({
+          variant: 'destructive',
+          title: 'Microphone Access Denied',
+          description: 'Please enable microphone permissions in your browser settings.',
+        });
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col">
       <section className="relative h-[50vh] w-full bg-secondary">
@@ -51,10 +134,15 @@ export default function Home() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center">
           <div className="relative flex-grow">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search for products..." className="pl-10" />
+            <Input 
+              placeholder="Search for products..." 
+              className="pl-10"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="icon" aria-label="Voice Search">
+            <Button variant="outline" size="icon" aria-label="Voice Search" onClick={handleVoiceSearch} className={isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : ''}>
               <Mic className="h-5 w-5" />
             </Button>
             <Select>
@@ -75,7 +163,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.map((product) => (
+          {products.filter(p => p.name?.toLowerCase().includes(searchQuery.toLowerCase())).map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
