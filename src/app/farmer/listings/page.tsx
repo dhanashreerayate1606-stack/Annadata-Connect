@@ -55,7 +55,7 @@ const productListings = [
   {
     id: "onions",
     name: "Red Onion",
-    image: "https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
     status: "Published",
     price: 50,
     stock: 800,
@@ -64,7 +64,7 @@ const productListings = [
   {
     id: "grapes",
     name: "Green Grapes",
-    image: "https://picsum.photos/seed/grapes/400",
+    image: "https://images.unsplash.com/photo-1597889392482-0f3a618f4803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxncmVlbiUyMGdyYXBlc3xlbnwwfHx8fDE3NjEzMDMxMDF8MA&ixlib=rb-4.1.0&q=80&w=1080",
     status: "Draft",
     price: 120,
     stock: 200,
@@ -194,3 +194,5 @@ export default function FarmerListingsPage() {
     </div>
   );
 }
+
+    

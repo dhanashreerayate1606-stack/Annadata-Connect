@@ -32,7 +32,7 @@ import { useTranslation } from "@/hooks/use-translation";
 const initialConsumer = {
   name: "Radhika Sharma",
   email: "radhika.sharma@example.com",
-  avatar: "https://picsum.photos/seed/profile-avatar/200",
+  avatar: "https://picsum.photos/seed/profile-avatar/200/200",
   location: "Pune, Maharashtra",
   type: "Consumer",
   joinDate: "2025",
@@ -41,7 +41,7 @@ const initialConsumer = {
 const farmer = {
   name: "Suresh Patil",
   email: "suresh.patil@example.com",
-  avatar: "https://picsum.photos/seed/farmer1/200",
+  avatar: "https://picsum.photos/seed/farmer1/200/200",
   location: "Nashik, Maharashtra",
   type: "Farmer",
   joinDate: "June 2023",
@@ -240,3 +240,5 @@ export default function ProfilePage() {
     </div>
   );
 }
+
+    

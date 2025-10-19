@@ -10,11 +10,11 @@ import { Badge } from "@/components/ui/badge";
 import { Award, Star, Shield, Trophy } from "lucide-react";
 
 const leaderboard = [
-  { rank: 1, name: "Suresh Patil", produce: "5,000 kg", avatar: "https://picsum.photos/seed/farmer1/100" },
-  { rank: 2, name: "Meena Kumari", produce: "4,800 kg", avatar: "https://picsum.photos/seed/farmer2/100" },
-  { rank: 3, name: "Rajesh Singh", produce: "4,500 kg", avatar: "https://picsum.photos/seed/farmer3/100" },
-  { rank: 4, name: "Anita Devi", produce: "4,200 kg", avatar: "https://picsum.photos/seed/farmer4/100" },
-  { rank: 5, name: "Vikram Reddy", produce: "4,000 kg", avatar: "https://picsum.photos/seed/farmer5/100" },
+  { rank: 1, name: "Suresh Patil", produce: "5,000 kg", avatar: "https://picsum.photos/seed/farmer1/100/100" },
+  { rank: 2, name: "Meena Kumari", produce: "4,800 kg", avatar: "https://picsum.photos/seed/farmer2/100/100" },
+  { rank: 3, name: "Rajesh Singh", produce: "4,500 kg", avatar: "https://picsum.photos/seed/farmer3/100/100" },
+  { rank: 4, name: "Anita Devi", produce: "4,200 kg", avatar: "https://picsum.photos/seed/farmer4/100/100" },
+  { rank: 5, name: "Vikram Reddy", produce: "4,000 kg", avatar: "https://picsum.photos/seed/farmer5/100/100" },
 ];
 
 const badges = [
@@ -89,3 +89,5 @@ export default function CommunityPage() {
     </div>
   );
 }
+
+    
