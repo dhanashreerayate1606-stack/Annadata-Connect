@@ -28,5 +28,26 @@
     "bulkOrdersTitle": "ನಿಮ್ಮ ವ್ಯಾಪಾರಕ್ಕಾಗಿ ಸಗಟು ಆದೇಶಗಳು",
     "bulkOrdersSubtitle": "ರೆಸ್ಟೋರೆಂಟ್, ಹೌಸಿಂಗ್ ಸೊಸೈಟಿ, ಅಥವಾ ಶಾಲೆಯನ್ನು ನಡೆಸುತ್ತಿದ್ದೀರಾ? ತಾಜಾ ಉತ್ಪನ್ನಗಳ ಸಗಟು ಆದೇಶಗಳಿಗಾಗಿ ವಿಶೇಷ ಬೆಲೆ ಮತ್ತು ಸಮರ್ಪಿತ ಬೆಂಬಲವನ್ನು ಪಡೆಯಿರಿ।",
     "bulkOrdersButton": "ಈಗ ವಿಚಾರಿಸಿ"
+  },
+  "login": {
+    "welcome": "ಮರಳಿ ಸ್ವಾಗತ",
+    "consumer": "ಗ್ರಾಹಕ",
+    "farmer": "ರೈತ",
+    "consumerLogin": "ಗ್ರಾಹಕ ಲಾಗಿನ್",
+    "consumerDescription": "ನಿಮ್ಮ ಖಾತೆಯನ್ನು ಪ್ರವೇಶಿಸಲು ನಿಮ್ಮ ఆధారಗಳನ್ನು ನಮೂದಿಸಿ.",
+    "emailLabel": "ಇಮೇಲ್",
+    "passwordLabel": "ಪಾಸ್ವರ್ಡ್",
+    "signIn": "ಸೈನ್ ಇನ್ ಮಾಡಿ",
+    "noAccount": "ಖಾತೆ ಇಲ್ಲವೆ?",
+    "signUpLink": "ಸೈನ್ ಅಪ್ ಮಾಡಿ",
+    "farmerLogin": "ರೈತ ಲಾಗಿನ್",
+    "farmerDescription": "ನಿಮ್ಮ ಆಧಾರ್ ಮತ್ತು OTP ಬಳಸಿ ಲಾಗಿನ್ ಮಾಡಿ.",
+    "aadhaarLabel": "ಆಧಾರ್ ಸಂಖ್ಯೆ",
+    "sendOtp": "OTP ಕಳುಹಿಸಿ",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "6-ಅಂಕಿಯ OTP ನಮೂದಿಸಿ",
+    "loginWithOtp": "OTP ಯೊಂದಿಗೆ ಲಾಗಿನ್ ಮಾಡಿ",
+    "notRegistered": "ಇನ್ನೂ ನೋಂದಾಯಿಸಿಲ್ಲವೆ?",
+    "registerLink": "ಇಲ್ಲಿ ನೋಂದಾಯಿಸಿ"
   }
 }

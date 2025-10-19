@@ -21,17 +21,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useLanguage } from "@/context/language-context";
-import { LANGUAGES } from "@/context/language-context";
+import { useLanguage, LANGUAGES } from "@/context/language-context";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function LoginPage() {
   const { language, setLanguage } = useLanguage();
+  const { t } = useTranslation();
 
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-3xl font-bold text-center text-primary-dark font-headline">Welcome Back</h2>
+          <h2 className="text-3xl font-bold text-center text-primary-dark font-headline">{t('login.welcome')}</h2>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Select value={language} onValueChange={setLanguage}>
               <SelectTrigger className="w-auto border-0 gap-2">
@@ -50,31 +51,31 @@ export default function LoginPage() {
         </div>
         <Tabs defaultValue="consumer" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="consumer">Consumer</TabsTrigger>
-            <TabsTrigger value="farmer">Farmer</TabsTrigger>
+            <TabsTrigger value="consumer">{t('login.consumer')}</TabsTrigger>
+            <TabsTrigger value="farmer">{t('login.farmer')}</TabsTrigger>
           </TabsList>
           <TabsContent value="consumer">
             <Card>
               <CardHeader>
-                <CardTitle>Consumer Login</CardTitle>
+                <CardTitle>{t('login.consumerLogin')}</CardTitle>
                 <CardDescription>
-                  Enter your credentials to access your account.
+                  {t('login.consumerDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="c-email">Email</Label>
+                  <Label htmlFor="c-email">{t('login.emailLabel')}</Label>
                   <Input id="c-email" type="email" placeholder="you@example.com" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="c-password">Password</Label>
+                  <Label htmlFor="c-password">{t('login.passwordLabel')}</Label>
                   <Input id="c-password" type="password" required />
                 </div>
-                <Button type="submit" className="w-full">Sign In</Button>
+                <Button type="submit" className="w-full">{t('login.signIn')}</Button>
                  <div className="mt-4 text-center text-sm">
-                  Don&apos;t have an account?{" "}
+                  {t('login.noAccount')}{" "}
                   <Link href="/signup" className="underline">
-                    Sign up
+                    {t('login.signUpLink')}
                   </Link>
                 </div>
               </CardContent>
@@ -83,26 +84,26 @@ export default function LoginPage() {
           <TabsContent value="farmer">
             <Card>
               <CardHeader>
-                <CardTitle>Farmer Login</CardTitle>
+                <CardTitle>{t('login.farmerLogin')}</CardTitle>
                 <CardDescription>
-                  Login using your Aadhaar and OTP.
+                  {t('login.farmerDescription')}
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="f-aadhaar">Aadhaar Number</Label>
+                  <Label htmlFor="f-aadhaar">{t('login.aadhaarLabel')}</Label>
                   <Input id="f-aadhaar" placeholder="xxxx-xxxx-xxxx" required />
                 </div>
-                <Button type="submit" className="w-full">Send OTP</Button>
+                <Button type="submit" className="w-full">{t('login.sendOtp')}</Button>
                 <div className="space-y-2">
-                  <Label htmlFor="f-otp">OTP</Label>
-                  <Input id="f-otp" placeholder="Enter 6-digit OTP" required />
+                  <Label htmlFor="f-otp">{t('login.otpLabel')}</Label>
+                  <Input id="f-otp" placeholder={t('login.otpPlaceholder')} required />
                 </div>
-                <Button type="submit" className="w-full">Login with OTP</Button>
+                <Button type="submit" className="w-full">{t('login.loginWithOtp')}</Button>
                 <div className="mt-4 text-center text-sm">
-                  Not registered yet?{" "}
+                  {t('login.notRegistered')}{" "}
                   <Link href="/signup" className="underline">
-                    Register here
+                    {t('login.registerLink')}
                   </Link>
                 </div>
               </CardContent>

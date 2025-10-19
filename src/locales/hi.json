@@ -1,3 +1,4 @@
+
 {
   "header": {
     "marketplace": "बाज़ार",
@@ -27,5 +28,26 @@
     "bulkOrdersTitle": "आपके व्यवसाय के लिए थोक ऑर्डर",
     "bulkOrdersSubtitle": "एक रेस्तरां, हाउसिंग सोसाइटी, या स्कूल चला रहे हैं? ताजा उपज के थोक ऑर्डर के लिए विशेष मूल्य निर्धारण और समर्पित समर्थन प्राप्त करें।",
     "bulkOrdersButton": "अभी पूछताछ करें"
+  },
+  "login": {
+    "welcome": "वापसी पर स्वागत है",
+    "consumer": "उपभोक्ता",
+    "farmer": "किसान",
+    "consumerLogin": "उपभोक्ता लॉगिन",
+    "consumerDescription": "अपने खाते तक पहुंचने के लिए अपनी साख दर्ज करें।",
+    "emailLabel": "ईमेल",
+    "passwordLabel": "पासवर्ड",
+    "signIn": "साइन इन करें",
+    "noAccount": "खाता नहीं है?",
+    "signUpLink": "साइन अप करें",
+    "farmerLogin": "किसान लॉगिन",
+    "farmerDescription": "अपने आधार और ओटीपी का उपयोग करके लॉगिन करें।",
+    "aadhaarLabel": "आधार संख्या",
+    "sendOtp": "ओटीपी भेजें",
+    "otpLabel": "ओटीपी",
+    "otpPlaceholder": "6 अंकों का ओटीपी दर्ज करें",
+    "loginWithOtp": "ओटीपी के साथ लॉगिन करें",
+    "notRegistered": "अभी तक पंजीकृत नहीं हैं?",
+    "registerLink": "यहां पंजीकरण करें"
   }
 }

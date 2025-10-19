@@ -28,5 +28,26 @@
     "bulkOrdersTitle": "तुमच्या व्यवसायासाठी मोठ्या ऑर्डर्स",
     "bulkOrdersSubtitle": "रेस्टॉरंट, हाउसिंग सोसायटी किंवा शाळा चालवत आहात? ताज्या उत्पादनांच्या मोठ्या ऑर्डर्ससाठी विशेष किंमत आणि समर्पित समर्थन मिळवा।",
     "bulkOrdersButton": "आता चौकशी करा"
+  },
+  "login": {
+    "welcome": "पुन्हा स्वागत आहे",
+    "consumer": "ग्राहक",
+    "farmer": "शेतकरी",
+    "consumerLogin": "ग्राहक लॉगिन",
+    "consumerDescription": "आपल्या खात्यात प्रवेश करण्यासाठी आपले क्रेडेन्शियल प्रविष्ट करा.",
+    "emailLabel": "ईमेल",
+    "passwordLabel": "पासवर्ड",
+    "signIn": "साइन इन करा",
+    "noAccount": "खाते नाही?",
+    "signUpLink": "साइन अप करा",
+    "farmerLogin": "शेतकरी लॉगिन",
+    "farmerDescription": "आपले आधार आणि ओटीपी वापरून लॉगिन करा.",
+    "aadhaarLabel": "आधार क्रमांक",
+    "sendOtp": "ओटीपी पाठवा",
+    "otpLabel": "ओटीपी",
+    "otpPlaceholder": "6-अंकी ओटीपी प्रविष्ट करा",
+    "loginWithOtp": "ओटीपीसह लॉगिन करा",
+    "notRegistered": "अद्याप नोंदणी केली नाही?",
+    "registerLink": "येथे नोंदणी करा"
   }
 }

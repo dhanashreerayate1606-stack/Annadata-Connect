@@ -28,5 +28,26 @@
     "bulkOrdersTitle": "మీ వ్యాపారం కోసం బల్క్ ఆర్డర్లు",
     "bulkOrdersSubtitle": "రెస్టారెంట్, హౌసింగ్ సొసైటీ, లేదా పాఠశాల నడుపుతున్నారా? తాజా ఉత్పత్తుల బల్క్ ఆర్డర్‌ల కోసం ప్రత్యేక ధర మరియు అంకితమైన మద్దతు పొందండి।",
     "bulkOrdersButton": "ఇప్పుడే విచారించండి"
+  },
+  "login": {
+    "welcome": " తిరిగి స్వాగతం",
+    "consumer": "వినియోగదారు",
+    "farmer": "రైతు",
+    "consumerLogin": "వినియోగదారు లాగిన్",
+    "consumerDescription": "మీ ఖాతాను యాక్సెస్ చేయడానికి మీ ఆధారాలను నమోదు చేయండి.",
+    "emailLabel": "ఇమెయిల్",
+    "passwordLabel": "పాస్‌వర్డ్",
+    "signIn": "సైన్ ఇన్ చేయండి",
+    "noAccount": "ఖాతా లేదా?",
+    "signUpLink": "నమోదు చేసుకోండి",
+    "farmerLogin": "రైతు లాగిన్",
+    "farmerDescription": "మీ ఆధార్ మరియు OTP ఉపయోగించి లాగిన్ చేయండి.",
+    "aadhaarLabel": "ఆధార్ నంబర్",
+    "sendOtp": "OTP పంపండి",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "6-అంకెల OTPని నమోదు చేయండి",
+    "loginWithOtp": "OTPతో లాగిన్ చేయండి",
+    "notRegistered": "ఇంకా నమోదు కాలేదా?",
+    "registerLink": "ఇక్కడ నమోదు చేసుకోండి"
   }
 }

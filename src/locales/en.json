@@ -1,3 +1,4 @@
+
 {
   "header": {
     "marketplace": "Marketplace",
@@ -27,5 +28,26 @@
     "bulkOrdersTitle": "Bulk Orders for Your Business",
     "bulkOrdersSubtitle": "Running a restaurant, housing society, or school? Get special pricing and dedicated support for bulk orders of fresh produce.",
     "bulkOrdersButton": "Enquire Now"
+  },
+  "login": {
+    "welcome": "Welcome Back",
+    "consumer": "Consumer",
+    "farmer": "Farmer",
+    "consumerLogin": "Consumer Login",
+    "consumerDescription": "Enter your credentials to access your account.",
+    "emailLabel": "Email",
+    "passwordLabel": "Password",
+    "signIn": "Sign In",
+    "noAccount": "Don't have an account?",
+    "signUpLink": "Sign up",
+    "farmerLogin": "Farmer Login",
+    "farmerDescription": "Login using your Aadhaar and OTP.",
+    "aadhaarLabel": "Aadhaar Number",
+    "sendOtp": "Send OTP",
+    "otpLabel": "OTP",
+    "otpPlaceholder": "Enter 6-digit OTP",
+    "loginWithOtp": "Login with OTP",
+    "notRegistered": "Not registered yet?",
+    "registerLink": "Register here"
   }
 }
