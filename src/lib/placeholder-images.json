@@ -23,7 +23,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
@@ -67,7 +67,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Fresh red onions",
-      "imageUrl": "https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "red onions",
       "name": "प्याज (Onion)",
       "price": "50",
@@ -78,7 +78,7 @@
       "category": "product",
       "productType": "spices",
       "description": "Turmeric powder and roots",
-      "imageUrl": "https://images.unsplash.com/photo-1596035242942-ecb8a7c1b5e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpYyUyMHJvb3RzfGVufDB8fHx8MTc2MTA1Mzk5OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1596035242942-ecb8a7c1b5e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHx0dXJtZXJpYyUyMHJvb3RzfGVufDB8fHx8MTc2MTA1Mzk5OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "turmeric roots",
       "name": "हल्दी (Turmeric)",
       "price": "250",
@@ -100,7 +100,7 @@
       "category": "product",
       "productType": "pulses",
       "description": "Bowl of red lentils",
-      "imageUrl": "https://images.unsplash.com/photo-1583349642643-a6294a8f9b97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBsZW50aWxzfGVufDB8fHx8MTc2MTI5NjI2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1583349642643-a6294a8f9b97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBsZW50aWxzfGVufDB8fHx8MTc2MTI5NjI2OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "red lentils",
       "name": "मसूर दाल (Masoor Dal)",
       "price": "90",
@@ -111,7 +111,7 @@
       "category": "product",
       "productType": "flowers",
       "description": "Bright orange marigold flowers",
-      "imageUrl": "https://images.unsplash.com/photo-1594290358414-81413a7384a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYXJpZ29sZCUyMGZsb3dlcnN8ZW58MHx8fHwxNzYxMjk2MzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594290358414-81413a7384a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxtYXJpZ29sZCUyMGZsb3dlcnN8ZW58MHx8fHwxNzYxMjk2MzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "marigold flowers",
       "name": "गेंदा (Marigold)",
       "price": "50",
@@ -128,21 +128,21 @@
       "id": "webinar1",
       "category": "learning",
       "description": "A person giving a presentation, representing a webinar on modern farming techniques.",
-      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4b248b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxidXNpbmVzcyUyMHdlYmluYXJ8ZW58MHx8fHwxNzYxMDU0MTg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4b248b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxidXNpbmVzcyUyMHdlYmluYXJ8ZW58MHx8fHwxNzYxMDU0MTg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business webinar"
     },
     {
       "id": "resource1",
       "category": "learning",
       "description": "An open book with illustrations of plants, representing a downloadable guide.",
-      "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEwNTQyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEwNTQyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reading book"
     },
     {
       "id": "tutorial2",
       "category": "learning",
       "description": "Close up of hands holding rich soil.",
-      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f36599b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MDg4MDE3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f36599b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MDg4MDE3OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "soil health"
     },
     {
@@ -156,21 +156,21 @@
       "id": "bulk-hero",
       "category": "hero",
       "description": "A crate of fresh vegetables ready for bulk delivery.",
-      "imageUrl": "https://images.unsplash.com/photo-1540914124281-3425879413d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMHZlZ2V0YWJsZXMlMjBjcmF0ZXxlbnwwfHx8fDE3NjEwNTAyNjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1540914124281-3425879413d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxmcmVzaCUyMHZlZ2V0YWJsZXMlMjBjcmF0ZXxlbnwwfHx8fDE3NjEwNTAyNjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vegetable crate"
     },
     {
       "id": "subscription-hero",
       "category": "hero",
       "description": "A person holding a subscription box full of fresh produce.",
-      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTA1NDQ4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTA1NDQ4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "produce subscription box"
     },
     {
       "id": "tutorial3",
       "category": "learning",
       "description": "Farmer using a laptop in a field",
-      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8fDE3NjEwNTQ1Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8fDE3NjEwNTQ1Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farmer with laptop"
     }
   ]
