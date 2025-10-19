@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Landmark } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import Image from "next/image";
 
 const schemes = [
   {
@@ -43,19 +45,33 @@ const categoryVariant = {
     "Credit Facility": "default",
 } as const;
 
+const heroImage = PlaceHolderImages.find(p => p.id === 'schemes-hero');
+
 export default function SchemesPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold tracking-tight font-headline">
-          Government Schemes for Farmers
-        </h1>
-        <p className="mt-4 text-lg text-muted-foreground">
-          Stay informed about the latest government initiatives and financial support programs available to you.
-        </p>
-      </div>
+      {heroImage && (
+        <div className="relative h-64 w-full overflow-hidden rounded-lg shadow-lg mb-10">
+          <Image
+            src={heroImage.imageUrl}
+            alt={heroImage.description}
+            fill
+            className="object-cover"
+            data-ai-hint={heroImage.imageHint}
+          />
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
+            <h1 className="text-4xl font-bold tracking-tight font-headline">
+              Government Schemes for Farmers
+            </h1>
+            <p className="mt-4 max-w-2xl text-lg">
+              Stay informed about the latest government initiatives and financial support programs available to you.
+            </p>
+          </div>
+        </div>
+      )}
 
-      <Card className="mt-10">
+      <Card>
         <CardHeader>
           <CardTitle>Available Programs</CardTitle>
           <CardDescription>Browse through the schemes and find the ones you are eligible for.</CardDescription>

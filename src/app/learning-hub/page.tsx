@@ -3,6 +3,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -15,8 +16,8 @@ const tutorials = PlaceHolderImages.filter(p => p.id.startsWith("tutorial"));
 const webinars = PlaceHolderImages.filter(p => p.id.startsWith("webinar"));
 const resources = PlaceHolderImages.filter(p => p.id.startsWith("resource"));
 
-const LearningCard = ({ item, type }: { item: typeof tutorials[0], type: 'tutorial' | 'webinar' | 'resource' }) => (
-  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg">
+const LearningCard = ({ item, title, description, type }: { item: typeof tutorials[0], title: string, description: string, type: 'tutorial' | 'webinar' | 'resource' }) => (
+  <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
     <CardHeader className="p-0">
       <div className="relative aspect-video w-full">
         <Image src={item.imageUrl} alt={item.description} fill className="object-cover" data-ai-hint={item.imageHint} />
@@ -27,19 +28,15 @@ const LearningCard = ({ item, type }: { item: typeof tutorials[0], type: 'tutori
         )}
       </div>
     </CardHeader>
-    <CardContent className="p-4">
+    <CardContent className="p-4 flex-grow">
       <CardTitle className="text-lg font-bold font-headline">
-        {type === 'tutorial' && 'Modern Soil Health Techniques'}
-        {type === 'webinar' && 'Live Q&A: Pest Control'}
-        {type === 'resource' && 'Crop Rotation Guide'}
+        {title}
       </CardTitle>
       <CardDescription className="mt-2 text-sm">
-        {type === 'tutorial' && 'Learn to improve your soil fertility and increase yields.'}
-        {type === 'webinar' && 'Join experts to discuss organic pest control. | 25th July, 4 PM'}
-        {type === 'resource' && 'A comprehensive guide to effective crop rotation.'}
+        {description}
       </CardDescription>
     </CardContent>
-    <CardContent className="p-4 pt-0">
+    <CardFooter className="p-4 pt-0">
       {type === 'resource' ? (
          <Button variant="outline" className="w-full">
           <Download className="mr-2 h-4 w-4" /> Download PDF
@@ -49,9 +46,23 @@ const LearningCard = ({ item, type }: { item: typeof tutorials[0], type: 'tutori
           <Video className="mr-2 h-4 w-4" /> Watch Now
         </Button>
       )}
-    </CardContent>
+    </CardFooter>
   </Card>
 );
+
+const learningContent = {
+    tutorials: [
+        { item: tutorials[0], title: 'Modern Soil Health Techniques', description: 'Learn to improve your soil fertility and increase yields.' },
+        { item: tutorials[1], title: 'Smart Irrigation Methods', description: 'Conserve water and maximize crop growth with smart irrigation.' },
+        { item: tutorials.find(i => i.id === 'tutorial3') || tutorials[0], title: 'Using Tech for Farming', description: 'Leverage technology to improve your farm\'s efficiency.' },
+    ],
+    webinars: [
+        { item: webinars[0], title: 'Live Q&A: Pest Control', description: 'Join experts to discuss organic pest control. | 25th July, 4 PM' },
+    ],
+    resources: [
+        { item: resources[0], title: 'Crop Rotation Guide', description: 'A comprehensive guide to effective crop rotation.' },
+    ]
+}
 
 export default function LearningHubPage() {
   return (
@@ -74,18 +85,17 @@ export default function LearningHubPage() {
 
         <TabsContent value="tutorials" className="mt-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {tutorials.map(item => <LearningCard key={item.id} item={item} type="tutorial" />)}
-            <LearningCard item={webinars[0]} type="tutorial" />
+            {learningContent.tutorials.map(content => <LearningCard key={content.item.id} {...content} type="tutorial" />)}
           </div>
         </TabsContent>
         <TabsContent value="webinars" className="mt-8">
            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {webinars.map(item => <LearningCard key={item.id} item={item} type="webinar" />)}
+            {learningContent.webinars.map(content => <LearningCard key={content.item.id} {...content} type="webinar" />)}
           </div>
         </TabsContent>
         <TabsContent value="resources" className="mt-8">
            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {resources.map(item => <LearningCard key={item.id} item={item} type="resource" />)}
+            {learningContent.resources.map(content => <LearningCard key={content.item.id} {...content} type="resource" />)}
           </div>
         </TabsContent>
       </Tabs>

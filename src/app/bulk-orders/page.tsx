@@ -31,6 +31,8 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
+import Image from "next/image";
 
 const formSchema = z.object({
   businessName: z.string().min(2, { message: "Business name must be at least 2 characters." }),
@@ -40,6 +42,8 @@ const formSchema = z.object({
   businessType: z.enum(["restaurant", "housing-society", "school", "other"]),
   requirements: z.string().min(20, { message: "Please describe your requirements in at least 20 characters." }),
 });
+
+const heroImage = PlaceHolderImages.find(p => p.id === 'bulk-hero');
 
 export default function BulkOrdersPage() {
   const { toast } = useToast();
@@ -64,7 +68,7 @@ export default function BulkOrdersPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-12 md:py-16">
+    <div className="container mx-auto max-w-5xl px-4 py-12 md:py-16">
       <div className="text-center">
         <h1 className="text-4xl font-bold tracking-tight font-headline">
           Bulk & Corporate Orders
@@ -74,112 +78,127 @@ export default function BulkOrdersPage() {
         </p>
       </div>
       
-      <Card className="mt-10">
-        <CardHeader>
-          <CardTitle>Submit Your Enquiry</CardTitle>
-          <CardDescription>Fill out the form below, and our team will contact you with a customized quote.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="businessName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Business/Society Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g., The Grand Hotel or Harmony Apartments" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        <Card>
+          <CardHeader>
+            <CardTitle>Submit Your Enquiry</CardTitle>
+            <CardDescription>Fill out the form below, and our team will contact you with a customized quote.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
                   control={form.control}
-                  name="contactName"
+                  name="businessName"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Contact Person</FormLabel>
+                      <FormLabel>Business/Society Name</FormLabel>
                       <FormControl>
-                        <Input placeholder="Your full name" {...field} />
+                        <Input placeholder="e.g., The Grand Hotel or Harmony Apartments" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
                   )}
                 />
-                <FormField
-                  control={form.control}
-                  name="phone"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Phone Number</FormLabel>
-                      <FormControl>
-                        <Input type="tel" placeholder="Your phone number" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email Address</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="you@example.com" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="businessType"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Type of Business</FormLabel>
-                     <Select onValueChange={field.onChange} defaultValue={field.value}>
+                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <FormField
+                    control={form.control}
+                    name="contactName"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Contact Person</FormLabel>
                         <FormControl>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your business type" />
-                          </SelectTrigger>
+                          <Input placeholder="Your full name" {...field} />
                         </FormControl>
-                        <SelectContent>
-                          <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
-                          <SelectItem value="housing-society">Housing Society</SelectItem>
-                          <SelectItem value="school">School / College</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name="phone"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Phone Number</FormLabel>
+                        <FormControl>
+                          <Input type="tel" placeholder="Your phone number" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email Address</FormLabel>
+                      <FormControl>
+                        <Input type="email" placeholder="you@example.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="businessType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Type of Business</FormLabel>
+                       <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select your business type" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="restaurant">Restaurant / Cafe</SelectItem>
+                            <SelectItem value="housing-society">Housing Society</SelectItem>
+                            <SelectItem value="school">School / College</SelectItem>
+                            <SelectItem value="other">Other</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                 <FormField
+                  control={form.control}
+                  name="requirements"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Your Requirements</FormLabel>
+                      <FormControl>
+                        <Textarea placeholder="Tell us about the produce you need, expected quantity, and frequency." {...field} />
+                      </FormControl>
+                      <FormDescription>
+                        The more details you provide, the better we can assist you.
+                      </FormDescription>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" className="w-full sm:w-auto">Submit Enquiry</Button>
+              </form>
+            </Form>
+          </CardContent>
+        </Card>
+        <div className="sticky top-20">
+          {heroImage && (
+            <div className="relative aspect-square w-full overflow-hidden rounded-lg shadow-lg">
+               <Image
+                src={heroImage.imageUrl}
+                alt={heroImage.description}
+                fill
+                className="object-cover"
+                data-ai-hint={heroImage.imageHint}
               />
-               <FormField
-                control={form.control}
-                name="requirements"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Your Requirements</FormLabel>
-                    <FormControl>
-                      <Textarea placeholder="Tell us about the produce you need, expected quantity, and frequency." {...field} />
-                    </FormControl>
-                    <FormDescription>
-                      The more details you provide, the better we can assist you.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" className="w-full sm:w-auto">Submit Enquiry</Button>
-            </form>
-          </Form>
-        </CardContent>
-      </Card>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
