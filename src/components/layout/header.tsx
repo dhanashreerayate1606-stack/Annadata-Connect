@@ -1,14 +1,23 @@
 
-"use client";
+'use client';
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users, Handshake, Landmark } from "lucide-react";
+import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users, Handshake, Landmark, Globe } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import Logo from "@/components/icons/logo";
 import { cn } from "@/lib/utils";
+import { useLanguage, LANGUAGES } from "@/context/language-context";
+
 
 const navLinks = [
   { href: "/", label: "Marketplace", icon: Tractor },
@@ -21,6 +30,7 @@ const navLinks = [
 
 const Header = () => {
   const pathname = usePathname();
+  const { language, setLanguage } = useLanguage();
 
   const NavLinks = ({ className }: { className?: string }) => (
     <nav className={cn("flex items-center gap-4 lg:gap-6", className)}>
@@ -87,11 +97,27 @@ const Header = () => {
           </SheetContent>
         </Sheet>
         
-        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+        <div className="flex flex-1 items-center justify-end space-x-2">
           <div className="w-full flex-1 md:w-auto md:flex-none">
             {/* Search bar can be added here if needed globally */}
           </div>
           <nav className="flex items-center">
+            <div className="hidden md:flex">
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="w-auto border-0 gap-2 text-sm text-muted-foreground">
+                  <Globe className="w-4 h-4" />
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {LANGUAGES.map((lang) => (
+                    <SelectItem key={lang.code} value={lang.code}>
+                      {lang.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <Button asChild variant="ghost" size="icon">
               <Link href="/cart">
                 <ShoppingCart className="h-5 w-5" />

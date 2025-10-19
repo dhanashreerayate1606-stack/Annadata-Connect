@@ -1,3 +1,6 @@
+
+'use client';
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -17,9 +20,11 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select";
-import { Globe, Mic } from "lucide-react";
+import { useLanguage, LANGUAGES } from "@/context/language-context";
 
 export default function SignupPage() {
+  const { language, setLanguage } = useLanguage();
+
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-md">
@@ -56,18 +61,16 @@ export default function SignupPage() {
                 </div>
                  <div className="space-y-2">
                     <Label>Preferred Language</Label>
-                    <Select>
+                    <Select value={language} onValueChange={setLanguage}>
                         <SelectTrigger>
                             <SelectValue placeholder="Select language" />
                         </SelectTrigger>
                         <SelectContent>
-                            <SelectItem value="en">English</SelectItem>
-                            <SelectItem value="hi">हिन्दी (Hindi)</SelectItem>
-                            <SelectItem value="mr">मराठी (Marathi)</SelectItem>
-                            <SelectItem value="ta">தமிழ் (Tamil)</SelectItem>
-                            <SelectItem value="te">తెలుగు (Telugu)</SelectItem>
-                            <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
-                            <SelectItem value="bn">বাংলা (Bengali)</SelectItem>
+                            {LANGUAGES.map((lang) => (
+                              <SelectItem key={lang.code} value={lang.code}>
+                                {lang.name}
+                              </SelectItem>
+                            ))}
                         </SelectContent>
                     </Select>
                 </div>

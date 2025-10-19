@@ -1,3 +1,6 @@
+
+'use client';
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -18,27 +21,29 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { useLanguage } from "@/context/language-context";
+import { LANGUAGES } from "@/context/language-context";
 
 export default function LoginPage() {
+  const { language, setLanguage } = useLanguage();
+
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl font-bold text-center text-primary-dark font-headline">Welcome Back</h2>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Select defaultValue="en">
+            <Select value={language} onValueChange={setLanguage}>
               <SelectTrigger className="w-auto border-0 gap-2">
                 <Globe className="w-4 h-4" />
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="en">English</SelectItem>
-                <SelectItem value="hi">हिन्दी (Hindi)</SelectItem>
-                <SelectItem value="mr">मराठी (Marathi)</SelectItem>
-                <SelectItem value="ta">தமிழ் (Tamil)</SelectItem>
-                <SelectItem value="te">తెలుగు (Telugu)</SelectItem>
-                <SelectItem value="kn">ಕನ್ನಡ (Kannada)</SelectItem>
-                <SelectItem value="bn">বাংলা (Bengali)</SelectItem>
+                {LANGUAGES.map((lang) => (
+                  <SelectItem key={lang.code} value={lang.code}>
+                    {lang.name}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </div>

@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import {
   Card,
@@ -8,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
+import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
 import { Download, Video } from "lucide-react";
 
@@ -16,7 +17,7 @@ const tutorials = PlaceHolderImages.filter(p => p.id.startsWith("tutorial"));
 const webinars = PlaceHolderImages.filter(p => p.id.startsWith("webinar"));
 const resources = PlaceHolderImages.filter(p => p.id.startsWith("resource"));
 
-const LearningCard = ({ item, title, description, type }: { item: typeof tutorials[0], title: string, description: string, type: 'tutorial' | 'webinar' | 'resource' }) => (
+const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => (
   <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
     <CardHeader className="p-0">
       <div className="relative aspect-video w-full">
@@ -30,10 +31,10 @@ const LearningCard = ({ item, title, description, type }: { item: typeof tutoria
     </CardHeader>
     <CardContent className="p-4 flex-grow">
       <CardTitle className="text-lg font-bold font-headline">
-        {title}
+        {item.name}
       </CardTitle>
       <CardDescription className="mt-2 text-sm">
-        {description}
+        {item.description}
       </CardDescription>
     </CardContent>
     <CardFooter className="p-4 pt-0">
@@ -49,20 +50,6 @@ const LearningCard = ({ item, title, description, type }: { item: typeof tutoria
     </CardFooter>
   </Card>
 );
-
-const learningContent = {
-    tutorials: [
-        { item: tutorials.find(i => i.id === 'tutorial1')!, title: 'Modern Soil Health Techniques', description: 'Learn to improve your soil fertility and increase yields.' },
-        { item: tutorials.find(i => i.id === 'tutorial2')!, title: 'Smart Irrigation Methods', description: 'Conserve water and maximize crop growth with smart irrigation.' },
-        { item: tutorials.find(i => i.id === 'tutorial3')!, title: 'Using Tech for Farming', description: 'Leverage technology to improve your farm\'s efficiency.' },
-    ],
-    webinars: [
-        { item: webinars.find(i => i.id === 'webinar1')!, title: 'Live Q&A: Pest Control', description: 'Join experts to discuss organic pest control. | 25th July, 4 PM' },
-    ],
-    resources: [
-        { item: resources.find(i => i.id === 'resource1')!, title: 'Crop Rotation Guide', description: 'A comprehensive guide to effective crop rotation.' },
-    ]
-}
 
 export default function LearningHubPage() {
   return (
@@ -85,17 +72,17 @@ export default function LearningHubPage() {
 
         <TabsContent value="tutorials" className="mt-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {learningContent.tutorials.map(content => <LearningCard key={content.item.id} {...content} type="tutorial" />)}
+            {tutorials.map(item => <LearningCard key={item.id} item={item} type="tutorial" />)}
           </div>
         </TabsContent>
         <TabsContent value="webinars" className="mt-8">
            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {learningContent.webinars.map(content => <LearningCard key={content.item.id} {...content} type="webinar" />)}
+            {webinars.map(item => <LearningCard key={item.id} item={item} type="webinar" />)}
           </div>
         </TabsContent>
         <TabsContent value="resources" className="mt-8">
            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {learningContent.resources.map(content => <LearningCard key={content.item.id} {...content} type="resource" />)}
+            {resources.map(item => <LearningCard key={item.id} item={item} type="resource" />)}
           </div>
         </TabsContent>
       </Tabs>

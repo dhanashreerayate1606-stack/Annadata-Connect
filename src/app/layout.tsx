@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { CartProvider } from '@/context/cart-context';
+import { LanguageProvider } from '@/context/language-context';
 
 // export const metadata: Metadata = {
 //   title: 'Annadata Connect',
@@ -28,14 +29,16 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="font-body antialiased">
-        <CartProvider>
-          <div className="flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-          <Toaster />
-        </CartProvider>
+        <LanguageProvider>
+          <CartProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-grow">{children}</main>
+              <Footer />
+            </div>
+            <Toaster />
+          </CartProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
