@@ -1,8 +1,9 @@
+
 "use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users } from "lucide-react";
+import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users, Handshake, Landmark } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -14,6 +15,8 @@ const navLinks = [
   { href: "/advisory", label: "Crop Advisory", icon: Leaf },
   { href: "/learning-hub", label: "Learning Hub", icon: BookOpen },
   { href: "/community", label: "Community", icon: Users },
+  { href: "/bulk-orders", label: "Bulk Orders", icon: Handshake },
+  { href: "/schemes", label: "Govt. Schemes", icon: Landmark },
 ];
 
 const Header = () => {

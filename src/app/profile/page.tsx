@@ -205,9 +205,11 @@ export default function ProfilePage() {
                         <ul className="list-disc list-inside">
                            {farmer.produce.map(p => <li key={p}>{p}</li>)}
                         </ul>
-                         <Button variant="outline" size="sm" className="mt-2">
-                            <Edit className="w-4 h-4 mr-2"/>
-                            Manage Listings
+                         <Button asChild variant="outline" size="sm" className="mt-2">
+                            <Link href="/farmer/listings">
+                                <Edit className="w-4 h-4 mr-2"/>
+                                Manage Listings
+                            </Link>
                         </Button>
                     </CardContent>
                 </Card>
@@ -220,9 +222,11 @@ export default function ProfilePage() {
                     </CardHeader>
                     <CardContent className="space-y-2 text-sm">
                        <p>View your sales trends, top products, and earnings.</p>
-                       <Button variant="secondary" size="sm" className="mt-2">
-                            <LineChart className="w-4 h-4 mr-2"/>
-                            View Dashboard
+                       <Button asChild variant="secondary" size="sm" className="mt-2">
+                           <Link href="/farmer/dashboard">
+                                <LineChart className="w-4 h-4 mr-2"/>
+                                View Dashboard
+                           </Link>
                         </Button>
                     </CardContent>
                 </Card>
