@@ -5,6 +5,10 @@ export type ImagePlaceholder = {
   description: string;
   imageUrl: string;
   imageHint: string;
+  category?: 'product' | 'hero' | 'learning';
+  name?: string;
+  price?: string;
+  farmer?: string;
 };
 
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
