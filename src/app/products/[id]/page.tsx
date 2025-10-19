@@ -1,3 +1,6 @@
+
+'use client';
+
 import Image from "next/image";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
@@ -11,19 +14,38 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useCart } from "@/context/cart-context";
+import { useToast } from "@/hooks/use-toast";
+import { notFound } from "next/navigation";
+
 
 // This is a server component, so we can fetch data here in a real app
 // For now, we'll find the product from our placeholder data
 export default function ProductDetailPage({ params }: { params: { id: string } }) {
+  const { addToCart } = useCart();
+  const { toast } = useToast();
   const product = PlaceHolderImages.find((p) => p.id === params.id);
 
   if (!product) {
-    return (
-      <div className="container mx-auto px-4 py-12 text-center">
-        <h1 className="text-2xl font-bold">Product not found</h1>
-      </div>
-    );
+    notFound();
   }
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart({
+        id: product.id,
+        name: product.name || "Unnamed Product",
+        price: product.price || "0",
+        quantity: 1,
+        imageUrl: product.imageUrl,
+        description: product.description,
+      });
+      toast({
+        title: "Added to cart",
+        description: `${product.name} has been added to your cart.`,
+      });
+    }
+  };
 
   const qrData = `Product: ${product.name}, Farmer: ${product.farmer}, Location: Green Valley, Harvest Date: 2023-10-25`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
@@ -63,7 +85,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
             Discover the exceptional taste of our {product.name}, grown with care at {product.farmer}. Harvested at peak ripeness, these are perfect for any meal, providing a burst of natural flavor and nutrients.
           </p>
           <div className="mt-8 flex items-center gap-4">
-            <Button size="lg" className="flex-1">
+            <Button size="lg" className="flex-1" onClick={handleAddToCart}>
               <ShoppingCart className="mr-2 h-5 w-5" /> Add to Cart
             </Button>
             <Dialog>

@@ -13,47 +13,39 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Trash2 } from "lucide-react";
+import { Trash2, ShoppingBag } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
-
-const initialCartItems = [
-  {
-    id: "tomatoes",
-    name: "देसी टमाटर (Desi Tomato)",
-    price: 40,
-    quantity: 2,
-    image: "https://images.unsplash.com/photo-1591171551239-80a5eddd627a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmVzaCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDg3ODI5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-  },
-  {
-    id: "potatoes",
-    name: "बटाटा (Potato)",
-    price: 30,
-    quantity: 1,
-    image: "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  },
-];
+import { useCart } from "@/context/cart-context";
 
 export default function CartPage() {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
 
   const handleQuantityChange = (id: string, quantity: number) => {
     if (quantity < 1) return;
-    setCartItems(
-      cartItems.map((item) =>
-        item.id === id ? { ...item, quantity: quantity } : item
-      )
-    );
+    updateQuantity(id, quantity);
   };
   
   const handleRemoveItem = (id: string) => {
-    setCartItems(cartItems.filter(item => item.id !== id));
+    removeFromCart(id);
   }
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const subtotal = cartItems.reduce((acc, item) => acc + (item.price ? parseFloat(item.price) : 0) * item.quantity, 0);
   const tax = subtotal * 0.05; // 5% tax
   const total = subtotal + tax;
+
+  if (cartItems.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-12 md:py-16 text-center">
+        <ShoppingBag className="mx-auto h-24 w-24 text-muted-foreground" />
+        <h1 className="mt-6 text-2xl font-bold tracking-tight font-headline">Your cart is empty</h1>
+        <p className="mt-2 text-muted-foreground">Looks like you haven't added anything to your cart yet.</p>
+        <Button asChild className="mt-6">
+          <Link href="/">Start Shopping</Link>
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
@@ -78,8 +70,8 @@ export default function CartPage() {
                       <TableCell>
                         <div className="flex items-center gap-4">
                           <Image
-                            src={item.image}
-                            alt={item.name}
+                            src={item.imageUrl}
+                            alt={item.description}
                             width={80}
                             height={80}
                             className="rounded-md object-cover"
@@ -87,7 +79,7 @@ export default function CartPage() {
                           <span className="font-medium">{item.name}</span>
                         </div>
                       </TableCell>
-                      <TableCell>₹{item.price.toFixed(2)}</TableCell>
+                      <TableCell>₹{item.price ? parseFloat(item.price).toFixed(2) : '0.00'}</TableCell>
                       <TableCell>
                         <Input
                           type="number"
@@ -97,7 +89,7 @@ export default function CartPage() {
                           onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value, 10))}
                         />
                       </TableCell>
-                      <TableCell>₹{(item.price * item.quantity).toFixed(2)}</TableCell>
+                      <TableCell>₹{((item.price ? parseFloat(item.price) : 0) * item.quantity).toFixed(2)}</TableCell>
                       <TableCell>
                         <Button variant="ghost" size="icon" onClick={() => handleRemoveItem(item.id)}>
                           <Trash2 className="h-5 w-5 text-muted-foreground" />
