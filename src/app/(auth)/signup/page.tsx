@@ -17,13 +17,20 @@ import {
     SelectTrigger,
     SelectValue,
   } from "@/components/ui/select";
-import { Globe } from "lucide-react";
+import { Globe, Mic } from "lucide-react";
 
 export default function SignupPage() {
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
       <div className="w-full max-w-md">
-        <h2 className="text-3xl font-bold text-center mb-4 font-headline">Join Annadata Connect</h2>
+         <div className="flex justify-between items-center mb-4">
+            <h2 className="text-3xl font-bold text-center font-headline">Join Annadata Connect</h2>
+             <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Button variant="outline" size="icon" aria-label="Voice Assistant">
+                    <Mic className="h-5 w-5" />
+                </Button>
+            </div>
+        </div>
         <Tabs defaultValue="consumer" className="w-full">
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="consumer">As a Consumer</TabsTrigger>
