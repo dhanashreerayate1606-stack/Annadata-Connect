@@ -26,9 +26,6 @@ export default function SignupPage() {
          <div className="flex justify-between items-center mb-4">
             <h2 className="text-3xl font-bold text-center font-headline">Join Annadata Connect</h2>
              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Button variant="outline" size="icon" aria-label="Voice Assistant">
-                    <Mic className="h-5 w-5" />
-                </Button>
             </div>
         </div>
         <Tabs defaultValue="consumer" className="w-full">

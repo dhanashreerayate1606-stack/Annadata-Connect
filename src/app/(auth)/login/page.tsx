@@ -10,7 +10,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Globe, Mic } from "lucide-react";
+import { Globe } from "lucide-react";
 import {
   Select,
   SelectContent,
@@ -26,9 +26,6 @@ export default function LoginPage() {
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-3xl font-bold text-center text-primary-dark font-headline">Welcome Back</h2>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-             <Button variant="outline" size="icon" aria-label="Voice Assistant">
-                <Mic className="h-5 w-5" />
-            </Button>
             <Select defaultValue="en">
               <SelectTrigger className="w-auto border-0 gap-2">
                 <Globe className="w-4 h-4" />
