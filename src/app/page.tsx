@@ -18,6 +18,7 @@ import { Search, ChevronRight, Mic, Leaf } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from '@/hooks/use-translation';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
 const allProducts = PlaceHolderImages.filter(p => p.category === 'product');
@@ -29,6 +30,7 @@ export default function Home() {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -122,14 +124,14 @@ export default function Home() {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
           <h1 className="text-4xl font-bold md:text-6xl font-headline">
-            Fresh from the Farm, Straight to You
+            {t('home.heroTitle')}
           </h1>
           <p className="mt-4 max-w-2xl text-lg md:text-xl font-body">
-            Discover the taste of real, locally-grown produce. Support our farmers, eat healthier.
+            {t('home.heroSubtitle')}
           </p>
           <Button asChild className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
             <Link href="#products">
-              Explore Now <ChevronRight className="ml-2 h-5 w-5" />
+              {t('home.exploreNow')} <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
@@ -140,7 +142,7 @@ export default function Home() {
           <div className="relative flex-grow">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
             <Input 
-              placeholder="Search for products..." 
+              placeholder={t('home.searchPlaceholder')}
               className="pl-10"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -152,16 +154,16 @@ export default function Home() {
             </Button>
             <Select onValueChange={setSelectedCategory} value={selectedCategory}>
               <SelectTrigger className="w-full md:w-[180px]">
-                <SelectValue placeholder="Category" />
+                <SelectValue placeholder={t('home.categoryPlaceholder')} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All Categories</SelectItem>
-                <SelectItem value="vegetables">Vegetables</SelectItem>
-                <SelectItem value="fruits">Fruits</SelectItem>
-                <SelectItem value="grains">Grains</SelectItem>
-                <SelectItem value="pulses">Pulses</SelectItem>
-                <SelectItem value="spices">Spices</SelectItem>
-                <SelectItem value="flowers">Flowers</SelectItem>
+                <SelectItem value="all">{t('home.allCategories')}</SelectItem>
+                <SelectItem value="vegetables">{t('home.vegetables')}</SelectItem>
+                <SelectItem value="fruits">{t('home.fruits')}</SelectItem>
+                <SelectItem value="grains">{t('home.grains')}</SelectItem>
+                <SelectItem value="pulses">{t('home.pulses')}</SelectItem>
+                <SelectItem value="spices">{t('home.spices')}</SelectItem>
+                <SelectItem value="flowers">{t('home.flowers')}</SelectItem>
               </SelectContent>
             </Select>
             
@@ -178,24 +180,24 @@ export default function Home() {
       <section className="bg-muted py-12 md:py-16">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-3xl font-bold font-headline">Weekly Subscription Boxes</h2>
+            <h2 className="text-3xl font-bold font-headline">{t('home.subscriptionsTitle')}</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Get a curated box of the freshest seasonal produce delivered to your doorstep every week. Customize your box and never run out of healthy options.
+              {t('home.subscriptionsSubtitle')}
             </p>
             <Button asChild className="mt-6">
               <Link href="/subscriptions">
-                Explore Subscriptions
+                {t('home.subscriptionsButton')}
               </Link>
             </Button>
           </div>
           <div>
-             <h2 className="text-3xl font-bold font-headline">Bulk Orders for Your Business</h2>
+             <h2 className="text-3xl font-bold font-headline">{t('home.bulkOrdersTitle')}</h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Running a restaurant, housing society, or school? Get special pricing and dedicated support for bulk orders of fresh produce.
+              {t('home.bulkOrdersSubtitle')}
             </p>
             <Button asChild className="mt-6">
               <Link href="/bulk-orders">
-                Enquire Now
+                {t('home.bulkOrdersButton')}
               </Link>
             </Button>
           </div>

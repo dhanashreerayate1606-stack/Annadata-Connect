@@ -17,20 +17,22 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/s
 import Logo from "@/components/icons/logo";
 import { cn } from "@/lib/utils";
 import { useLanguage, LANGUAGES } from "@/context/language-context";
+import { useTranslation } from "@/hooks/use-translation";
 
-
-const navLinks = [
-  { href: "/", label: "Marketplace", icon: Tractor },
-  { href: "/advisory", label: "Crop Advisory", icon: Leaf },
-  { href: "/learning-hub", label: "Learning Hub", icon: BookOpen },
-  { href: "/community", label: "Community", icon: Users },
-  { href: "/bulk-orders", label: "Bulk Orders", icon: Handshake },
-  { href: "/schemes", label: "Govt. Schemes", icon: Landmark },
-];
 
 const Header = () => {
   const pathname = usePathname();
   const { language, setLanguage } = useLanguage();
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { href: "/", label: t('header.marketplace'), icon: Tractor },
+    { href: "/advisory", label: t('header.cropAdvisory'), icon: Leaf },
+    { href: "/learning-hub", label: t('header.learningHub'), icon: BookOpen },
+    { href: "/community", label: t('header.community'), icon: Users },
+    { href: "/bulk-orders", label: t('header.bulkOrders'), icon: Handshake },
+    { href: "/schemes", label: t('header.govtSchemes'), icon: Landmark },
+  ];
 
   const NavLinks = ({ className }: { className?: string }) => (
     <nav className={cn("flex items-center gap-4 lg:gap-6", className)}>
@@ -131,7 +133,7 @@ const Header = () => {
               </Link>
             </Button>
              <Button asChild size="sm" className="ml-2">
-              <Link href="/login">Login</Link>
+              <Link href="/login">{t('header.login')}</Link>
             </Button>
           </nav>
         </div>

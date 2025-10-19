@@ -1,0 +1,31 @@
+{
+  "header": {
+    "marketplace": "Marketplace",
+    "cropAdvisory": "Crop Advisory",
+    "learningHub": "Learning Hub",
+    "community": "Community",
+    "bulkOrders": "Bulk Orders",
+    "govtSchemes": "Govt. Schemes",
+    "login": "Login"
+  },
+  "home": {
+    "heroTitle": "Fresh from the Farm, Straight to You",
+    "heroSubtitle": "Discover the taste of real, locally-grown produce. Support our farmers, eat healthier.",
+    "exploreNow": "Explore Now",
+    "searchPlaceholder": "Search for products...",
+    "categoryPlaceholder": "Category",
+    "allCategories": "All Categories",
+    "vegetables": "Vegetables",
+    "fruits": "Fruits",
+    "grains": "Grains",
+    "pulses": "Pulses",
+    "spices": "Spices",
+    "flowers": "Flowers",
+    "subscriptionsTitle": "Weekly Subscription Boxes",
+    "subscriptionsSubtitle": "Get a curated box of the freshest seasonal produce delivered to your doorstep every week. Customize your box and never run out of healthy options.",
+    "subscriptionsButton": "Explore Subscriptions",
+    "bulkOrdersTitle": "Bulk Orders for Your Business",
+    "bulkOrdersSubtitle": "Running a restaurant, housing society, or school? Get special pricing and dedicated support for bulk orders of fresh produce.",
+    "bulkOrdersButton": "Enquire Now"
+  }
+}
