@@ -13,9 +13,10 @@ import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
 import { Download, Video } from "lucide-react";
 
-const tutorials = PlaceHolderImages.filter(p => p.id.startsWith("tutorial"));
-const webinars = PlaceHolderImages.filter(p => p.id.startsWith("webinar"));
-const resources = PlaceHolderImages.filter(p => p.id.startsWith("resource"));
+const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
+const tutorials = allLearningContent.filter(p => p.id.startsWith("tutorial"));
+const webinars = allLearningContent.filter(p => p.id.startsWith("webinar"));
+const resources = allLearningContent.filter(p => p.id.startsWith("resource"));
 
 const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => (
   <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
