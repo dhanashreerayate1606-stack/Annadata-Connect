@@ -11,4 +11,4 @@ export type ImagePlaceholder = {
   farmer?: string;
 };
 
-export const PlaceHolderImages: ImagePlaceholder[] = (data as any).placeholderImages;
+export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;
