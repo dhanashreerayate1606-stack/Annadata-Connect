@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -64,7 +65,9 @@ export default function Home() {
                 <SelectItem value="vegetables">Vegetables</SelectItem>
                 <SelectItem value="fruits">Fruits</SelectItem>
                 <SelectItem value="grains">Grains</SelectItem>
+                <SelectItem value="pulses">Pulses</SelectItem>
                 <SelectItem value="spices">Spices</SelectItem>
+                <SelectItem value="flowers">Flowers</SelectItem>
               </SelectContent>
             </Select>
             <Button>Filter</Button>
