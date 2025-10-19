@@ -26,9 +26,14 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   useEffect(() => {
-    const storedCart = localStorage.getItem('cart');
-    if (storedCart) {
-      setCartItems(JSON.parse(storedCart));
+    try {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        setCartItems(JSON.parse(storedCart));
+      }
+    } catch (error) {
+      console.error("Failed to parse cart from localStorage", error);
+      setCartItems([]);
     }
   }, []);
 
@@ -44,7 +49,9 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
         );
       }
-      return [...prevItems, { ...item, quantity: 1 }];
+      // Make sure quantity is at least 1 when adding for the first time
+      const quantity = item.quantity > 0 ? item.quantity : 1;
+      return [...prevItems, { ...item, quantity }];
     });
   };
 

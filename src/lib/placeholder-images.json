@@ -4,8 +4,8 @@
       "id": "hero-market",
       "category": "hero",
       "description": "A vibrant and colorful Indian farmer's market stall filled with fresh vegetables.",
-      "imageUrl": "https://images.unsplash.com/photo-1598154030351-a83161f3f652?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxpbmRpYW4lMjB2ZWdldGFibGUlMjBtYXJrZXR8ZW58MHx8fHwxNzYxMDUzMjM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "indian vegetable market"
+      "imageUrl": "https://images.unsplash.com/photo-1622332152843-11a3a69a23c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBtYXJrZXR8ZW58MHx8fHwxNzYxMzAyNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "indian market"
     },
     {
       "id": "tomatoes",
@@ -23,8 +23,8 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "fresh potatoes",
+      "imageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba657?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyYXclMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjEzMDI4NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "raw potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
       "farmer": "Shinde Organics"
@@ -45,8 +45,8 @@
       "category": "product",
       "productType": "fruits",
       "description": "Ripe Alphonso mangoes in a basket",
-      "imageUrl": "https://images.unsplash.com/photo-1622005051834-58a4369f390d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbHBob25zbyUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwOTY3NjIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "alphonso mangoes",
+      "imageUrl": "https://images.unsplash.com/photo-1591078312213-568e6b0f0814?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMG1hbmdvZXN8ZW58MHx8fHwxNzYxMzAyOTc0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fresh mangoes",
       "name": "आम (Alphonso Mango)",
       "price": "800",
       "farmer": "Ratnagiri Farms"
@@ -120,6 +120,7 @@
     {
       "id": "tutorial1",
       "category": "learning",
+      "name": "Effective Crop Management Techniques",
       "description": "A farmer inspecting crops in a field, representing a tutorial on crop management.",
       "imageUrl": "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjBpbnNwZWN0aW5nJTIwY3JvcHN8ZW58MHx8fHwxNzYxMDU0MTIyfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farmer inspecting crops"
@@ -127,6 +128,7 @@
     {
       "id": "webinar1",
       "category": "learning",
+      "name": "Webinar: Modern Farming Technologies",
       "description": "A person giving a presentation, representing a webinar on modern farming techniques.",
       "imageUrl": "https://images.unsplash.com/photo-1556761175-b413da4b248b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxidXNpbmVzcyUyMHdlYmluYXJ8ZW58MHx8fHwxNzYxMDU0MTg3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "business webinar"
@@ -134,6 +136,7 @@
     {
       "id": "resource1",
       "category": "learning",
+      "name": "Guide to Organic Farming",
       "description": "An open book with illustrations of plants, representing a downloadable guide.",
       "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEwNTQyNDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "reading book"
@@ -141,9 +144,34 @@
     {
       "id": "tutorial2",
       "category": "learning",
+      "name": "Improving Your Farm's Soil Health",
       "description": "Close up of hands holding rich soil.",
       "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f36599b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MDg4MDE3OHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "soil health"
+    },
+    {
+      "id": "tutorial3",
+      "category": "learning",
+      "name": "Agri-Tech: Using Technology on Your Farm",
+      "description": "Farmer using a laptop in a field",
+      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8fDE3NjEwNTQ1Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farmer with laptop"
+    },
+    {
+      "id": "webinar2",
+      "category": "learning",
+      "name": "Financial Planning for Farmers",
+      "description": "A group of farmers in a meeting discussing finances.",
+      "imageUrl": "https://images.unsplash.com/photo-1516156008657-df4d98b2591a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxidXNpbmVzcyUyMG1lZXRpbmd8ZW58MHx8fHwxNzYxMzA0MDQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business meeting"
+    },
+    {
+      "id": "resource2",
+      "category": "learning",
+      "name": "Seasonal Planting Calendar",
+      "description": "A calendar with seasonal vegetables, representing a planting guide.",
+      "imageUrl": "https://images.unsplash.com/photo-1526319238109-524eecb9b913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxjYWxlbmRhciUyMHBsYW5uaW5nfGVufDB8fHx8MTc2MTMwNDA5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calendar planning"
     },
     {
       "id": "schemes-hero",
@@ -165,13 +193,6 @@
       "description": "A person holding a subscription box full of fresh produce.",
       "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTA1NDQ4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "produce subscription box"
-    },
-    {
-      "id": "tutorial3",
-      "category": "learning",
-      "description": "Farmer using a laptop in a field",
-      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8fDE3NjEwNTQ1Mzh8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "farmer with laptop"
     }
   ]
 }

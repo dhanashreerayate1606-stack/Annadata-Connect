@@ -15,7 +15,7 @@ import { Download, Video } from "lucide-react";
 
 const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
 const tutorials = allLearningContent.filter(p => p.id.startsWith("tutorial"));
-const webinars = allLearningContent.filter(p => p.id.startsWith("webinar"));
+const webinars = allLearning_content.filter(p => p.id.startsWith("webinar"));
 const resources = allLearningContent.filter(p => p.id.startsWith("resource"));
 
 const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => (
@@ -32,7 +32,7 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
     </CardHeader>
     <CardContent className="p-4 flex-grow">
       <CardTitle className="text-lg font-bold font-headline">
-        {item.name}
+        {item.name || "Learning Material"}
       </CardTitle>
       <CardDescription className="mt-2 text-sm">
         {item.description}
