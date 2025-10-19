@@ -110,7 +110,6 @@ export default function CheckoutPage() {
             </CardHeader>
             <CardContent>
               <RadioGroup
-                defaultValue="card"
                 className="space-y-4"
                 onValueChange={handlePaymentMethodChange}
                 value={paymentMethod || ""}
@@ -119,18 +118,18 @@ export default function CheckoutPage() {
                   <RadioGroupItem value="card" id="card" className="peer sr-only" />
                   <Label htmlFor="card" className="flex flex-col rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
                     <span>Credit/Debit Card</span>
-                    <div className="mt-4 space-y-2">
-                      <Input placeholder="Card Number" disabled={paymentMethod !== 'card'} />
-                      <div className="flex gap-4">
-                        <Input placeholder="MM/YY" disabled={paymentMethod !== 'card'} />
-                        <Input placeholder="CVC" disabled={paymentMethod !== 'card'} />
-                      </div>
-                       {paymentMethod === 'card' && (
+                    {paymentMethod === 'card' && (
+                      <div className="mt-4 space-y-2">
+                        <Input placeholder="Card Number" />
+                        <div className="flex gap-4">
+                          <Input placeholder="MM/YY" />
+                          <Input placeholder="CVC" />
+                        </div>
                         <Button onClick={handlePaymentConfirm} className="mt-2" size="sm">
                           Confirm Payment
                         </Button>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </Label>
                 </div>
                 <div>
