@@ -15,7 +15,7 @@ import { Download, Video } from "lucide-react";
 
 const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
 const tutorials = allLearningContent.filter(p => p.id.startsWith("tutorial"));
-const webinars = allLearning_content.filter(p => p.id.startsWith("webinar"));
+const webinars = allLearningContent.filter(p => p.id.startsWith("webinar"));
 const resources = allLearningContent.filter(p => p.id.startsWith("resource"));
 
 const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => (
