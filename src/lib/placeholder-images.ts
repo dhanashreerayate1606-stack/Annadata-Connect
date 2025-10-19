@@ -6,6 +6,7 @@ export type ImagePlaceholder = {
   imageUrl: string;
   imageHint: string;
   category?: 'product' | 'hero' | 'learning';
+  productType?: 'vegetables' | 'fruits' | 'grains' | 'pulses' | 'spices' | 'flowers';
   name?: string;
   price?: string;
   farmer?: string;

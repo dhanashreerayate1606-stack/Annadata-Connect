@@ -10,18 +10,20 @@
     {
       "id": "tomatoes",
       "category": "product",
+      "productType": "vegetables",
       "description": "Fresh red tomatoes on a vine",
-      "imageUrl": "https://images.unsplash.com/photo-1561155708-900352d5b38e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxGcmVzaCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MTA1MzI4Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1591171551239-80a5eddd627a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmVzaCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDg3ODI5M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh tomatoes",
-      "name": " देसी टमाटर (Desi Tomato)",
+      "name": "देसी टमाटर (Desi Tomato)",
       "price": "40",
       "farmer": "Pawar Farms"
     },
     {
       "id": "potatoes",
       "category": "product",
+      "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb3RhdG9lc3xlbnwwfHx8fDE3NjEwNTMzMjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1571771894821-35f15933a274?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBwb3RhdG9lc3xlbnwwfHx8fDE3NjA5Njc1MDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
@@ -30,8 +32,9 @@
     {
       "id": "basmati-rice",
       "category": "product",
+      "productType": "grains",
       "description": "Long-grain Basmati rice in a burlap sack",
-      "imageUrl": "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZSUyMGJvd2x8ZW58MHx8fHwxNzYxMDUzMzYyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1586201375765-c124a9539d5e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5Njc1NjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "basmati rice",
       "name": "बासमती चावल (Basmati Rice)",
       "price": "120",
@@ -40,6 +43,7 @@
     {
       "id": "mangoes",
       "category": "product",
+      "productType": "fruits",
       "description": "Ripe Alphonso mangoes in a basket",
       "imageUrl": "https://images.unsplash.com/photo-1622005051834-58a4369f390d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbHBob25zbyUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwOTY3NjIwfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "alphonso mangoes",
@@ -50,6 +54,7 @@
     {
       "id": "spinach",
       "category": "product",
+      "productType": "vegetables",
       "description": "Fresh green spinach leaves",
       "imageUrl": "https://images.unsplash.com/photo-1576045057995-568f588f21fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMHNwaW5hY2h8ZW58MHx8fHwxNzYwODUxODk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh spinach",
@@ -60,8 +65,9 @@
     {
       "id": "onions",
       "category": "product",
+      "productType": "vegetables",
       "description": "Fresh red onions",
-      "imageUrl": "https://images.unsplash.com/photo-1618147825311-5231649c5f80?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "red onions",
       "name": "प्याज (Onion)",
       "price": "50",
@@ -70,6 +76,7 @@
     {
       "id": "turmeric",
       "category": "product",
+      "productType": "spices",
       "description": "Turmeric powder and roots",
       "imageUrl": "https://images.unsplash.com/photo-1596035242942-ecb8a7c1b5e2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpYyUyMHJvb3RzfGVufDB8fHx8MTc2MTA1Mzk5OXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "turmeric roots",
@@ -80,12 +87,35 @@
     {
       "id": "pomegranate",
       "category": "product",
+      "productType": "fruits",
       "description": "A ripe pomegranate",
       "imageUrl": "https://images.unsplash.com/photo-1631771967237-f1c422c15989?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwb21lZ3JhbmF0ZSUyMGZydWl0fGVufDB8fHx8MTc2MTA1NDA0Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "pomegranate fruit",
       "name": "अनार (Pomegranate)",
       "price": "150",
       "farmer": "Ratnagiri Farms"
+    },
+    {
+      "id": "lentils",
+      "category": "product",
+      "productType": "pulses",
+      "description": "Bowl of red lentils",
+      "imageUrl": "https://images.unsplash.com/photo-1583349642643-a6294a8f9b97?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWQlMjBsZW50aWxzfGVufDB8fHx8MTc2MTI5NjI2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "red lentils",
+      "name": "मसूर दाल (Masoor Dal)",
+      "price": "90",
+      "farmer": "Golden Fields"
+    },
+    {
+      "id": "marigold",
+      "category": "product",
+      "productType": "flowers",
+      "description": "Bright orange marigold flowers",
+      "imageUrl": "https://images.unsplash.com/photo-1594290358414-81413a7384a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYXJpZ29sZCUyMGZsb3dlcnN8ZW58MHx8fHwxNzYxMjk2MzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "marigold flowers",
+      "name": "गेंदा (Marigold)",
+      "price": "50",
+      "farmer": "Pawar Farms"
     },
     {
       "id": "tutorial1",

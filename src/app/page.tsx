@@ -20,10 +20,11 @@ import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
-const products = PlaceHolderImages.filter(p => p.category === 'product');
+const allProducts = PlaceHolderImages.filter(p => p.category === 'product');
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [isRecording, setIsRecording] = useState(false);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -101,6 +102,10 @@ export default function Home() {
     }
   };
 
+  const filteredProducts = allProducts
+    .filter(p => p.name?.toLowerCase().includes(searchQuery.toLowerCase()))
+    .filter(p => selectedCategory === 'all' || p.productType === selectedCategory);
+
   return (
     <div className="flex flex-col">
       <section className="relative h-[50vh] w-full bg-secondary">
@@ -145,11 +150,12 @@ export default function Home() {
             <Button variant="outline" size="icon" aria-label="Voice Search" onClick={handleVoiceSearch} className={isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : ''}>
               <Mic className="h-5 w-5" />
             </Button>
-            <Select>
+            <Select onValueChange={setSelectedCategory} value={selectedCategory}>
               <SelectTrigger className="w-full md:w-[180px]">
                 <SelectValue placeholder="Category" />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="vegetables">Vegetables</SelectItem>
                 <SelectItem value="fruits">Fruits</SelectItem>
                 <SelectItem value="grains">Grains</SelectItem>
@@ -158,12 +164,12 @@ export default function Home() {
                 <SelectItem value="flowers">Flowers</SelectItem>
               </SelectContent>
             </Select>
-            <Button>Filter</Button>
+            
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {products.filter(p => p.name?.toLowerCase().includes(searchQuery.toLowerCase())).map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
