@@ -8,6 +8,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { CartProvider } from '@/context/cart-context';
 import { LanguageProvider } from '@/context/language-context';
+import { WalletProvider } from '@/context/wallet-context';
 
 // export const metadata: Metadata = {
 //   title: 'Annadata Connect',
@@ -31,12 +32,14 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <LanguageProvider>
           <CartProvider>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-grow">{children}</main>
-              <Footer />
-            </div>
-            <Toaster />
+            <WalletProvider>
+              <div className="flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-grow">{children}</main>
+                <Footer />
+              </div>
+              <Toaster />
+            </WalletProvider>
           </CartProvider>
         </LanguageProvider>
       </body>

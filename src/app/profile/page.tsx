@@ -1,5 +1,5 @@
 
-"use client";
+'use client';
 
 import {
   Card,
@@ -11,7 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { User, MapPin, Edit, History, Star, Package, LineChart } from "lucide-react";
+import { User, MapPin, Edit, History, Star, Package, LineChart, Wallet } from "lucide-react";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -28,6 +28,9 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
+import { WalletProvider, useWallet } from "@/context/wallet-context";
+import TransactionHistory from "@/components/transaction-history";
+
 
 const initialConsumer = {
   name: "Radhika Sharma",
@@ -50,12 +53,15 @@ const farmer = {
   produce: ["Tomatoes", "Onions", "Grapes"],
 };
 
-export default function ProfilePage() {
+const ProfilePageClient = () => {
   const { t } = useTranslation();
   const [consumer, setConsumer] = useState(initialConsumer);
   const [editedName, setEditedName] = useState(consumer.name);
   const [editedLocation, setEditedLocation] = useState(consumer.location);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const { balance: consumerBalance, transactions: consumerTransactions } = useWallet();
+  const { balance: farmerBalance, transactions: farmerTransactions } = useWallet();
+
 
   const handleProfileSave = () => {
     setConsumer({ ...consumer, name: editedName, location: editedLocation });
@@ -63,7 +69,6 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-12 md:py-16">
       <Tabs defaultValue="consumer" className="max-w-4xl mx-auto">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="consumer">{t('profile.consumerTab')}</TabsTrigger>
@@ -156,6 +161,21 @@ export default function ProfilePage() {
                         </Button>
                     </CardContent>
                 </Card>
+                 <Card className="bg-background col-span-1 sm:col-span-2">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg font-headline">
+                            <Wallet className="w-5 h-5 text-primary"/>
+                            My Wallet
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="text-muted-foreground">Current Balance</span>
+                            <span className="text-2xl font-bold">₹{consumerBalance.toFixed(2)}</span>
+                        </div>
+                        <TransactionHistory transactions={consumerTransactions} />
+                    </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
@@ -182,7 +202,7 @@ export default function ProfilePage() {
                 <p className="text-sm text-muted-foreground">{t('profile.memberSince')} {farmer.joinDate}</p>
               </div>
               <Separator />
-               <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4">
+               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <Card className="bg-background">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-lg font-headline">
@@ -232,13 +252,36 @@ export default function ProfilePage() {
                         </Button>
                     </CardContent>
                 </Card>
+                <Card className="bg-background col-span-1 sm:col-span-2 lg:col-span-3">
+                    <CardHeader>
+                        <CardTitle className="flex items-center gap-2 text-lg font-headline">
+                            <Wallet className="w-5 h-5 text-primary"/>
+                            My Wallet
+                        </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                        <div className="flex justify-between items-center mb-4">
+                            <span className="text-muted-foreground">Current Balance</span>
+                            <span className="text-2xl font-bold">₹{farmerBalance.toFixed(2)}</span>
+                        </div>
+                        <TransactionHistory transactions={farmerTransactions} />
+                    </CardContent>
+                </Card>
               </div>
             </CardContent>
           </Card>
         </TabsContent>
       </Tabs>
-    </div>
   );
 }
 
-    
+
+export default function ProfilePage() {
+    return (
+        <WalletProvider>
+            <div className="container mx-auto px-4 py-12 md:py-16">
+                <ProfilePageClient />
+            </div>
+        </WalletProvider>
+    )
+}
