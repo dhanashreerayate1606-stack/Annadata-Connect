@@ -268,6 +268,7 @@
     "totalColumn": "Total",
     "actionsColumn": "Actions",
     "viewDetailsButton": "View Details",
+    "trackOrderButton": "Track Order",
     "statusDelivered": "Delivered",
     "statusShipped": "Shipped",
     "statusProcessing": "Processing"
@@ -386,5 +387,21 @@
         ]
       }
     }
+  },
+  "logistics": {
+    "title": "Logistics Tracker",
+    "subtitle": "Tracking Order #{orderId}",
+    "timelineTitle": "Order Timeline",
+    "step_placed": "Order Placed",
+    "step_shipped": "Shipped",
+    "step_delivery": "Out for Delivery",
+    "step_delivered": "Delivered",
+    "supportTitle": "Need Help?",
+    "supportDescription": "Contact our support team for any issues with your order.",
+    "callSupport": "Call Support",
+    "chatSupport": "Chat with Us",
+    "routeTitle": "Live Route",
+    "source": "Source",
+    "destination": "Destination"
   }
 }

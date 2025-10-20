@@ -268,6 +268,7 @@
     "totalColumn": "మొత్తం",
     "actionsColumn": "చర్యలు",
     "viewDetailsButton": "వివరాలను వీక్షించండి",
+    "trackOrderButton": "ఆర్డర్‌ను ట్రాక్ చేయండి",
     "statusDelivered": "డెలివరీ చేయబడింది",
     "statusShipped": "షిప్పింగ్ చేయబడింది",
     "statusProcessing": "ప్రాసెస్ చేయబడుతోంది"
@@ -386,5 +387,21 @@
         ]
       }
     }
+  },
+  "logistics": {
+    "title": "లాజిస్టిక్స్ ట్రాకర్",
+    "subtitle": "ఆర్డర్ #{orderId} ట్రాక్ చేయబడుతోంది",
+    "timelineTitle": "ఆర్డర్ టైమ్‌లైన్",
+    "step_placed": "ఆర్డర్ ఇవ్వబడింది",
+    "step_shipped": "షిప్పింగ్ చేయబడింది",
+    "step_delivery": "డెలివరీ కోసం బయలుదేరింది",
+    "step_delivered": "డెలివరీ చేయబడింది",
+    "supportTitle": "సహాయం కావాలా?",
+    "supportDescription": "మీ ఆర్డర్‌తో ఏవైనా సమస్యలు ఉంటే మా మద్దతు బృందాన్ని సంప్రదించండి.",
+    "callSupport": "మద్దతుకు కాల్ చేయండి",
+    "chatSupport": "మాతో చాట్ చేయండి",
+    "routeTitle": "లైవ్ మార్గం",
+    "source": "మూలం",
+    "destination": "గమ్యం"
   }
 }

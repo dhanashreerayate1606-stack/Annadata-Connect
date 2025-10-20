@@ -162,7 +162,7 @@
     "stateLabel": "রাজ্য",
     "statePlaceholder": "হারভেস্টশায়ার",
     "zipLabel": "জিপ কোড",
-    "zipPlaceholder": "১২৩৪৫",
+    "zipPlaceholder": "১২৩৪۵",
     "phoneLabel": "ফোন নম্বর",
     "phonePlaceholder": "আপনার ফোন নম্বর",
     "paymentTitle": "অর্থপ্রদানের পদ্ধতি",
@@ -268,6 +268,7 @@
     "totalColumn": "মোট",
     "actionsColumn": "ক্রিয়াকলাপ",
     "viewDetailsButton": "বিবরণ দেখুন",
+    "trackOrderButton": "অর্ডার ট্র্যাক করুন",
     "statusDelivered": "বিতরণ করা হয়েছে",
     "statusShipped": "চালান করা হয়েছে",
     "statusProcessing": "প্রক্রিয়াকরণ চলছে"
@@ -297,7 +298,7 @@
     "consumerType": "ভোক্তা",
     "farmerType": "কৃষক",
     "memberSince": "সদস্য থেকে",
-    "personalInfoTitle": "ব্যক্তিগত তথ্য",
+    "personalInfoTitle": "ব্যক্তিগত 정보",
     "infoName": "নাম",
     "infoEmail": "ইমেল",
     "infoLocation": "অবস্থান",
@@ -386,5 +387,21 @@
         ]
       }
     }
+  },
+  "logistics": {
+    "title": "লজিস্টিক ট্র্যাকার",
+    "subtitle": "অর্ডার #{orderId} ট্র্যাক করা হচ্ছে",
+    "timelineTitle": "অর্ডার টাইমলাইন",
+    "step_placed": "অর্ডার দেওয়া হয়েছে",
+    "step_shipped": "চালান করা হয়েছে",
+    "step_delivery": "ডেলিভারির জন্য বাইরে",
+    "step_delivered": "বিতরণ করা হয়েছে",
+    "supportTitle": "সাহায্য প্রয়োজন?",
+    "supportDescription": "আপনার অর্ডারের সাথে ಯಾವುದೇ সমস্যাಗಳಿಗಾಗಿ ನಮ್ಮ ಬೆಂಬಲ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ।",
+    "callSupport": "সমর্থনকে কল করুন",
+    "chatSupport": "আমাদের সাথে চ্যাট করুন",
+    "routeTitle": "লাইভ রুট",
+    "source": "উৎস",
+    "destination": "গন্তব্য"
   }
 }

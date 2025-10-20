@@ -19,6 +19,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "@/hooks/use-translation";
+import Link from "next/link";
 
 const orders = [
   {
@@ -92,9 +93,12 @@ export default function OrdersPage() {
                     </Badge>
                   </TableCell>
                   <TableCell className="text-right">₹{order.total.toFixed(2)}</TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-right space-x-2">
                     <Button variant="outline" size="sm">
                       {t('orders.viewDetailsButton')}
+                    </Button>
+                    <Button asChild variant="secondary" size="sm">
+                       <Link href="/logistics">{t('orders.trackOrderButton')}</Link>
                     </Button>
                   </TableCell>
                 </TableRow>

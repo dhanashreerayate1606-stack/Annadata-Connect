@@ -268,6 +268,7 @@
     "totalColumn": "कुल",
     "actionsColumn": "कार्रवाइयाँ",
     "viewDetailsButton": "विवरण देखें",
+    "trackOrderButton": "ऑर्डर ट्रैक करें",
     "statusDelivered": "डिलीवर किया गया",
     "statusShipped": "भेजा गया",
     "statusProcessing": "प्रसंस्करण में है"
@@ -386,5 +387,21 @@
         ]
       }
     }
+  },
+  "logistics": {
+    "title": "लॉजिस्टिक्स ट्रैकर",
+    "subtitle": "ऑर्डर #{orderId} ट्रैक करना",
+    "timelineTitle": "ऑर्डर टाइमलाइन",
+    "step_placed": "ऑर्डर दिया गया",
+    "step_shipped": "भेजा गया",
+    "step_delivery": "डिलीवरी के लिए बाहर",
+    "step_delivered": "डिलीवर किया गया",
+    "supportTitle": "सहायता चाहिए?",
+    "supportDescription": "अपने ऑर्डर के साथ किसी भी मुद्दे के लिए हमारी सहायता टीम से संपर्क करें।",
+    "callSupport": "सहायता को कॉल करें",
+    "chatSupport": "हमारे साथ चैट करें",
+    "routeTitle": "लाइव रूट",
+    "source": "स्रोत",
+    "destination": "गंतव्य"
   }
 }
