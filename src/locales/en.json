@@ -396,6 +396,8 @@
     "step_shipped": "Shipped",
     "step_delivery": "Out for Delivery",
     "step_delivered": "Delivered",
+    "driverInfoTitle": "Driver Information",
+    "contactDriver": "Contact Driver",
     "supportTitle": "Need Help?",
     "supportDescription": "Contact our support team for any issues with your order.",
     "callSupport": "Call Support",

@@ -9,9 +9,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Package, Truck, Home } from "lucide-react";
+import { Phone, MessageSquare, Package, Truck, Home, User, Star } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const trackingSteps = [
   { id: 'placed', status: "Order Placed", date: "2023-10-29 10:00 AM", completed: true, icon: Package },
@@ -19,6 +20,13 @@ const trackingSteps = [
   { id: 'delivery', status: "Out for Delivery", date: "2023-10-30 08:00 AM", completed: true, icon: Truck },
   { id: 'delivered', status: "Delivered", date: "2023-10-30 01:30 PM", completed: false, icon: Home },
 ];
+
+const driverInfo = {
+    name: "Ravi Kumar",
+    avatar: "https://picsum.photos/seed/driver/100/100",
+    vehicle: "TATA Ace - MH12 AB1234",
+    rating: 4.8,
+};
 
 export default function LogisticsPage() {
     const { t } = useTranslation();
@@ -32,7 +40,7 @@ export default function LogisticsPage() {
                 </p>
             </div>
 
-            <div className="mx-auto max-w-xl">
+            <div className="mx-auto max-w-xl grid grid-cols-1 gap-8">
                 <Card>
                     <CardHeader>
                         <CardTitle>{t('logistics.timelineTitle')}</CardTitle>
@@ -58,7 +66,30 @@ export default function LogisticsPage() {
                     </CardContent>
                 </Card>
 
-                <Card className="mt-8">
+                 <Card>
+                    <CardHeader>
+                        <CardTitle>{t('logistics.driverInfoTitle')}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex items-center gap-4">
+                        <Avatar className="h-16 w-16">
+                           <AvatarImage src={driverInfo.avatar} alt={driverInfo.name} />
+                           <AvatarFallback>{driverInfo.name.charAt(0)}</AvatarFallback>
+                        </Avatar>
+                        <div className="flex-grow">
+                           <p className="font-semibold">{driverInfo.name}</p>
+                           <p className="text-sm text-muted-foreground">{driverInfo.vehicle}</p>
+                           <div className="flex items-center gap-1 text-sm">
+                               <Star className="w-4 h-4 text-accent fill-current" />
+                               <span>{driverInfo.rating}</span>
+                           </div>
+                        </div>
+                         <Button variant="outline">
+                            <Phone className="mr-2 h-4 w-4" /> {t('logistics.contactDriver')}
+                       </Button>
+                    </CardContent>
+                </Card>
+
+                <Card>
                     <CardHeader>
                         <CardTitle>{t('logistics.supportTitle')}</CardTitle>
                         <CardDescription>{t('logistics.supportDescription')}</CardDescription>
