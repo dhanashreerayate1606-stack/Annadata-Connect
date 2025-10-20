@@ -61,10 +61,10 @@ export default function SchemesPage() {
               }}
             />
           <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
-            <h1 className="text-4xl font-bold tracking-tight font-headline drop-shadow-lg">
+            <h1 className="text-4xl font-bold tracking-tight font-headline drop-shadow-lg text-center">
               {t('schemes.title')}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg drop-shadow-md">
+            <p className="mt-4 max-w-2xl text-lg drop-shadow-md text-center">
               {t('schemes.subtitle')}
             </p>
           </div>
