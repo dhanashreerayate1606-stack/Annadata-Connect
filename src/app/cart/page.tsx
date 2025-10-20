@@ -33,8 +33,8 @@ export default function CartPage() {
   }
 
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price ? parseFloat(item.price) : 0) * item.quantity, 0);
-  const tax = subtotal * 0.05; // 5% tax
-  const total = subtotal + tax;
+  const gst = subtotal * 0.05; // 5% GST
+  const total = subtotal + gst;
 
   if (cartItems.length === 0) {
     return (
@@ -115,8 +115,8 @@ export default function CartPage() {
                 <span>₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>{t('cart.summaryTaxes')}</span>
-                <span>₹{tax.toFixed(2)}</span>
+                <span>GST (5%)</span>
+                <span>₹{gst.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">

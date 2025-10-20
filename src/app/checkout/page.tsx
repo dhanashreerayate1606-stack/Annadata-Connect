@@ -21,9 +21,8 @@ import { useTranslation } from "@/hooks/use-translation";
 
 const orderSummary = {
   subtotal: 110,
-  shipping: 20,
-  tax: 6.5,
-  total: 136.5,
+  gst: 5.5,
+  total: 115.5,
 };
 
 export default function CheckoutPage() {
@@ -175,12 +174,8 @@ export default function CheckoutPage() {
                 <span>₹{orderSummary.subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>{t('checkout.summaryShipping')}</span>
-                <span>₹{orderSummary.shipping.toFixed(2)}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{t('checkout.summaryTaxes')}</span>
-                <span>₹{orderSummary.tax.toFixed(2)}</span>
+                <span>GST</span>
+                <span>₹{orderSummary.gst.toFixed(2)}</span>
               </div>
               <Separator />
               <div className="flex justify-between font-bold text-lg">
