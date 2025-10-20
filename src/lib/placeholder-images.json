@@ -23,7 +23,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1508313880080-c4bef0730395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuYXRydWFsJTIwcG90YXRvZXN8ZW58MHx8fHwxNzYwOTAwODY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1508313880080-c4bef0730395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuYXRydWFsJTIwcG90YXRvZXN8ZW58MHx8fHwxNzYwOTAwODY2fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "raw potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
@@ -34,7 +34,7 @@
       "category": "product",
       "productType": "grains",
       "description": "Long-grain Basmati rice in a burlap sack",
-      "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5MDA5MTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5MDA5MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "basmati rice",
       "name": "बासमती चावल (Basmati Rice)",
       "price": "120",
@@ -56,7 +56,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Fresh green spinach leaves in a bowl",
-      "imageUrl": "https://images.unsplash.com/photo-1708785584552-3111822c72dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8c3BpbmFjaCUyMGZvciUyMHNlbGx8ZW58MHx8fHwxNzYwOTQ0ODc3fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1708785584552-3111822c72dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8c3BpbmFjaCUyMGZvciUyMHNlbGx8ZW58MHx8fHwxNzYwOTQ0ODc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh spinach",
       "name": "पालक (Spinach)",
       "price": "20",
@@ -67,7 +67,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Fresh red onions",
-      "imageUrl": "https://images.unsplash.com/photo-1642582037312-9b9639be89e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8ZnJlc2glMjByZWQlMjBvbmlvbnMlMjBkZWNlbnQlMjBuYXR1cmFsJTIwfGVufDB8fHx8MTc2MDk0NTA4MHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1642582037312-9b9639be89e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8ZnJlc2glMjByZWQlMjBvbmlvbnMlMjBkZWNlbnQlMjBuYXR1cmFsJTIwfGVufDB8fHx8MTc2MDk0NTA4MHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "red onions",
       "name": "प्याज (Onion)",
       "price": "50",
@@ -78,7 +78,7 @@
       "category": "product",
       "productType": "spices",
       "description": "Turmeric powder and roots",
-      "imageUrl": "https://images.unsplash.com/photo-1606951444141-e5533feb55be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpY3xlbnwwfHx8fDE3NjA5NDU0ODl8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1606951444141-e5533feb55be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpY3xlbnwwfHx8fDE3NjA5NDU0ODl8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "turmeric roots",
       "name": "हल्दी (Turmeric)",
       "price": "250",
@@ -131,10 +131,10 @@
     {
       "id": "tutorial1",
       "category": "learning",
-      "name": "Effective Crop Management Techniques",
-      "description": "A farmer inspecting crops in a field, representing a tutorial on crop management.",
-      "imageUrl": "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjBpbnNwZWN0aW5nJTIwY3JvcHN8ZW58MHx8fHwxNzYxMzA0MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "farmer inspecting crops"
+      "name": "Improving Your Farm's Soil Health",
+      "description": "Close up of hands holding rich soil.",
+      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f3659b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE1NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "soil health"
     },
     {
       "id": "webinar1",
@@ -155,10 +155,10 @@
     {
       "id": "tutorial2",
       "category": "learning",
-      "name": "Improving Your Farm's Soil Health",
-      "description": "Close up of hands holding rich soil.",
-      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f3659b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE1NXww&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "soil health"
+      "name": "Effective Crop Management Techniques",
+      "description": "A farmer inspecting crops in a field, representing a tutorial on crop management.",
+      "imageUrl": "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjBpbnNwZWN0aW5nJTIwY3JvcHN8ZW58MHx8fHwxNzYxMzA0MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farmer inspecting crops"
     },
     {
       "id": "tutorial3",
@@ -188,28 +188,28 @@
       "id": "schemes-hero",
       "category": "hero",
       "description": "An Indian farmer smiling in a field.",
-      "imageUrl": "https://images.unsplash.com/photo-1617192213511-2c9a1a63de40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXJ8ZW58MHx8fHwxNzYxMzA0MzMxfDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1617192213511-2c9a1a63de40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXJ8ZW58MHx8fHwxNzYxMzA0MzMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "indian farmer"
     },
     {
       "id": "bulk-hero",
       "category": "hero",
       "description": "A crate of fresh vegetables ready for bulk delivery.",
-      "imageUrl": "https://images.unsplash.com/photo-1540914124281-3425879413d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2ZWdldGFibGUlMjBjcmF0ZXxlbnwwfHx8fDE3NjEzMDQzNDV8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1540914124281-3425879413d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2ZWdldGFibGUlMjBjcmF0ZXxlbnwwfHx8fDE3NjEzMDQzNDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vegetable crate"
     },
     {
       "id": "subscription-hero",
       "category": "hero",
       "description": "A person holding a subscription box full of fresh produce.",
-      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "produce subscription box"
     },
     {
       "id": "logistics-map",
       "category": "asset",
       "description": "A stylized map showing a delivery route from a rural area to a city.",
-      "imageUrl": "https://images.unsplash.com/photo-1629576174781-fc9dbfd743c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxM3x8TmFzaGlrJTIwc2F0ZWxsaXRlJTIwc3RyZWV0JTIwbWFwfGVufDB8fHx8MTc2MDk1MjAxNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1629576174781-fc9dbfd743c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxM3x8TmFzaGlrJTIwc2F0ZWxsaXRlJTIwc3RyZWV0JTIwbWFwfGVufDB8fHx8MTc2MDk1MjAxNXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "street tracker digital satellite map"
     }
   ]
