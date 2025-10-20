@@ -146,12 +146,13 @@
     "totalColumn": "মোট",
     "summaryTitle": "অর্ডার সারাংশ",
     "summarySubtotal": "উপমোট",
-    "summaryTaxes": "কর (৫%)",
+    "summaryTaxes": "জিএসটি (5%)",
     "summaryTotal": "মোট",
     "checkoutButton": "চেকআউটে এগিয়ে যান"
   },
   "checkout": {
     "title": "চেকআউট",
+    "emptyDescription": "চেকআউট করার জন্য আপনার কার্টে কিছুই নেই।",
     "shippingTitle": "শিপিং তথ্য",
     "firstNameLabel": "প্রথম নাম",
     "firstNamePlaceholder": "জন",
@@ -180,8 +181,6 @@
     "paymentConfirmedAlertDescription": "আপনি সব সেট। আপনি এখন আপনার অর্ডার দিতে পারেন।",
     "summaryTitle": "অর্ডার সারাংশ",
     "summarySubtotal": "উপমোট",
-    "summaryShipping": "শিপিং",
-    "summaryTaxes": "কর",
     "summaryTotal": "মোট",
     "placeOrderButton": "অর্ডার দিন",
     "toastOrderPlacedTitle": "অর্ডার দেওয়া হয়েছে!",
@@ -412,5 +411,3 @@
     "chatSupport": "আমাদের সাথে চ্যাট করুন"
   }
 }
-
-    

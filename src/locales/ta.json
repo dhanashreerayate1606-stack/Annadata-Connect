@@ -146,12 +146,13 @@
     "totalColumn": "மொத்தம்",
     "summaryTitle": "ஆர்டர் சுருக்கம்",
     "summarySubtotal": "துணை மொத்தம்",
-    "summaryTaxes": "வரிகள் (5%)",
+    "summaryTaxes": "ஜிஎஸ்டி (5%)",
     "summaryTotal": "மொத்தம்",
     "checkoutButton": "செக் அவுட்டிற்குச் செல்லவும்"
   },
   "checkout": {
     "title": "செக் அவுட்",
+    "emptyDescription": "செக் அவுட் செய்ய உங்கள் கார்ட்டில் எதுவும் இல்லை.",
     "shippingTitle": "கப்பல் போக்குவரத்து தகவல்",
     "firstNameLabel": "முதல் பெயர்",
     "firstNamePlaceholder": "ஜான்",
@@ -180,8 +181,6 @@
     "paymentConfirmedAlertDescription": "நீங்கள் தயாராகிவிட்டீர்கள். நீங்கள் இப்போது உங்கள் ஆர்டரை வைக்கலாம்.",
     "summaryTitle": "ஆர்டர் சுருக்கம்",
     "summarySubtotal": "துணை மொத்தம்",
-    "summaryShipping": "கப்பல் போக்குவரத்து",
-    "summaryTaxes": "வரிகள்",
     "summaryTotal": "மொத்தம்",
     "placeOrderButton": "ஆர்டரை வைக்கவும்",
     "toastOrderPlacedTitle": "ஆர்டர் வைக்கப்பட்டது!",
@@ -412,5 +411,3 @@
     "chatSupport": "எங்களுடன் அரட்டையடிக்கவும்"
   }
 }
-
-    

@@ -146,12 +146,13 @@
     "totalColumn": "మొత్తం",
     "summaryTitle": "ఆర్డర్ సారాంశం",
     "summarySubtotal": "ఉప-మొత్తం",
-    "summaryTaxes": "పన్నులు (5%)",
+    "summaryTaxes": "జీఎస్టీ (5%)",
     "summaryTotal": "మొత్తం",
     "checkoutButton": "చెక్‌అవుట్‌కు వెళ్లండి"
   },
   "checkout": {
     "title": "చెక్‌అవుట్",
+    "emptyDescription": "చెక్‌అవుట్ చేయడానికి మీ కార్ట్‌లో ఏమీ లేదు.",
     "shippingTitle": "షిప్పింగ్ సమాచారం",
     "firstNameLabel": "మొదటి పేరు",
     "firstNamePlaceholder": "జాన్",
@@ -180,8 +181,6 @@
     "paymentConfirmedAlertDescription": "మీరు సిద్ధంగా ఉన్నారు. మీరు ఇప్పుడు మీ ఆర్డర్‌ను ఇవ్వవచ్చు.",
     "summaryTitle": "ఆర్డర్ సారాంశం",
     "summarySubtotal": "ఉప-మొత్తం",
-    "summaryShipping": "షిప్పింగ్",
-    "summaryTaxes": "పన్నులు",
     "summaryTotal": "మొత్తం",
     "placeOrderButton": "ఆర్డర్ ఇవ్వండి",
     "toastOrderPlacedTitle": "ఆర్డర్ ఇవ్వబడింది!",
@@ -412,5 +411,3 @@
     "chatSupport": "మాతో చాట్ చేయండి"
   }
 }
-
-    

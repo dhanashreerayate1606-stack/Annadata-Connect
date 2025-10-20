@@ -152,6 +152,7 @@
   },
   "checkout": {
     "title": "ಚೆಕ್‌ಔಟ್",
+    "emptyDescription": "ಚೆಕ್ ಔಟ್ ಮಾಡಲು ನಿಮ್ಮ ಕಾರ್ಟ್‌ನಲ್ಲಿ ಏನೂ ಇಲ್ಲ.",
     "shippingTitle": "ಶಿಪ್ಪಿಂಗ್ ಮಾಹಿತಿ",
     "firstNameLabel": "ಮೊದಲ ಹೆಸರು",
     "firstNamePlaceholder": "ಜಾನ್",
@@ -180,8 +181,6 @@
     "paymentConfirmedAlertDescription": "ನೀವು ಸಿದ್ಧರಾಗಿದ್ದೀರಿ. ನೀವು ಈಗ ನಿಮ್ಮ ಆದೇಶವನ್ನು ನೀಡಬಹುದು.",
     "summaryTitle": "ಆದೇಶ ಸಾರಾಂಶ",
     "summarySubtotal": "ಉಪ-ಒಟ್ಟು",
-    "summaryShipping": "ಶಿಪ್ಪಿಂಗ್",
-    "summaryTaxes": "ತೆರಿಗೆಗಳು",
     "summaryTotal": "ಒಟ್ಟು",
     "placeOrderButton": "ಆದೇಶವನ್ನು ಇರಿಸಿ",
     "toastOrderPlacedTitle": "ಆದೇಶವನ್ನು ಇರಿಸಲಾಗಿದೆ!",
@@ -252,7 +251,7 @@
     "tableActions": "ಕ್ರಿಯೆಗಳು",
     "statusPublished": "ಪ್ರಕಟಿಸಲಾಗಿದೆ",
     "statusDraft": "ಕರಡು",
-    "toggleMenu": "ಮೆನುವನ್ನು ಟಾಗల్ ಮಾಡಿ",
+    "toggleMenu": "ಮೆನುವನ್ನು ಟಾಗಲ್ ಮಾಡಿ",
     "actionEdit": "ಸಂಪಾದಿಸಿ",
     "actionDelete": "ಅಳಿಸಿ"
   },
@@ -412,5 +411,3 @@
     "chatSupport": "ನಮ್ಮೊಂದಿಗೆ ಚಾಟ್ ಮಾಡಿ"
   }
 }
-
-    

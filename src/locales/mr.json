@@ -146,12 +146,13 @@
     "totalColumn": "एकूण",
     "summaryTitle": "ऑर्डर सारांश",
     "summarySubtotal": "उप-एकूण",
-    "summaryTaxes": "कर (५%)",
+    "summaryTaxes": "जीएसटी (5%)",
     "summaryTotal": "एकूण",
     "checkoutButton": "चेकआउटकडे जा"
   },
   "checkout": {
     "title": "चेकआउट",
+    "emptyDescription": "चेकआउट करण्यासाठी तुमच्या कार्टमध्ये काहीही नाही.",
     "shippingTitle": "शिपिंग माहिती",
     "firstNameLabel": "पहिले नाव",
     "firstNamePlaceholder": "जॉन",
@@ -180,8 +181,6 @@
     "paymentConfirmedAlertDescription": "तुम्ही तयार आहात. तुम्ही आता तुमची ऑर्डर देऊ शकता.",
     "summaryTitle": "ऑर्डर सारांश",
     "summarySubtotal": "उप-एकूण",
-    "summaryShipping": "शिपिंग",
-    "summaryTaxes": "कर",
     "summaryTotal": "एकूण",
     "placeOrderButton": "ऑर्डर द्या",
     "toastOrderPlacedTitle": "ऑर्डर दिली!",
@@ -412,5 +411,3 @@
     "chatSupport": "आमच्याशी चॅट करा"
   }
 }
-
-    

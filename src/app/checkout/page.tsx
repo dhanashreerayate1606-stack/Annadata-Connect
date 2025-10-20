@@ -1,47 +1,56 @@
 
-"use client";
+'use client';
 
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Separator } from "@/components/ui/separator";
-import { useToast } from "@/hooks/use-toast";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Terminal } from "lucide-react";
-import { useTranslation } from "@/hooks/use-translation";
-
-const orderSummary = {
-  subtotal: 110,
-  gst: 5.5,
-  total: 115.5,
-};
+} from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Separator } from '@/components/ui/separator';
+import { useToast } from '@/hooks/use-toast';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import { Terminal, ShoppingBag } from 'lucide-react';
+import { useTranslation } from '@/hooks/use-translation';
+import { useCart } from '@/context/cart-context';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 export default function CheckoutPage() {
   const { toast } = useToast();
   const { t } = useTranslation();
+  const { cartItems, clearCart } = useCart();
+  const router = useRouter();
+
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + (item.price ? parseFloat(item.price) : 0) * item.quantity,
+    0
+  );
+  const gst = subtotal * 0.05;
+  const total = subtotal + gst;
 
   const handlePlaceOrder = () => {
     toast({
       title: t('checkout.toastOrderPlacedTitle'),
       description: t('checkout.toastOrderPlacedDescription'),
     });
+    clearCart();
+    router.push('/orders');
   };
 
   const handlePaymentConfirm = () => {
     if (!paymentMethod) {
       toast({
-        variant: "destructive",
+        variant: 'destructive',
         title: t('checkout.toastPaymentErrorTitle'),
         description: t('checkout.toastPaymentErrorDescription'),
       });
@@ -57,14 +66,33 @@ export default function CheckoutPage() {
   const handlePaymentMethodChange = (value: string) => {
     setPaymentMethod(value);
     setPaymentConfirmed(false); // Reset confirmation when method changes
-     if (value === 'upi' || value === 'cod') {
+    if (value === 'upi' || value === 'cod') {
       setPaymentConfirmed(true);
     }
   };
 
+  if (cartItems.length === 0) {
+    return (
+      <div className="container mx-auto px-4 py-12 text-center md:py-16">
+        <ShoppingBag className="mx-auto h-24 w-24 text-muted-foreground" />
+        <h1 className="mt-6 text-2xl font-bold tracking-tight font-headline">
+          {t('cart.emptyTitle')}
+        </h1>
+        <p className="mt-2 text-muted-foreground">
+          {t('checkout.emptyDescription')}
+        </p>
+        <Button asChild className="mt-6">
+          <Link href="/">{t('cart.startShoppingButton')}</Link>
+        </Button>
+      </div>
+    );
+  }
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
-      <h1 className="text-4xl font-bold tracking-tight text-center font-headline">{t('checkout.title')}</h1>
+      <h1 className="text-4xl font-bold tracking-tight text-center font-headline">
+        {t('checkout.title')}
+      </h1>
       <div className="mt-10 grid grid-cols-1 gap-12 lg:grid-cols-3">
         <div className="lg:col-span-2">
           <Card>
@@ -74,17 +102,30 @@ export default function CheckoutPage() {
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="space-y-2">
-                  <Label htmlFor="first-name">{t('checkout.firstNameLabel')}</Label>
-                  <Input id="first-name" placeholder={t('checkout.firstNamePlaceholder')} />
+                  <Label htmlFor="first-name">
+                    {t('checkout.firstNameLabel')}
+                  </Label>
+                  <Input
+                    id="first-name"
+                    placeholder={t('checkout.firstNamePlaceholder')}
+                  />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="last-name">{t('checkout.lastNameLabel')}</Label>
-                  <Input id="last-name" placeholder={t('checkout.lastNamePlaceholder')} />
+                  <Label htmlFor="last-name">
+                    {t('checkout.lastNameLabel')}
+                  </Label>
+                  <Input
+                    id="last-name"
+                    placeholder={t('checkout.lastNamePlaceholder')}
+                  />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="address">{t('checkout.addressLabel')}</Label>
-                <Input id="address" placeholder={t('checkout.addressPlaceholder')} />
+                <Input
+                  id="address"
+                  placeholder={t('checkout.addressPlaceholder')}
+                />
               </div>
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
                 <div className="space-y-2">
@@ -93,7 +134,10 @@ export default function CheckoutPage() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="state">{t('checkout.stateLabel')}</Label>
-                  <Input id="state" placeholder={t('checkout.statePlaceholder')} />
+                  <Input
+                    id="state"
+                    placeholder={t('checkout.statePlaceholder')}
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="zip">{t('checkout.zipLabel')}</Label>
@@ -102,7 +146,11 @@ export default function CheckoutPage() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="phone">{t('checkout.phoneLabel')}</Label>
-                <Input id="phone" type="tel" placeholder={t('checkout.phonePlaceholder')} />
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder={t('checkout.phonePlaceholder')}
+                />
               </div>
             </CardContent>
           </Card>
@@ -117,20 +165,37 @@ export default function CheckoutPage() {
               <RadioGroup
                 className="space-y-4"
                 onValueChange={handlePaymentMethodChange}
-                value={paymentMethod || ""}
+                value={paymentMethod || ''}
               >
                 <div>
-                  <RadioGroupItem value="card" id="card" className="peer sr-only" />
-                  <Label htmlFor="card" className="flex flex-col rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                  <RadioGroupItem
+                    value="card"
+                    id="card"
+                    className="peer sr-only"
+                  />
+                  <Label
+                    htmlFor="card"
+                    className="flex flex-col rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                  >
                     <span>{t('checkout.paymentCard')}</span>
                     {paymentMethod === 'card' && (
                       <div className="mt-4 space-y-2">
-                        <Input placeholder={t('checkout.cardNumberPlaceholder')} />
+                        <Input
+                          placeholder={t('checkout.cardNumberPlaceholder')}
+                        />
                         <div className="flex gap-4">
-                          <Input placeholder={t('checkout.cardExpiryPlaceholder')} />
-                          <Input placeholder={t('checkout.cardCvcPlaceholder')} />
+                          <Input
+                            placeholder={t('checkout.cardExpiryPlaceholder')}
+                          />
+                          <Input
+                            placeholder={t('checkout.cardCvcPlaceholder')}
+                          />
                         </div>
-                        <Button onClick={handlePaymentConfirm} className="mt-2" size="sm">
+                        <Button
+                          onClick={handlePaymentConfirm}
+                          className="mt-2"
+                          size="sm"
+                        >
                           {t('checkout.confirmPaymentButton')}
                         </Button>
                       </div>
@@ -138,14 +203,28 @@ export default function CheckoutPage() {
                   </Label>
                 </div>
                 <div>
-                  <RadioGroupItem value="upi" id="upi" className="peer sr-only" />
-                  <Label htmlFor="upi" className="flex items-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                  <RadioGroupItem
+                    value="upi"
+                    id="upi"
+                    className="peer sr-only"
+                  />
+                  <Label
+                    htmlFor="upi"
+                    className="flex items-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                  >
                     <span>{t('checkout.paymentUpi')}</span>
                   </Label>
                 </div>
                 <div>
-                  <RadioGroupItem value="cod" id="cod" className="peer sr-only" />
-                  <Label htmlFor="cod" className="flex items-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary">
+                  <RadioGroupItem
+                    value="cod"
+                    id="cod"
+                    className="peer sr-only"
+                  />
+                  <Label
+                    htmlFor="cod"
+                    className="flex items-center rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
+                  >
                     <span>{t('checkout.paymentCod')}</span>
                   </Label>
                 </div>
@@ -153,7 +232,9 @@ export default function CheckoutPage() {
               {paymentConfirmed && (
                 <Alert className="mt-6">
                   <Terminal className="h-4 w-4" />
-                  <AlertTitle>{t('checkout.paymentConfirmedAlertTitle')}</AlertTitle>
+                  <AlertTitle>
+                    {t('checkout.paymentConfirmedAlertTitle')}
+                  </AlertTitle>
                   <AlertDescription>
                     {t('checkout.paymentConfirmedAlertDescription')}
                   </AlertDescription>
@@ -171,16 +252,16 @@ export default function CheckoutPage() {
             <CardContent className="space-y-4">
               <div className="flex justify-between">
                 <span>{t('checkout.summarySubtotal')}</span>
-                <span>₹{orderSummary.subtotal.toFixed(2)}</span>
+                <span>₹{subtotal.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span>GST</span>
-                <span>₹{orderSummary.gst.toFixed(2)}</span>
+                <span>GST (5%)</span>
+                <span>₹{gst.toFixed(2)}</span>
               </div>
               <Separator />
-              <div className="flex justify-between font-bold text-lg">
+              <div className="flex justify-between text-lg font-bold">
                 <span>{t('checkout.summaryTotal')}</span>
-                <span>₹{orderSummary.total.toFixed(2)}</span>
+                <span>₹{total.toFixed(2)}</span>
               </div>
               <Button
                 className="w-full"

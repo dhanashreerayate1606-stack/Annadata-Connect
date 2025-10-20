@@ -146,12 +146,13 @@
     "totalColumn": "Total",
     "summaryTitle": "Order Summary",
     "summarySubtotal": "Subtotal",
-    "summaryTaxes": "Taxes (5%)",
+    "summaryTaxes": "GST (5%)",
     "summaryTotal": "Total",
     "checkoutButton": "Proceed to Checkout"
   },
   "checkout": {
     "title": "Checkout",
+    "emptyDescription": "There is nothing in your cart to check out.",
     "shippingTitle": "Shipping Information",
     "firstNameLabel": "First Name",
     "firstNamePlaceholder": "John",
@@ -180,8 +181,6 @@
     "paymentConfirmedAlertDescription": "You are all set. You can now place your order.",
     "summaryTitle": "Order Summary",
     "summarySubtotal": "Subtotal",
-    "summaryShipping": "Shipping",
-    "summaryTaxes": "Taxes",
     "summaryTotal": "Total",
     "placeOrderButton": "Place Order",
     "toastOrderPlacedTitle": "Order Placed!",
@@ -412,5 +411,3 @@
     "chatSupport": "Chat with Us"
   }
 }
-
-    
