@@ -23,10 +23,35 @@ import {
 } from "@/components/ui/select";
 import { useLanguage, LANGUAGES } from "@/context/language-context";
 import { useTranslation } from "@/hooks/use-translation";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useToast } from "@/hooks/use-toast";
 
 export default function LoginPage() {
   const { language, setLanguage } = useLanguage();
   const { t } = useTranslation();
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  const handleConsumerLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    const auth = getAuth();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast({ title: "Login Successful", description: "Welcome back!" });
+      router.push('/');
+    } catch (error: any) {
+      setError(error.message);
+      toast({ variant: "destructive", title: "Login Failed", description: error.message });
+    }
+  };
+
 
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
@@ -62,22 +87,25 @@ export default function LoginPage() {
                   {t('login.consumerDescription')}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2">
-                  <Label htmlFor="c-email">{t('login.emailLabel')}</Label>
-                  <Input id="c-email" type="email" placeholder={t('login.emailPlaceholder')} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="c-password">{t('login.passwordLabel')}</Label>
-                  <Input id="c-password" type="password" required />
-                </div>
-                <Button type="submit" className="w-full">{t('login.signIn')}</Button>
-                 <div className="mt-4 text-center text-sm">
-                  {t('login.noAccount')}{" "}
-                  <Link href="/signup" className="underline">
-                    {t('login.signUpLink')}
-                  </Link>
-                </div>
+              <CardContent>
+                <form onSubmit={handleConsumerLogin} className="space-y-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="c-email">{t('login.emailLabel')}</Label>
+                    <Input id="c-email" type="email" placeholder={t('login.emailPlaceholder')} required value={email} onChange={(e) => setEmail(e.target.value)} />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="c-password">{t('login.passwordLabel')}</Label>
+                    <Input id="c-password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
+                  </div>
+                  {error && <p className="text-sm text-destructive">{error}</p>}
+                  <Button type="submit" className="w-full">{t('login.signIn')}</Button>
+                   <div className="mt-4 text-center text-sm">
+                    {t('login.noAccount')}{" "}
+                    <Link href="/signup" className="underline">
+                      {t('login.signUpLink')}
+                    </Link>
+                  </div>
+                </form>
               </CardContent>
             </Card>
           </TabsContent>
