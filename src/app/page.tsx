@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -104,9 +104,11 @@ export default function Home() {
     }
   };
 
-  const filteredProducts = allProducts
-    .filter(p => p.name?.toLowerCase().includes(searchQuery.toLowerCase()))
-    .filter(p => selectedCategory === 'all' || p.productType === selectedCategory);
+  const filteredProducts = useMemo(() => {
+    return allProducts
+      .filter(p => selectedCategory === 'all' || p.productType === selectedCategory)
+      .filter(p => p.name?.toLowerCase().includes(searchQuery.toLowerCase()));
+  }, [searchQuery, selectedCategory]);
 
   return (
     <div className="flex flex-col">
