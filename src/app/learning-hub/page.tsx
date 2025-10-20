@@ -13,7 +13,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Download, Video } from "lucide-react";
+import { Download, Video, Sprout } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 
 const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
@@ -26,14 +26,20 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
       <CardHeader className="p-0">
-        <div className="relative aspect-video w-full">
-          <Image src={item.imageUrl} alt={item.description} fill className="object-cover" data-ai-hint={item.imageHint} />
-          {type !== 'resource' && (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-              <Video className="h-12 w-12 text-white/80" />
+        {item.id === 'tutorial1' ? (
+            <div className="relative aspect-video w-full flex items-center justify-center bg-muted">
+                <Sprout className="h-20 w-20 text-secondary" />
             </div>
-          )}
-        </div>
+        ) : (
+            <div className="relative aspect-video w-full">
+              <Image src={item.imageUrl} alt={item.description} fill className="object-cover" data-ai-hint={item.imageHint} />
+              {type !== 'resource' && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                  <Video className="h-12 w-12 text-white/80" />
+                </div>
+              )}
+            </div>
+        )}
       </CardHeader>
       <CardContent className="p-4 flex-grow">
         <CardTitle className="text-lg font-bold font-headline">
