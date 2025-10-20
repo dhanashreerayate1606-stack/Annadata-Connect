@@ -99,6 +99,9 @@ export default {
         'accordion-up': 'accordion-up 0.2s ease-out',
         'gradient-xy': 'gradient-xy 10s ease infinite',
       },
+       backgroundSize: {
+        '200%': '200%',
+      },
     },
   },
   plugins: [require('tailwindcss-animate')],

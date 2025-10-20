@@ -52,12 +52,19 @@ export default function SchemesPage() {
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
         <div className="relative h-64 w-full overflow-hidden rounded-lg shadow-lg mb-10">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/30 animate-gradient-xy"></div>
-          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-foreground p-4">
-            <h1 className="text-4xl font-bold tracking-tight font-headline text-white drop-shadow-lg">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-secondary/80 to-accent/80 animate-gradient-xy"></div>
+           <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage:
+                  "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='white'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e\")",
+              }}
+            />
+          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white p-4">
+            <h1 className="text-4xl font-bold tracking-tight font-headline drop-shadow-lg">
               {t('schemes.title')}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-white/90 drop-shadow-md">
+            <p className="mt-4 max-w-2xl text-lg drop-shadow-md">
               {t('schemes.subtitle')}
             </p>
           </div>
