@@ -55,7 +55,7 @@ export default function LogisticsPage() {
                                             <step.icon className="h-6 w-6" />
                                         </div>
                                         <div>
-                                            <p className="font-semibold">{t(`logistics.step${step.id}`)}</p>
+                                            <p className="font-semibold">{t(`logistics.step_${step.id}`)}</p>
                                             <p className="text-sm text-muted-foreground">{step.date}</p>
                                         </div>
                                     </div>
