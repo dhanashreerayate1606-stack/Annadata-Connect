@@ -11,8 +11,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Landmark } from "lucide-react";
-import { PlaceHolderImages } from "@/lib/placeholder-images";
-import Image from "next/image";
 import { useTranslation } from "@/hooks/use-translation";
 
 const schemes = [
@@ -48,33 +46,22 @@ const categoryVariant = {
     "Credit Facility": "default",
 } as const;
 
-const heroImage = PlaceHolderImages.find(p => p.id === 'schemes-hero');
-
 export default function SchemesPage() {
   const { t } = useTranslation();
 
   return (
     <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
-      {heroImage && (
         <div className="relative h-64 w-full overflow-hidden rounded-lg shadow-lg mb-10">
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            className="object-cover"
-            data-ai-hint={heroImage.imageHint}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
-            <h1 className="text-4xl font-bold tracking-tight font-headline">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-secondary/30 to-accent/30 animate-gradient-xy"></div>
+          <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-foreground p-4">
+            <h1 className="text-4xl font-bold tracking-tight font-headline text-white drop-shadow-lg">
               {t('schemes.title')}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg">
+            <p className="mt-4 max-w-2xl text-lg text-white/90 drop-shadow-md">
               {t('schemes.subtitle')}
             </p>
           </div>
         </div>
-      )}
 
       <Card>
         <CardHeader>
