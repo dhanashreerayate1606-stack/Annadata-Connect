@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Transaction } from "@/context/wallet-context";
 import { cn } from "@/lib/utils";
 
@@ -28,6 +28,7 @@ export default function TransactionHistory({ transactions }: TransactionHistoryP
               <TableHead>Date</TableHead>
               <TableHead>Description</TableHead>
               <TableHead className="text-right">Amount</TableHead>
+              <TableHead className="text-right">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -40,6 +41,9 @@ export default function TransactionHistory({ transactions }: TransactionHistoryP
                     tx.type === 'credit' ? 'text-green-600' : 'text-red-600'
                 )}>
                   {tx.type === 'credit' ? '+' : '-'}₹{Math.abs(tx.amount).toFixed(2)}
+                </TableCell>
+                <TableCell className="text-right">
+                    <Button variant="outline" size="sm">View Details</Button>
                 </TableCell>
               </TableRow>
             ))}
