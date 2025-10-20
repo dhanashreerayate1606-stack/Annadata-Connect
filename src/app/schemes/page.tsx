@@ -107,7 +107,7 @@ export default function SchemesPage() {
                     </div>
                     <Button size="sm" asChild>
                       <Link href={scheme.url} target="_blank" rel="noopener noreferrer">
-                        {t('schemes.applyButton')}
+                        {scheme.id === 'kcc' ? 'kcc information' : t('schemes.applyButton')}
                       </Link>
                     </Button>
                   </div>
