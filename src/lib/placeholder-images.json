@@ -4,7 +4,7 @@
       "id": "hero-market",
       "category": "hero",
       "description": "A vibrant and colorful farmer's market stall filled with fresh vegetables.",
-      "imageUrl": "https://images.unsplash.com/photo-1514583079045-e928a4732ade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmYXJtZXIlMjdzJTIwbWFya2V0fGVufDB8fHx8MTc2MDg4MDE3OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1514583079045-e928a4732ade?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxmYXJtZXIlMjdzJTIwbWFya2V0fGVufDB8fHx8MTc2MDg4MDE3OHww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "farmer's market"
     },
     {
@@ -12,7 +12,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Fresh red tomatoes on a vine",
-      "imageUrl": "https://images.unsplash.com/photo-1744659749576-e92c8109ca0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8bmF0dXJhbCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDkwMDk5N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1744659749576-e92c8109ca0f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8bmF0dXJhbCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDkwMDk5N3ww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh tomatoes",
       "name": "देसी टमाटर (Desi Tomato)",
       "price": "40",
@@ -157,7 +157,7 @@
       "category": "learning",
       "name": "Effective Crop Management Techniques",
       "description": "A close-up of a farmer's hands checking the leaves of a young plant.",
-      "imageUrl": "https://images.unsplash.com/photo-1625246333195-78d9c38AD449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmYXJtZXIlMjBpbnNwZWN0aW5nJTIwY3JvcHN8ZW58MHx8fHwxNzYxMzA0MTEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1625246333195-78d9c38AD449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmYXJtZXIlMjBpbnNwZWN0aW5nJTIwY3JvcHN8ZW58MHx8fHwxNzYxMzA0MTEyfDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "farmer checking plant"
     },
     {
