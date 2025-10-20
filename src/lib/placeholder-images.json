@@ -23,7 +23,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1508313880080-c4bef0730395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuYXRydWFsJTIwcG90YXRvZXN8ZW58MHx8fHwxNzYwOTAwODY2fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1508313880080-c4bef0730395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuYXRydWFsJTIwcG90YXRvZXN8ZW58MHx8fHwxNzYwOTAwODY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "raw potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
@@ -34,7 +34,7 @@
       "category": "product",
       "productType": "grains",
       "description": "Long-grain Basmati rice in a burlap sack",
-      "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5MDA5MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5MDA5MTB8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "basmati rice",
       "name": "बासमती चावल (Basmati Rice)",
       "price": "120",
@@ -45,7 +45,7 @@
       "category": "product",
       "productType": "fruits",
       "description": "Ripe Alphonso mangoes in a basket",
-      "imageUrl": "https://images.unsplash.com/photo-1575704775495-3db17d0b5522?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8bmF0dXJhbCUyMGFscGhvbnNwbyUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwOTAxMTQ4fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1575704775495-3db17d0b5522?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8bmF0dXJhbCUyMGFscGhvbnNwbyUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwOTAxMTQ4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fresh mangoes",
       "name": "आम (Alphonso Mango)",
       "price": "800",
@@ -89,7 +89,7 @@
       "category": "product",
       "productType": "fruits",
       "description": "A ripe pomegranate",
-      "imageUrl": "https://images.unsplash.com/photo-1760333949041-1c6e16f1c72c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8YSUyMHJpcGUlMjBwb21lZ3JhbmF0ZXxlbnwwfHx8fDE3NjA5NDU1Nzl8MA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1760333949041-1c6e16f1c72c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8YSUyMHJpcGUlMjBwb21lZ3JhbmF0ZXxlbnwwfHx8fDE3NjA5NDU1Nzl8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "pomegranate fruit",
       "name": "अनार (Pomegranate)",
       "price": "150",
@@ -157,7 +157,7 @@
       "category": "learning",
       "name": "Improving Your Farm's Soil Health",
       "description": "Close up of hands holding rich soil.",
-      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f3659b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE1NXww&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1594245667954-4161f3659b4e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE1NXww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "soil health"
     },
     {
@@ -202,14 +202,14 @@
       "id": "subscription-hero",
       "category": "hero",
       "description": "A person holding a subscription box full of fresh produce.",
-      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "produce subscription box"
     },
     {
       "id": "logistics-map",
       "category": "asset",
       "description": "A stylized map showing a delivery route from a rural area to a city.",
-      "imageUrl": "https://images.unsplash.com/photo-1698948233640-fe50ca4ce8c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxzdHJlZXQlMjB0cmFja2VyJTIwZGlnaXRhbCUyMHNhdGVsbGl0ZSUyMG1hcHxlbnwwfHx8fDE3NjA5NTE5MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1629576174781-fc9dbfd743c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxM3x8TmFzaGlrJTIwc2F0ZWxsaXRlJTIwc3RyZWV0JTIwbWFwfGVufDB8fHx8MTc2MDk1MjAxNXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "street tracker digital satellite map"
     }
   ]
