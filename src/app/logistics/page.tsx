@@ -99,11 +99,11 @@ export default function LogisticsPage() {
                             <div className="mt-4 space-y-2 text-sm">
                                 <div className="flex justify-between">
                                     <span className="text-muted-foreground">{t('logistics.source')}</span>
-                                    <span className="font-medium">Nashik, MH</span>
+                                    <span className="font-medium">📍 Nashik, MH</span>
                                 </div>
                                  <div className="flex justify-between">
                                     <span className="text-muted-foreground">{t('logistics.destination')}</span>
-                                    <span className="font-medium">Pune, MH</span>
+                                    <span className="font-medium">🏠 Pune, MH</span>
                                 </div>
                             </div>
                         </CardContent>
