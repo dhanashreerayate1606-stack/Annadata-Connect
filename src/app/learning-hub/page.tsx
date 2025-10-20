@@ -13,7 +13,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Download, Video, Sprout, HandHelping, Laptop } from "lucide-react";
+import { Download, Video, Sprout, HandHelping, Laptop, Presentation, TrendingUp } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 
 const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
@@ -21,23 +21,27 @@ const tutorials = allLearningContent.filter(p => p.id.startsWith("tutorial"));
 const webinars = allLearningContent.filter(p => p.id.startsWith("webinar"));
 const resources = allLearningContent.filter(p => p.id.startsWith("resource"));
 
-const tutorialIcons: { [key: string]: React.ReactNode } = {
+const cardIcons: { [key: string]: React.ReactNode } = {
   tutorial1: <Sprout className="h-20 w-20 text-secondary" />,
   tutorial2: <HandHelping className="h-20 w-20 text-primary" />,
   tutorial3: <Laptop className="h-20 w-20 text-accent" />,
+  webinar1: <Presentation className="h-20 w-20 text-secondary" />,
+  webinar2: <TrendingUp className="h-20 w-20 text-primary" />,
 };
 
-const tutorialColors: { [key: string]: string } = {
+const cardColors: { [key: string]: string } = {
     tutorial1: 'bg-secondary/10',
     tutorial2: 'bg-primary/10',
     tutorial3: 'bg-accent/10',
+    webinar1: 'bg-secondary/10',
+    webinar2: 'bg-primary/10',
 }
 
 const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => {
   const { t } = useTranslation();
   
-  const icon = tutorialIcons[item.id];
-  const color = tutorialColors[item.id];
+  const icon = cardIcons[item.id];
+  const color = cardColors[item.id];
   
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
@@ -46,8 +50,8 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
           {item.imageUrl ? (
             <Image src={item.imageUrl} alt={item.description} fill className="object-cover" data-ai-hint={item.imageHint} />
           ) : (
-            <div className={`w-full h-full flex items-center justify-center ${color || 'bg-secondary/10'}`}>
-               {icon || <Sprout className="h-20 w-20 text-secondary" />}
+            <div className={`w-full h-full flex items-center justify-center ${color || 'bg-muted'}`}>
+               {icon || <Sprout className="h-20 w-20 text-muted-foreground" />}
             </div>
           )}
           {type !== 'resource' && (
