@@ -28,7 +28,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
-import { WalletProvider, useWallet } from "@/context/wallet-context";
+import { useWallet } from "@/context/wallet-context";
 import TransactionHistory from "@/components/transaction-history";
 
 
@@ -278,10 +278,8 @@ const ProfilePageClient = () => {
 
 export default function ProfilePage() {
     return (
-        <WalletProvider>
-            <div className="container mx-auto px-4 py-12 md:py-16">
-                <ProfilePageClient />
-            </div>
-        </WalletProvider>
+        <div className="container mx-auto px-4 py-12 md:py-16">
+            <ProfilePageClient />
+        </div>
     )
 }

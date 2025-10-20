@@ -9,7 +9,7 @@ import Footer from '@/components/layout/footer';
 import { CartProvider } from '@/context/cart-context';
 import { LanguageProvider } from '@/context/language-context';
 import { WalletProvider } from '@/context/wallet-context';
-import { FirebaseClientProvider } from '@/firebase/client-provider';
+
 
 // export const metadata: Metadata = {
 //   title: 'Annadata Connect',
@@ -34,14 +34,12 @@ export default function RootLayout({
         <LanguageProvider>
           <CartProvider>
             <WalletProvider>
-             <FirebaseClientProvider>
                 <div className="flex min-h-screen flex-col">
                   <Header />
                   <main className="flex-grow">{children}</main>
                   <Footer />
                 </div>
                 <Toaster />
-              </FirebaseClientProvider>
             </WalletProvider>
           </CartProvider>
         </LanguageProvider>
