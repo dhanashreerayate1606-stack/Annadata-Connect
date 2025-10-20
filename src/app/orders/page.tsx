@@ -98,7 +98,7 @@ export default function OrdersPage() {
                       {t('orders.viewDetailsButton')}
                     </Button>
                     <Button asChild variant="secondary" size="sm" disabled={order.status === 'Delivered'}>
-                       <Link href="/logistics">{t('orders.trackOrderButton')}</Link>
+                       <Link href={`/logistics?orderId=${order.id}&status=${order.status}`}>{t('orders.trackOrderButton')}</Link>
                     </Button>
                   </TableCell>
                 </TableRow>

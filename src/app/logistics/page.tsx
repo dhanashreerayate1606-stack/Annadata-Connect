@@ -1,6 +1,7 @@
 
 'use client';
 
+import { Suspense } from "react";
 import {
   Card,
   CardContent,
@@ -13,13 +14,7 @@ import { Phone, MessageSquare, Package, Truck, Home, User, Star } from "lucide-r
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
-const trackingSteps = [
-  { id: 'placed', status: "Order Placed", date: "2023-10-29 10:00 AM", completed: true, icon: Package },
-  { id: 'shipped', status: "Shipped", date: "2023-10-29 04:00 PM", completed: true, icon: Truck },
-  { id: 'delivery', status: "Out for Delivery", date: "2023-10-30 08:00 AM", completed: true, icon: Truck },
-  { id: 'delivered', status: "Delivered", date: "2023-10-30 01:30 PM", completed: false, icon: Home },
-];
+import { useSearchParams } from "next/navigation";
 
 const driverInfo = {
     name: "Ravi Kumar",
@@ -28,15 +23,43 @@ const driverInfo = {
     rating: 4.8,
 };
 
-export default function LogisticsPage() {
+const LogisticsContent = () => {
     const { t } = useTranslation();
+    const searchParams = useSearchParams();
+    const orderId = searchParams.get('orderId') || 'ORD004';
+    const status = searchParams.get('status') || 'Processing';
+
+    const getTrackingSteps = (status: string) => {
+        const steps = [
+          { id: 'placed', status: "Order Placed", date: "2023-10-29 10:00 AM", completed: false, icon: Package },
+          { id: 'shipped', status: "Shipped", date: "2023-10-29 04:00 PM", completed: false, icon: Truck },
+          { id: 'delivery', status: "Out for Delivery", date: "2023-10-30 08:00 AM", completed: false, icon: Truck },
+          { id: 'delivered', status: "Delivered", date: "2023-10-30 01:30 PM", completed: false, icon: Home },
+        ];
+
+        if (status === 'Processing') {
+            steps[0].completed = true;
+        } else if (status === 'Shipped') {
+            steps[0].completed = true;
+            steps[1].completed = true;
+        } else if (status === 'Delivered') {
+            steps.forEach(step => step.completed = true);
+        } else if (status === 'Out for Delivery') { // Assuming this might be a status
+             steps[0].completed = true;
+             steps[1].completed = true;
+             steps[2].completed = true;
+        }
+        return steps;
+    };
+
+    const trackingSteps = getTrackingSteps(status);
 
     return (
         <div className="container mx-auto max-w-4xl px-4 py-12 md:py-16">
             <div className="mb-10 text-center">
                 <h1 className="text-4xl font-bold tracking-tight font-headline">{t('logistics.title')}</h1>
                 <p className="mt-2 text-lg text-muted-foreground">
-                   {t('logistics.subtitle', { orderId: 'ORD004' })}
+                   {t('logistics.subtitle', { orderId: orderId })}
                 </p>
             </div>
 
@@ -105,5 +128,13 @@ export default function LogisticsPage() {
                 </Card>
             </div>
         </div>
+    );
+}
+
+export default function LogisticsPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <LogisticsContent />
+        </Suspense>
     );
 }
