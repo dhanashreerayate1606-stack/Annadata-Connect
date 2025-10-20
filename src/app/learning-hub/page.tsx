@@ -26,20 +26,20 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
       <CardHeader className="p-0">
-        {item.id === 'tutorial1' ? (
-            <div className="relative aspect-video w-full flex items-center justify-center bg-secondary/10">
-                <Sprout className="h-20 w-20 text-secondary" />
+        <div className="relative aspect-video w-full">
+          {item.imageUrl ? (
+            <Image src={item.imageUrl} alt={item.description} fill className="object-cover" data-ai-hint={item.imageHint} />
+          ) : (
+            <div className="w-full h-full bg-secondary/10 flex items-center justify-center">
+               <Sprout className="h-20 w-20 text-secondary" />
             </div>
-        ) : (
-            <div className="relative aspect-video w-full">
-              <Image src={item.imageUrl} alt={item.description} fill className="object-cover" data-ai-hint={item.imageHint} />
-              {type !== 'resource' && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-                  <Video className="h-12 w-12 text-white/80" />
-                </div>
-              )}
+          )}
+          {type !== 'resource' && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+              <Video className="h-12 w-12 text-white/80" />
             </div>
-        )}
+          )}
+        </div>
       </CardHeader>
       <CardContent className="p-4 flex-grow">
         <CardTitle className="text-lg font-bold font-headline">
