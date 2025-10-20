@@ -163,6 +163,8 @@
     "statePlaceholder": "ஹார்வெஸ்ட்ஷையர்",
     "zipLabel": "ஜிப் குறியீடு",
     "zipPlaceholder": "12345",
+    "phoneLabel": "தொலைபேசி எண்",
+    "phonePlaceholder": "உங்கள் தொலைபேசி எண்",
     "paymentTitle": "பணம் செலுத்தும் முறை",
     "paymentDescription": "தொடர ஒரு கட்டண முறையைத் தேர்ந்தெடுக்கவும்.",
     "paymentCard": "கடன்/பற்று அட்டை",

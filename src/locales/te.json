@@ -163,6 +163,8 @@
     "statePlaceholder": "హార్వెస్ట్‌షైర్",
     "zipLabel": "జిప్ కోడ్",
     "zipPlaceholder": "12345",
+    "phoneLabel": "ఫోన్ నంబర్",
+    "phonePlaceholder": "మీ ఫోన్ నంబర్",
     "paymentTitle": "చెల్లింపు పద్ధతి",
     "paymentDescription": "కొనసాగడానికి చెల్లింపు పద్ధతిని ఎంచుకోండి.",
     "paymentCard": "క్రెడిట్/డెబిట్ కార్డ్",

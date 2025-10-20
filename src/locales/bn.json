@@ -163,6 +163,8 @@
     "statePlaceholder": "হারভেস্টশায়ার",
     "zipLabel": "জিপ কোড",
     "zipPlaceholder": "১২৩৪৫",
+    "phoneLabel": "ফোন নম্বর",
+    "phonePlaceholder": "আপনার ফোন নম্বর",
     "paymentTitle": "অর্থপ্রদানের পদ্ধতি",
     "paymentDescription": "এগিয়ে যেতে একটি অর্থপ্রদানের পদ্ধতি নির্বাচন করুন।",
     "paymentCard": "ক্রেডিট/ডেবিট কার্ড",

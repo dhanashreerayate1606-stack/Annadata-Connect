@@ -163,6 +163,8 @@
     "statePlaceholder": "हार्वेस्टशायर",
     "zipLabel": "झिप कोड",
     "zipPlaceholder": "१२३४५",
+    "phoneLabel": "फोन नंबर",
+    "phonePlaceholder": "तुमचा फोन नंबर",
     "paymentTitle": "पेमेंट पद्धत",
     "paymentDescription": "पुढे जाण्यासाठी पेमेंट पद्धत निवडा.",
     "paymentCard": "क्रेडिट/डेबिट कार्ड",

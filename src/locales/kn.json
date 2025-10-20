@@ -163,6 +163,8 @@
     "statePlaceholder": "ಹಾರ್ವೆಸ್ಟ್‌ಶೈರ್",
     "zipLabel": "ಜಿಪ್ ಕೋಡ್",
     "zipPlaceholder": "12345",
+    "phoneLabel": "ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
+    "phonePlaceholder": "ನಿಮ್ಮ ದೂರವಾಣಿ ಸಂಖ್ಯೆ",
     "paymentTitle": "ಪಾವತಿ ವಿಧಾನ",
     "paymentDescription": "ಮುಂದುವರಿಯಲು ಪಾವತಿ ವಿಧಾನವನ್ನು ಆಯ್ಕೆಮಾಡಿ.",
     "paymentCard": "ಕ್ರೆಡಿಟ್/ಡೆಬಿಟ್ ಕಾರ್ಡ್",

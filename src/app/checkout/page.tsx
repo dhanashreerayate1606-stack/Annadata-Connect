@@ -101,6 +101,10 @@ export default function CheckoutPage() {
                   <Input id="zip" placeholder={t('checkout.zipPlaceholder')} />
                 </div>
               </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone">{t('checkout.phoneLabel')}</Label>
+                <Input id="phone" type="tel" placeholder={t('checkout.phonePlaceholder')} />
+              </div>
             </CardContent>
           </Card>
           <Card className="mt-8">

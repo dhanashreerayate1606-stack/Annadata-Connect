@@ -163,6 +163,8 @@
     "statePlaceholder": "Harvestshire",
     "zipLabel": "ZIP Code",
     "zipPlaceholder": "12345",
+    "phoneLabel": "Phone Number",
+    "phonePlaceholder": "Your phone number",
     "paymentTitle": "Payment Method",
     "paymentDescription": "Select a payment method to proceed.",
     "paymentCard": "Credit/Debit Card",
