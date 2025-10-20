@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Landmark } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import Link from "next/link";
 
 const schemes = [
   {
@@ -21,6 +22,7 @@ const schemes = [
     eligibility: "All landholding farmer families.",
     benefits: "Direct income support in three equal installments.",
     category: "Financial Support",
+    url: "https://pmkisan.gov.in/",
   },
   {
     id: "pmfby",
@@ -29,6 +31,7 @@ const schemes = [
     eligibility: "All farmers including sharecroppers and tenant farmers growing notified crops in notified areas.",
     benefits: "Stabilizes income and encourages adoption of innovative farming practices.",
     category: "Crop Insurance",
+    url: "https://pmfby.gov.in/",
   },
   {
     id: "kcc",
@@ -37,6 +40,7 @@ const schemes = [
     eligibility: "Farmers, animal husbandry, and fisheries farmers.",
     benefits: "Low-interest loans, flexible repayment, and a simple application process.",
     category: "Credit Facility",
+    url: "https://www.sbi.co.in/web/agri-rural/agriculture-banking/crop-finance/kisan-credit-card-kcc",
   },
 ];
 
@@ -101,7 +105,11 @@ export default function SchemesPage() {
                         <h4 className="font-semibold">{t('schemes.benefitsTitle')}</h4>
                         <p className="text-muted-foreground text-sm">{t(`schemes.${scheme.id}.benefits`)}</p>
                     </div>
-                    <Button size="sm">{t('schemes.applyButton')}</Button>
+                    <Button size="sm" asChild>
+                      <Link href={scheme.url} target="_blank" rel="noopener noreferrer">
+                        {t('schemes.applyButton')}
+                      </Link>
+                    </Button>
                   </div>
                 </AccordionContent>
               </AccordionItem>
