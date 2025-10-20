@@ -27,7 +27,7 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
       <CardHeader className="p-0">
         {item.id === 'tutorial1' ? (
-            <div className="relative aspect-video w-full flex items-center justify-center bg-muted">
+            <div className="relative aspect-video w-full flex items-center justify-center bg-secondary/10">
                 <Sprout className="h-20 w-20 text-secondary" />
             </div>
         ) : (
