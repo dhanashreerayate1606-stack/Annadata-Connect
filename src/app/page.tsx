@@ -14,11 +14,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, ChevronRight, Mic, Leaf } from 'lucide-react';
+import { Search, ChevronRight, Mic } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslation } from '@/hooks/use-translation';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
 const allProducts = PlaceHolderImages.filter(p => p.category === 'product');
@@ -38,21 +45,25 @@ export default function Home() {
       setIsRecording(false);
     } else {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const stream = await navigator.mediaDevices.getUserMedia({
+          audio: true,
+        });
         mediaRecorderRef.current = new MediaRecorder(stream);
         audioChunksRef.current = [];
 
-        mediaRecorderRef.current.ondataavailable = (event) => {
+        mediaRecorderRef.current.ondataavailable = event => {
           audioChunksRef.current.push(event.data);
         };
 
         mediaRecorderRef.current.onstop = async () => {
-          const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
+          const audioBlob = new Blob(audioChunksRef.current, {
+            type: 'audio/webm',
+          });
           const reader = new FileReader();
           reader.readAsDataURL(audioBlob);
           reader.onloadend = async () => {
             const base64Audio = reader.result as string;
-            
+
             toast({
               title: 'Processing your voice...',
               description: 'Our AI is analyzing your request.',
@@ -67,22 +78,23 @@ export default function Home() {
                   description: `Showing results for "${result.query}".`,
                 });
               } else {
-                 toast({
+                toast({
                   variant: 'destructive',
                   title: 'Could not understand audio',
                   description: 'Please try speaking again clearly.',
                 });
               }
             } catch (error) {
-               console.error('Voice search error:', error);
-               toast({
+              console.error('Voice search error:', error);
+              toast({
                 variant: 'destructive',
                 title: 'AI Voice Search Failed',
-                description: 'There was an error processing your voice command.',
+                description:
+                  'There was an error processing your voice command.',
               });
             }
           };
-           // Stop all media tracks to turn off the microphone
+          // Stop all media tracks to turn off the microphone
           stream.getTracks().forEach(track => track.stop());
         };
 
@@ -92,13 +104,13 @@ export default function Home() {
           title: 'Listening...',
           description: 'Speak now to search for a product.',
         });
-
       } catch (error) {
         console.error('Error accessing microphone:', error);
         toast({
           variant: 'destructive',
           title: 'Microphone Access Denied',
-          description: 'Please enable microphone permissions in your browser settings.',
+          description:
+            'Please enable microphone permissions in your browser settings.',
         });
       }
     }
@@ -109,6 +121,11 @@ export default function Home() {
       .filter(p => selectedCategory === 'all' || p.productType === selectedCategory)
       .filter(p => p.name?.toLowerCase().includes(searchQuery.toLowerCase()));
   }, [searchQuery, selectedCategory]);
+
+  const featuredProducts = useMemo(
+    () => allProducts.slice(0, 5),
+    []
+  );
 
   return (
     <div className="flex flex-col">
@@ -131,36 +148,76 @@ export default function Home() {
           <p className="mt-4 max-w-2xl text-lg md:text-xl font-body">
             {t('home.heroSubtitle')}
           </p>
-          <Button asChild className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold">
+          <Button
+            asChild
+            className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
+          >
             <Link href="#products">
               {t('home.exploreNow')} <ChevronRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
         </div>
       </section>
+      
+      <section className="container mx-auto px-4 py-12 md:py-16">
+         <div className="mb-8 text-center">
+             <h2 className="text-3xl font-bold font-headline">{t('home.featuredProducts')}</h2>
+             <p className="text-muted-foreground mt-2">{t('home.featuredProductsDesc')}</p>
+         </div>
+         <Carousel
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {featuredProducts.map((product) => (
+                <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                  <div className="p-1">
+                     <ProductCard product={product} />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
+      </section>
 
       <section id="products" className="container mx-auto px-4 py-12 md:py-16">
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center">
           <div className="relative flex-grow">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-            <Input 
+            <Input
               placeholder={t('home.searchPlaceholder')}
               className="pl-10"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={e => setSearchQuery(e.target.value)}
             />
           </div>
           <div className="flex gap-2">
-            <Button variant="outline" size="icon" aria-label="Voice Search" onClick={handleVoiceSearch} className={isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : ''}>
+            <Button
+              variant="outline"
+              size="icon"
+              aria-label="Voice Search"
+              onClick={handleVoiceSearch}
+              className={isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : ''}
+            >
               <Mic className="h-5 w-5" />
             </Button>
-            <Select onValueChange={setSelectedCategory} value={selectedCategory}>
+            <Select
+              onValueChange={setSelectedCategory}
+              value={selectedCategory}
+            >
               <SelectTrigger className="w-full md:w-[180px]">
                 <SelectValue placeholder={t('home.categoryPlaceholder')} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">{t('home.allCategories')}</SelectItem>
-                <SelectItem value="vegetables">{t('home.vegetables')}</SelectItem>
+                <SelectItem value="vegetables">
+                  {t('home.vegetables')}
+                </SelectItem>
                 <SelectItem value="fruits">{t('home.fruits')}</SelectItem>
                 <SelectItem value="grains">{t('home.grains')}</SelectItem>
                 <SelectItem value="pulses">{t('home.pulses')}</SelectItem>
@@ -168,12 +225,11 @@ export default function Home() {
                 <SelectItem value="flowers">{t('home.flowers')}</SelectItem>
               </SelectContent>
             </Select>
-            
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredProducts.map((product) => (
+          {filteredProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
@@ -182,25 +238,25 @@ export default function Home() {
       <section className="bg-muted py-12 md:py-16">
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div>
-            <h2 className="text-3xl font-bold font-headline">{t('home.subscriptionsTitle')}</h2>
+            <h2 className="text-3xl font-bold font-headline">
+              {t('home.subscriptionsTitle')}
+            </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               {t('home.subscriptionsSubtitle')}
             </p>
             <Button asChild className="mt-6">
-              <Link href="/subscriptions">
-                {t('home.subscriptionsButton')}
-              </Link>
+              <Link href="/subscriptions">{t('home.subscriptionsButton')}</Link>
             </Button>
           </div>
           <div>
-             <h2 className="text-3xl font-bold font-headline">{t('home.bulkOrdersTitle')}</h2>
+            <h2 className="text-3xl font-bold font-headline">
+              {t('home.bulkOrdersTitle')}
+            </h2>
             <p className="mt-4 text-lg text-muted-foreground">
               {t('home.bulkOrdersSubtitle')}
             </p>
             <Button asChild className="mt-6">
-              <Link href="/bulk-orders">
-                {t('home.bulkOrdersButton')}
-              </Link>
+              <Link href="/bulk-orders">{t('home.bulkOrdersButton')}</Link>
             </Button>
           </div>
         </div>
@@ -208,3 +264,5 @@ export default function Home() {
     </div>
   );
 }
+
+    

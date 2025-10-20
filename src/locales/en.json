@@ -27,7 +27,9 @@
     "subscriptionsButton": "Explore Subscriptions",
     "bulkOrdersTitle": "Bulk Orders for Your Business",
     "bulkOrdersSubtitle": "Running a restaurant, housing society, or school? Get special pricing and dedicated support for bulk orders of fresh produce.",
-    "bulkOrdersButton": "Enquire Now"
+    "bulkOrdersButton": "Enquire Now",
+    "featuredProducts": "Featured Products",
+    "featuredProductsDesc": "Handpicked for you from the best farms."
   },
   "login": {
     "welcome": "Welcome Back",
@@ -217,7 +219,13 @@
     "listingsThisWeek": "3 new listings this week",
     "organicTraffic": "25% organic traffic",
     "salesOverview": "Sales Overview",
-    "salesDescription": "Monthly revenue and order volume."
+    "salesDescription": "Monthly revenue and order volume.",
+    "manageListingsDesc": "Add, edit, or remove your product listings.",
+    "manageListingsBtn": "Manage Listings",
+    "cropAdvisoryDesc": "Get AI-powered advice for your next crop cycle.",
+    "getAdviceBtn": "Get Advice",
+    "salesAnalyticsDesc": "Review your monthly sales and order trends.",
+    "viewAnalyticsBtn": "View Analytics"
   },
   "listings": {
     "title": "My Product Listings",
@@ -404,3 +412,5 @@
     "chatSupport": "Chat with Us"
   }
 }
+
+    
