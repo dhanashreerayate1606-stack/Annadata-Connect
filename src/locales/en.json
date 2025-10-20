@@ -399,9 +399,6 @@
     "supportTitle": "Need Help?",
     "supportDescription": "Contact our support team for any issues with your order.",
     "callSupport": "Call Support",
-    "chatSupport": "Chat with Us",
-    "routeTitle": "Live Route",
-    "source": "Source",
-    "destination": "Destination"
+    "chatSupport": "Chat with Us"
   }
 }

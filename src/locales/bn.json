@@ -184,9 +184,9 @@
     "placeOrderButton": "অর্ডার দিন",
     "toastOrderPlacedTitle": "অর্ডার দেওয়া হয়েছে!",
     "toastOrderPlacedDescription": "আপনার কেনার জন্য ধন্যবাদ। আমরা আপনার অর্ডার পেয়েছি।",
-    "toastPaymentErrorTitle": "অর্থপ্রदान ত্রুটি",
+    "toastPaymentErrorTitle": "অর্থপ্রদান ত্রুটি",
     "toastPaymentErrorDescription": "প্রথমে একটি অর্থপ্রদানের পদ্ধতি নির্বাচন করুন।",
-    "toastPaymentConfirmedTitle": "অর্থप्रদান নিশ্চিত",
+    "toastPaymentConfirmedTitle": "অর্থপ্রদান নিশ্চিত",
     "toastPaymentConfirmedDescription": "আপনি এখন আপনার অর্ডার দিতে পারেন।"
   },
   "community": {
@@ -399,9 +399,6 @@
     "supportTitle": "সাহায্য প্রয়োজন?",
     "supportDescription": "আপনার অর্ডারের সাথে ಯಾವುದೇ সমস্যাಗಳಿಗಾಗಿ ನಮ್ಮ ಬೆಂಬಲ ತಂಡವನ್ನು ಸಂಪರ್ಕಿಸಿ।",
     "callSupport": "সমর্থনকে কল করুন",
-    "chatSupport": "আমাদের সাথে চ্যাট করুন",
-    "routeTitle": "লাইভ রুট",
-    "source": "উৎস",
-    "destination": "গন্তব্য"
+    "chatSupport": "আমাদের সাথে চ্যাট করুন"
   }
 }
