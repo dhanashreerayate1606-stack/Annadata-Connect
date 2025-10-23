@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import {
   Card,
   CardContent,
@@ -72,7 +73,7 @@ const badges = [
   },
 ];
 
-const communityPosts = [
+const initialCommunityPosts = [
     {
         id: 1,
         author: "Meena Kumari",
@@ -91,10 +92,29 @@ const communityPosts = [
         likes: 25,
         comments: 7,
     }
-]
+];
 
 export default function CommunityPage() {
   const { t } = useTranslation();
+  const [communityPosts, setCommunityPosts] = useState(initialCommunityPosts);
+  const [newPostContent, setNewPostContent] = useState("");
+
+  const handlePostSubmit = () => {
+    if (newPostContent.trim() === "") return;
+
+    const newPost = {
+      id: communityPosts.length + 1,
+      author: "You",
+      avatar: "https://picsum.photos/seed/profile-avatar/200/200",
+      timestamp: "Just now",
+      content: newPostContent,
+      likes: 0,
+      comments: 0,
+    };
+
+    setCommunityPosts([newPost, ...communityPosts]);
+    setNewPostContent("");
+  };
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
@@ -121,8 +141,12 @@ export default function CommunityPage() {
                       <AvatarFallback>You</AvatarFallback>
                     </Avatar>
                     <div className="w-full">
-                       <Textarea placeholder="What's on your mind, farmer?" />
-                       <Button className="mt-2">Post to Community</Button>
+                       <Textarea 
+                         placeholder="What's on your mind, farmer?" 
+                         value={newPostContent}
+                         onChange={(e) => setNewPostContent(e.target.value)}
+                       />
+                       <Button className="mt-2" onClick={handlePostSubmit}>Post to Community</Button>
                     </div>
                 </div>
             </CardContent>
