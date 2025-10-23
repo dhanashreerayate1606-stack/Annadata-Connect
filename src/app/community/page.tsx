@@ -116,6 +116,22 @@ export default function CommunityPage() {
     setNewPostContent("");
   };
 
+  const handleLike = (postId: number) => {
+    setCommunityPosts(posts =>
+      posts.map(post =>
+        post.id === postId ? { ...post, likes: post.likes + 1 } : post
+      )
+    );
+  };
+
+  const handleComment = (postId: number) => {
+    setCommunityPosts(posts =>
+      posts.map(post =>
+        post.id === postId ? { ...post, comments: post.comments + 1 } : post
+      )
+    );
+  };
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <div className="text-center">
@@ -164,10 +180,10 @@ export default function CommunityPage() {
                            </div>
                            <p className="mt-1 text-sm">{post.content}</p>
                            <div className="mt-2 flex items-center gap-4 text-muted-foreground">
-                               <Button variant="ghost" size="sm" className="flex items-center gap-1">
+                               <Button variant="ghost" size="sm" className="flex items-center gap-1" onClick={() => handleLike(post.id)}>
                                    <ThumbsUp className="h-4 w-4" /> {post.likes}
                                </Button>
-                               <Button variant="ghost" size="sm" className="flex items-center gap-1">
+                               <Button variant="ghost" size="sm" className="flex items-center gap-1" onClick={() => handleComment(post.id)}>
                                    <MessageSquare className="h-4 w-4" /> {post.comments}
                                </Button>
                            </div>
