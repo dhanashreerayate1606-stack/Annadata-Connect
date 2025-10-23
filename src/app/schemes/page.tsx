@@ -40,7 +40,7 @@ const schemes = [
     eligibility: "Farmers, animal husbandry, and fisheries farmers.",
     benefits: "Low-interest loans, flexible repayment, and a simple application process.",
     category: "Credit Facility",
-    url: "https://www.sbi.co.in/web/agri-rural/agriculture-banking/crop-finance/kisan-credit-card-kcc",
+    url: "https://www.jansamarth.in/kisan-credit-card-scheme",
   },
 ];
 
