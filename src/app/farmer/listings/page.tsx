@@ -41,13 +41,17 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { useTranslation } from '@/hooks/use-translation';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+
+const tomatoImage = PlaceHolderImages.find(p => p.id === 'tomatoes');
+const onionImage = PlaceHolderImages.find(p => p.id === 'onions');
+const grapeImage = PlaceHolderImages.find(p => p.id === 'grapes');
 
 const productListings = [
   {
     id: 'tomatoes',
     name: 'Desi Tomato',
-    image:
-      'https://images.unsplash.com/photo-1591171551239-80a5eddd627a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxmcmVzaCUyMHRvbWF0b2VzfGVufDB8fHx8MTc2MDg3ODI5M3ww&ixlib=rb-4.1.0&q=80&w=1080',
+    image: tomatoImage?.imageUrl || 'https://picsum.photos/seed/1/64/64',
     status: 'Published',
     price: 40,
     stock: 500, // in kg
@@ -56,8 +60,7 @@ const productListings = [
   {
     id: 'onions',
     name: 'Red Onion',
-    image:
-      'https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: onionImage?.imageUrl || 'https://picsum.photos/seed/2/64/64',
     status: 'Published',
     price: 50,
     stock: 800,
@@ -66,8 +69,7 @@ const productListings = [
   {
     id: 'grapes',
     name: 'Green Grapes',
-    image:
-      'https://images.unsplash.com/photo-1597889392482-0f3a618f4803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxncmVlbiUyMGdyYXBlc3xlbnwwfHx8fDE3NjEzMDMxMDF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: grapeImage?.imageUrl || 'https://picsum.photos/seed/3/64/64',
     status: 'Draft',
     price: 120,
     stock: 200,
