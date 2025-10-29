@@ -57,7 +57,7 @@ const productListings = [
     id: 'onions',
     name: 'Red Onion',
     image:
-      'https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib-rb-4.1.0&q=80&w=1080',
     status: 'Published',
     price: 50,
     stock: 800,
@@ -118,6 +118,16 @@ export default function FarmerListingsPage() {
                     />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
+                    <Label htmlFor="description" className="text-right">
+                      {t('listings.dialogDescriptionLabel')}
+                    </Label>
+                    <Textarea
+                      id="description"
+                      placeholder={t('listings.dialogDescriptionPlaceholder')}
+                      className="col-span-3"
+                    />
+                  </div>
+                  <div className="grid grid-cols-4 items-center gap-4">
                     <Label htmlFor="price" className="text-right">
                       {t('listings.dialogPriceLabel')}
                     </Label>
@@ -140,12 +150,12 @@ export default function FarmerListingsPage() {
                     />
                   </div>
                   <div className="grid grid-cols-4 items-center gap-4">
-                    <Label htmlFor="description" className="text-right">
-                      {t('listings.dialogDescriptionLabel')}
+                    <Label htmlFor="product-image" className="text-right">
+                      Image
                     </Label>
-                    <Textarea
-                      id="description"
-                      placeholder={t('listings.dialogDescriptionPlaceholder')}
+                    <Input
+                      id="product-image"
+                      type="file"
                       className="col-span-3"
                     />
                   </div>
@@ -254,5 +264,3 @@ export default function FarmerListingsPage() {
     </div>
   );
 }
-
-    
