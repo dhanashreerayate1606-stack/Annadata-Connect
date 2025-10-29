@@ -57,7 +57,7 @@ const productListings = [
     id: 'onions',
     name: 'Red Onion',
     image:
-      'https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib-rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1588114480643-d3a3b022dc7e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxyZWQlMjBvbmlvbnN8ZW58MHx8fHwxNzYwOTY3NzQ4fDA&ixlib=rb-4.1.0&q=80&w=1080',
     status: 'Published',
     price: 50,
     stock: 800,
@@ -223,7 +223,7 @@ export default function FarmerListingsPage() {
                   <TableCell className="hidden md:table-cell">
                     {product.stock} kg
                   </TableCell>
-                  <TableCell className="hidden md:table-cell">
+                  <TableCell className="hidden md-table-cell">
                     {product.sales} kg
                   </TableCell>
                   <TableCell>
