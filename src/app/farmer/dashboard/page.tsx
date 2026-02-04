@@ -33,7 +33,7 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
-import Link from 'link';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/use-translation';
 import { useLanguage } from '@/context/language-context';
