@@ -1,7 +1,6 @@
-
 'use client';
 
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -10,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Package, Truck, Home, User, Star } from "lucide-react";
+import { Phone, MessageSquare, Package, Truck, Home, User, Star, CloudRain, AlertTriangle } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -28,6 +27,13 @@ const LogisticsContent = () => {
     const searchParams = useSearchParams();
     const orderId = searchParams.get('orderId') || 'ORD004';
     const status = searchParams.get('status') || 'Processing';
+    const [isDelayedByWeather, setIsDelayedByWeather] = useState(false);
+
+    useEffect(() => {
+      // Simulate checking weather impact on route
+      const timer = setTimeout(() => setIsDelayedByWeather(true), 1500);
+      return () => clearTimeout(timer);
+    }, []);
 
     const getTrackingSteps = (status: string) => {
         const steps = [
@@ -44,7 +50,7 @@ const LogisticsContent = () => {
             steps[1].completed = true;
         } else if (status === 'Delivered') {
             steps.forEach(step => step.completed = true);
-        } else if (status === 'Out for Delivery') { // Assuming this might be a status
+        } else if (status === 'Out for Delivery') {
              steps[0].completed = true;
              steps[1].completed = true;
              steps[2].completed = true;
@@ -64,6 +70,22 @@ const LogisticsContent = () => {
             </div>
 
             <div className="mx-auto max-w-xl grid grid-cols-1 gap-8">
+                {isDelayedByWeather && (
+                  <Card className="border-orange-200 bg-orange-50">
+                    <CardHeader className="pb-2">
+                      <CardTitle className="text-orange-800 text-sm flex items-center gap-2">
+                        <AlertTriangle className="h-4 w-4" />
+                        Weather Delay Advisory
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-sm text-orange-700">
+                        Heavy rainfall in the Nashik-Pune corridor may cause a slight delay in your delivery. Our drivers are prioritizing safety.
+                      </p>
+                    </CardContent>
+                  </Card>
+                )}
+
                 <Card>
                     <CardHeader>
                         <CardTitle>{t('logistics.timelineTitle')}</CardTitle>
@@ -80,7 +102,12 @@ const LogisticsContent = () => {
                                         <step.icon className="h-6 w-6" />
                                     </div>
                                     <div>
-                                        <p className="font-semibold">{t(`logistics.step_${step.id}`)}</p>
+                                        <div className="flex items-center gap-2">
+                                          <p className="font-semibold">{t(`logistics.step_${step.id}`)}</p>
+                                          {isDelayedByWeather && step.id === 'delivery' && (
+                                            <span className="text-[10px] font-bold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded uppercase">Adjusted</span>
+                                          )}
+                                        </div>
                                         <p className="text-sm text-muted-foreground">{step.date}</p>
                                     </div>
                                 </div>

@@ -1,4 +1,3 @@
-
 {
   "header": {
     "marketplace": "Marketplace",
@@ -224,7 +223,10 @@
     "cropAdvisoryDesc": "Get AI-powered advice for your next crop cycle.",
     "getAdviceBtn": "Get Advice",
     "salesAnalyticsDesc": "Review your monthly sales and order trends.",
-    "viewAnalyticsBtn": "View Analytics"
+    "viewAnalyticsBtn": "View Analytics",
+    "weatherTitle": "IoT Weather & Alerts",
+    "weatherSubtitle": "Real-time Hyperlocal Climate Monitoring",
+    "criticalAlerts": "Critical Risk Alerts"
   },
   "listings": {
     "title": "My Product Listings",

@@ -1,9 +1,8 @@
-
 'use client';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect } from 'react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -14,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, ChevronRight, Mic } from 'lucide-react';
+import { Search, ChevronRight, Mic, CloudRain, Sun, Leaf } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
@@ -26,6 +25,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
+import { weatherAdvisory, WeatherAdvisoryOutput } from '@/ai/flows/weather-advisory-flow';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
 const allProducts = PlaceHolderImages.filter(p => p.category === 'product');
@@ -34,10 +34,26 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isRecording, setIsRecording] = useState(false);
+  const [weatherInsight, setWeatherInsight] = useState<string | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const loadWeatherInsights = async () => {
+      try {
+        const result = await weatherAdvisory({
+          location: 'Maharashtra',
+          forecast: 'Moderate rainfall expected this week.'
+        });
+        setWeatherInsight(result.consumerInsight);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+    loadWeatherInsights();
+  }, []);
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -158,6 +174,24 @@ export default function Home() {
           </Button>
         </div>
       </section>
+
+      {/* Weather & Harvest Insight Banner */}
+      {weatherInsight && (
+        <div className="bg-primary/5 border-y border-primary/10">
+          <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+            <div className="bg-primary/10 p-2 rounded-full hidden sm:block">
+              <Sun className="h-5 w-5 text-primary" />
+            </div>
+            <div className="flex-grow">
+              <span className="text-xs font-bold uppercase tracking-wider text-primary mr-2">Weather Insight</span>
+              <p className="text-sm text-foreground/80 italic">"{weatherInsight}"</p>
+            </div>
+            <Link href="/learning-hub" className="text-xs font-semibold text-primary hover:underline shrink-0">
+              Why this matters?
+            </Link>
+          </div>
+        </div>
+      )}
       
       <section className="container mx-auto px-4 py-12 md:py-16">
          <div className="mb-8 text-center">
@@ -264,5 +298,3 @@ export default function Home() {
     </div>
   );
 }
-
-    
