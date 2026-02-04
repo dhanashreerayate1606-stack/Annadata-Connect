@@ -1,10 +1,9 @@
-
 'use client';
 
 import Image from "next/image";
 import type { ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Star, ShoppingCart, QrCode } from "lucide-react";
+import { Star, ShoppingCart, QrCode, ShieldCheck, Utensils } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import {
   Dialog,
@@ -14,6 +13,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { Card, CardContent } from "@/components/ui/card";
 import { useCart } from "@/context/cart-context";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "@/hooks/use-translation";
@@ -40,7 +40,7 @@ export default function ProductDetailsClient({ product }: { product: ImagePlaceh
     }
   };
 
-  const qrData = `Product: ${product.name}, Farmer: ${product.farmer}, Location: Green Valley, Harvest Date: 2023-10-25`;
+  const qrData = `Blockchain Verifier: v1.0, Batch: ${product.id}-2023, Hash: 0x7f23...a91, Origin: ${product.location || 'Maharashtra'}`;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrData)}`;
 
   return (
@@ -77,35 +77,58 @@ export default function ProductDetailsClient({ product }: { product: ImagePlaceh
           <p className="mt-4 text-base text-foreground/80 leading-relaxed">
             {t('product.description', { productName: product.name, farmerName: product.farmer })}
           </p>
-          <div className="mt-8 flex items-center gap-4">
-            <Button size="lg" className="flex-1" onClick={handleAddToCart}>
+          
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <Button size="lg" className="w-full" onClick={handleAddToCart}>
               <ShoppingCart className="mr-2 h-5 w-5" /> {t('product.addToCartButton')}
             </Button>
             <Dialog>
               <DialogTrigger asChild>
-                <Button size="lg" variant="outline">
+                <Button size="lg" variant="outline" className="w-full">
                   <QrCode className="mr-2 h-5 w-5" /> {t('product.traceOriginButton')}
                 </Button>
               </DialogTrigger>
               <DialogContent className="sm:max-w-md">
                 <DialogHeader>
-                  <DialogTitle>{t('product.qrTitle')}</DialogTitle>
+                  <DialogTitle className="flex items-center gap-2">
+                    <ShieldCheck className="h-5 w-5 text-secondary" />
+                    {t('product.qrTitle')}
+                  </DialogTitle>
                   <DialogDescription>
                     {t('product.qrDescription', { productName: product.name })}
                   </DialogDescription>
                 </DialogHeader>
                 <div className="flex flex-col items-center gap-4 py-4">
-                  <Image src={qrUrl} width={200} height={200} alt="Product QR Code" />
-                  <div className="text-sm text-muted-foreground space-y-1 text-center">
-                      <p><strong>{t('product.qrProduct')}:</strong> {product.name}</p>
+                  <div className="p-2 bg-white rounded-lg shadow-inner">
+                    <Image src={qrUrl} width={200} height={200} alt="Product QR Code" />
+                  </div>
+                  <div className="text-sm text-muted-foreground space-y-2 text-center bg-muted/50 p-4 rounded-md w-full">
+                      <p><strong>Batch ID:</strong> {product.id}-2023-BATCH</p>
+                      <p><strong>Blockchain Hash:</strong> 0x7f23...a91bc</p>
+                      <p><strong>Verified by:</strong> Annadata Trust Protocol</p>
+                      <Separator />
                       <p><strong>{t('product.qrFarmer')}:</strong> {product.farmer}</p>
-                      <p><strong>{t('product.qrLocation')}:</strong> Nashik, Maharashtra</p>
+                      <p><strong>{t('product.qrLocation')}:</strong> {product.location || 'Kalyan, MH'}</p>
                       <p><strong>{t('product.qrHarvested')}:</strong> Oct 25, 2023</p>
                   </div>
                 </div>
               </DialogContent>
             </Dialog>
           </div>
+
+          <Card className="mt-10 border-accent/20 bg-accent/5">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Utensils className="h-5 w-5 text-accent" />
+                Suggested Recipe
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm font-medium">Traditional {product.name?.split('(')[0]} Curry</p>
+              <p className="text-xs text-muted-foreground mt-1">Slow-cooked with local spices and organic coconut milk. Perfect with Basmati rice.</p>
+              <Button variant="link" className="p-0 h-auto mt-2 text-accent-foreground font-semibold">View Recipe</Button>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </div>

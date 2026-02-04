@@ -16,7 +16,8 @@
       "imageHint": "fresh tomatoes",
       "name": "देसी टमाटर (Desi Tomato)",
       "price": "40",
-      "farmer": "Pawar Farms"
+      "farmer": "Pawar Farms",
+      "location": "Kalyan, MH"
     },
     {
       "id": "potatoes",
@@ -27,7 +28,8 @@
       "imageHint": "raw potatoes",
       "name": "बटाटा (Potato)",
       "price": "30",
-      "farmer": "Shinde Organics"
+      "farmer": "Shinde Organics",
+      "location": "Nashik, MH"
     },
     {
       "id": "basmati-rice",
@@ -38,95 +40,8 @@
       "imageHint": "basmati rice",
       "name": "बासमती चावल (Basmati Rice)",
       "price": "120",
-      "farmer": "Golden Fields"
-    },
-    {
-      "id": "mangoes",
-      "category": "product",
-      "productType": "fruits",
-      "description": "Ripe Alphonso mangoes in a basket",
-      "imageUrl": "https://images.unsplash.com/photo-1575704775495-3db17d0b5522?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8bmF0dXJhbCUyMGFscGhvbnNwbyUyMG1hbmdvZXN8ZW58MHx8fHwxNzYwOTAxMTQ4fDA&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "fresh mangoes",
-      "name": "आम (Alphonso Mango)",
-      "price": "800",
-      "farmer": "Ratnagiri Farms"
-    },
-    {
-      "id": "spinach",
-      "category": "product",
-      "productType": "vegetables",
-      "description": "Fresh green spinach leaves in a bowl",
-      "imageUrl": "https://images.unsplash.com/photo-1708785584552-3111822c72dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMnx8c3BpbmFjaCUyMGZvciUyMHNlbGx8ZW58MHx8fHwxNzYwOTQ0ODc3fDA&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "fresh spinach",
-      "name": "पालक (Spinach)",
-      "price": "20",
-      "farmer": "Pawar Farms"
-    },
-    {
-      "id": "onions",
-      "category": "product",
-      "productType": "vegetables",
-      "description": "Fresh red onions",
-      "imageUrl": "https://images.unsplash.com/photo-1642582037312-9b9639be89e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8ZnJlc2glMjByZWQlMjBvbmlvbnMlMjBkZWNlbnQlMjBuYXR1cmFsJTIwfGVufDB8fHx8MTc2MDk0NTA4MHww&ixlibrb-4.1.0&q=80&w=1080",
-      "imageHint": "red onions",
-      "name": "प्याज (Onion)",
-      "price": "50",
-      "farmer": "Shinde Organics"
-    },
-    {
-      "id": "turmeric",
-      "category": "product",
-      "productType": "spices",
-      "description": "Turmeric powder and roots",
-      "imageUrl": "https://images.unsplash.com/photo-1606951444141-e5533feb55be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0dXJtZXJpY3xlbnwwfHx8fDE3NjA5NDU0ODl8MA&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "turmeric roots",
-      "name": "हल्दी (Turmeric)",
-      "price": "250",
-      "farmer": "Golden Fields"
-    },
-    {
-      "id": "pomegranate",
-      "category": "product",
-      "productType": "fruits",
-      "description": "A ripe pomegranate",
-      "imageUrl": "https://images.unsplash.com/photo-1760333949041-1c6e16f1c72c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxOXx8YSUyMHJpcGUlMjBwb21lZ3JhbmF0ZXxlbnwwfHx8fDE3NjA5NDU1Nzl8MA&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "pomegranate fruit",
-      "name": "अनार (Pomegranate)",
-      "price": "150",
-      "farmer": "Ratnagiri Farms"
-    },
-    {
-      "id": "lentils",
-      "category": "product",
-      "productType": "pulses",
-      "description": "Bowl of red lentils",
-      "imageUrl": "https://images.unsplash.com/photo-1663046657809-48185bc9d46c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxib3dsJTIwb2YlMjByZWQlMjBsZW50aWxzfGVufDB8fHx8MTc2MDk0NTY4OXww&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "red lentils",
-      "name": "मसूर दाल (Masoor Dal)",
-      "price": "90",
-      "farmer": "Golden Fields"
-    },
-    {
-      "id": "marigold",
-      "category": "product",
-      "productType": "flowers",
-      "description": "Bright orange marigold flowers",
-      "imageUrl": "https://images.unsplash.com/photo-1706971790509-de496659845d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxicmlnaHQlMjBvcmFuZ2UlMjBtYXJpZ29sZCUyMGZsb3dlcnMlMjBpbiUyMG1hcmtldHxlbnwwfHx8fDE3NjA5NDU5MDZ8MA&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "marigold flowers",
-      "name": "गेंदा (Marigold)",
-      "price": "50",
-      "farmer": "Pawar Farms"
-    },
-    {
-      "id": "grapes",
-      "category": "product",
-      "productType": "fruits",
-      "description": "Fresh green grapes",
-      "imageUrl": "https://images.unsplash.com/photo-1714779044371-f5161c65fd68?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxmcmVzaCUyMGdyZWVuJTIwZ3JhcGVzfGVufDB8fHx8MTc2MDk0NTk4MHww&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "green grapes",
-      "name": "द्राक्षे (Grapes)",
-      "price": "120",
-      "farmer": "Shinde Organics"
+      "farmer": "Golden Fields",
+      "location": "Punjab"
     },
     {
       "id": "tutorial1",
@@ -135,7 +50,7 @@
       "description": "Learn scientific methods to test and improve soil fertility for better yields.",
       "imageUrl": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "soil health",
-      "videoUrl": "https://www.youtube.com/embed/Hu6mQ_BR6to"
+      "searchQuery": "Improving farm soil health science"
     },
     {
       "id": "webinar1",
@@ -144,7 +59,7 @@
       "description": "How IoT and drones are transforming the agricultural landscape in India.",
       "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farm technology",
-      "videoUrl": "https://www.youtube.com/embed/7Z0Wuv_of34"
+      "searchQuery": "IoT drones agriculture India"
     },
     {
       "id": "resource1",
@@ -156,68 +71,11 @@
       "fileUrl": "https://www.fao.org/3/i2150e/i2150e.pdf"
     },
     {
-      "id": "tutorial2",
-      "category": "learning",
-      "name": "Effective Crop Management Techniques",
-      "description": "Strategies for weed control, irrigation, and pest management.",
-      "imageUrl": "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "farm management",
-      "videoUrl": "https://www.youtube.com/embed/uMT9u_ivhyc"
-    },
-    {
-      "id": "tutorial3",
-      "category": "learning",
-      "name": "Agri-Tech: Using Technology on Your Farm",
-      "description": "Introduction to digital apps and tools for farm inventory tracking.",
-      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "farmer with laptop",
-      "videoUrl": "https://www.youtube.com/embed/fXp0ToZ6X_M"
-    },
-    {
-      "id": "webinar2",
-      "category": "learning",
-      "name": "Financial Planning for Farmers",
-      "description": "Understanding credits, subsidies, and insurance for your crops.",
-      "imageUrl": "https://images.unsplash.com/photo-1454165833767-02acd057c2a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYW5raW5nfGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "business banking",
-      "videoUrl": "https://www.youtube.com/embed/gvXreS_OfXo"
-    },
-    {
-      "id": "resource2",
-      "category": "learning",
-      "name": "Seasonal Planting Calendar",
-      "description": "A month-by-month guide for planting across different Indian climate zones.",
-      "imageUrl": "https://images.unsplash.com/photo-1526319238109-524eecb9b913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxlbmRhciUyMHBsYW5uaW5nfGVufDB8fHx8MTc2MTMwNDMwOHww&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "calendar planning",
-      "fileUrl": "https://www.agri.state.id.us/AGRI/Categories/PlantsInsects/Documents/Organic/OrganicHandbook.pdf"
-    },
-    {
       "id": "schemes-hero",
       "category": "hero",
       "description": "An Indian farmer smiling in a field.",
       "imageUrl": "https://images.unsplash.com/photo-1617192213511-2c9a1a63de40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXJ8ZW58MHx8fHwxNzYxMzA0MzMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "indian farmer"
-    },
-    {
-      "id": "bulk-hero",
-      "category": "hero",
-      "description": "A crate of fresh vegetables ready for bulk delivery.",
-      "imageUrl": "https://images.unsplash.com/photo-1669154777196-aca4d45b581a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxBJTIwQ1JBVEUlMjBPRiUyMEZSRVNIJTIwVkVHRVRBQkxFUyUyMFJFQURZJTIwRk9SJTIwQlVMSyUyMERFTElWRVJZfGVufDB8fHx8MTc2MDk1NzU4NXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "vegetable crate"
-    },
-    {
-      "id": "subscription-hero",
-      "category": "hero",
-      "description": "A person holding a subscription box full of fresh produce.",
-      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "produce subscription box"
-    },
-    {
-      "id": "logistics-map",
-      "category": "asset",
-      "description": "A stylized map showing a delivery route from a rural area to a city.",
-      "imageUrl": "https://images.unsplash.com/photo-1629576174781-fc9dbfd743c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxM3x8TmFzaGlrJTIwc2F0ZWxsaXRlJTIwc3RyZWV0JTIwbWFwfGVufDB8fHx8MTc2MDk1MjAxNXww&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "street tracker digital satellite map"
     }
   ]
 }

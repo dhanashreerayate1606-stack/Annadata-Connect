@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Package, Truck, Home, Star, AlertTriangle } from "lucide-react";
+import { Phone, MessageSquare, Package, Truck, Home, Star, AlertTriangle, ThermometerSnowflake, Droplets } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -28,11 +28,24 @@ const LogisticsContent = () => {
     const orderId = searchParams.get('orderId') || 'ORD004';
     const status = searchParams.get('status') || 'Processing';
     const [isDelayedByWeather, setIsDelayedByWeather] = useState(false);
+    const [iotData, setIotData] = useState({ temp: 18.5, humidity: 62 });
 
     useEffect(() => {
-      // Simulate checking weather impact on route
+      // Simulate checking weather impact
       const timer = setTimeout(() => setIsDelayedByWeather(true), 1500);
-      return () => clearTimeout(timer);
+      
+      // Simulate live IoT stream
+      const interval = setInterval(() => {
+        setIotData(prev => ({
+          temp: +(prev.temp + (Math.random() - 0.5) * 0.2).toFixed(1),
+          humidity: +(prev.humidity + (Math.random() - 0.5) * 0.5).toFixed(0)
+        }));
+      }, 3000);
+
+      return () => {
+        clearTimeout(timer);
+        clearInterval(interval);
+      };
     }, []);
 
     const getTrackingSteps = (status: string) => {
@@ -43,18 +56,10 @@ const LogisticsContent = () => {
           { id: 'delivered', status: "Delivered", date: "2023-10-30 01:30 PM", completed: false, icon: Home },
         ];
 
-        if (status === 'Processing') {
-            steps[0].completed = true;
-        } else if (status === 'Shipped') {
-            steps[0].completed = true;
-            steps[1].completed = true;
-        } else if (status === 'Delivered') {
-            steps.forEach(step => step.completed = true);
-        } else if (status === 'Out for Delivery') {
-             steps[0].completed = true;
-             steps[1].completed = true;
-             steps[2].completed = true;
-        }
+        if (status === 'Processing') steps[0].completed = true;
+        else if (status === 'Shipped') { steps[0].completed = true; steps[1].completed = true; }
+        else if (status === 'Delivered') steps.forEach(step => step.completed = true);
+        else if (status === 'Out for Delivery') { steps[0].completed = true; steps[1].completed = true; steps[2].completed = true; }
         return steps;
     };
 
@@ -70,6 +75,34 @@ const LogisticsContent = () => {
             </div>
 
             <div className="mx-auto max-w-xl grid grid-cols-1 gap-8">
+                {/* IoT Freshness Tracking */}
+                <div className="grid grid-cols-2 gap-4">
+                  <Card className="bg-blue-50/50 border-blue-100">
+                    <CardHeader className="p-4 pb-2">
+                      <CardTitle className="text-xs font-bold uppercase tracking-wider text-blue-600 flex items-center gap-2">
+                        <ThermometerSnowflake className="h-4 w-4" />
+                        Storage Temp
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-4 pt-0">
+                      <div className="text-2xl font-bold">{iotData.temp}°C</div>
+                      <p className="text-[10px] text-blue-500">Optimal freshness range</p>
+                    </CardContent>
+                  </Card>
+                  <Card className="bg-cyan-50/50 border-cyan-100">
+                    <CardHeader className="p-4 pb-2">
+                      <CardTitle className="text-xs font-bold uppercase tracking-wider text-cyan-600 flex items-center gap-2">
+                        <Droplets className="h-4 w-4" />
+                        Humidity
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-4 pt-0">
+                      <div className="text-2xl font-bold">{iotData.humidity}%</div>
+                      <p className="text-[10px] text-cyan-500">Real-time sensor data</p>
+                    </CardContent>
+                  </Card>
+                </div>
+
                 {isDelayedByWeather && (
                   <Card className="border-orange-200 bg-orange-50">
                     <CardHeader className="pb-2">
@@ -93,7 +126,7 @@ const LogisticsContent = () => {
                     <CardContent>
                         <div className="relative pl-6">
                             <div className="absolute left-9 top-0 h-full w-0.5 bg-border -translate-x-1/2"></div>
-                            {trackingSteps.map((step, index) => (
+                            {trackingSteps.map((step) => (
                                 <div key={step.status} className="relative mb-8 flex items-start gap-6">
                                     <div className={cn(
                                         "z-10 flex h-12 w-12 items-center justify-center rounded-full",
@@ -135,21 +168,6 @@ const LogisticsContent = () => {
                         </div>
                          <Button variant="outline">
                             <Phone className="mr-2 h-4 w-4" /> {t('logistics.contactDriver')}
-                       </Button>
-                    </CardContent>
-                </Card>
-
-                <Card>
-                    <CardHeader>
-                        <CardTitle>{t('logistics.supportTitle')}</CardTitle>
-                        <CardDescription>{t('logistics.supportDescription')}</CardDescription>
-                    </CardHeader>
-                    <CardContent className="flex flex-col sm:flex-row gap-4">
-                       <Button className="flex-1">
-                            <Phone className="mr-2 h-4 w-4" /> {t('logistics.callSupport')}
-                       </Button>
-                       <Button variant="outline" className="flex-1">
-                            <MessageSquare className="mr-2 h-4 w-4" /> {t('logistics.chatSupport')}
                        </Button>
                     </CardContent>
                 </Card>

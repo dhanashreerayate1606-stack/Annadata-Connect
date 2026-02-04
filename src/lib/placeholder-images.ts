@@ -1,4 +1,4 @@
-import data from './placeholder-images.json';
+import rawData from './placeholder-images.json';
 
 export type ImagePlaceholder = {
   id: string;
@@ -10,8 +10,12 @@ export type ImagePlaceholder = {
   name?: string;
   price?: string;
   farmer?: string;
-  videoUrl?: string;
+  location?: string;
+  searchQuery?: string;
   fileUrl?: string;
 };
+
+// Safe cast to avoid HMR module mismatch issues in Turbopack
+const data = rawData as { placeholderImages: ImagePlaceholder[] };
 
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;

@@ -21,6 +21,8 @@ import {
   Thermometer,
   AlertTriangle,
   Loader2,
+  TrendingUp,
+  Award
 } from 'lucide-react';
 import {
   Bar,
@@ -109,14 +111,14 @@ export default function FarmerDashboardPage() {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="bg-primary/5 border-primary/20">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('dashboard.totalOrders')}</CardTitle>
-            <ShoppingCart className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Impact Metrics</CardTitle>
+            <Award className="h-4 w-4 text-primary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+185</div>
-            <p className="text-xs text-muted-foreground">{t('dashboard.ordersLastMonth')}</p>
+            <div className="text-2xl font-bold text-primary">+₹4,200</div>
+            <p className="text-xs text-muted-foreground">Extra earned via direct trade</p>
           </CardContent>
         </Card>
         <Card>
@@ -133,17 +135,16 @@ export default function FarmerDashboardPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">{t('dashboard.newCustomers')}</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <CardTitle className="text-sm font-medium">Demand Forecast</CardTitle>
+            <TrendingUp className="h-4 w-4 text-secondary" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">+42</div>
-            <p className="text-xs text-muted-foreground">{t('dashboard.organicTraffic')}</p>
+            <div className="text-2xl font-bold text-secondary">High</div>
+            <p className="text-xs text-muted-foreground">For Organic Leafy Greens</p>
           </CardContent>
         </Card>
       </div>
 
-      {/* Weather & IoT Alerts Section */}
       <div className="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2">
           <CardHeader>
@@ -217,40 +218,6 @@ export default function FarmerDashboardPage() {
           </CardContent>
         </Card>
       </div>
-
-       <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-           <Card className="flex flex-col items-center justify-center text-center p-6 hover:bg-muted/50 transition-colors">
-             <Package className="w-12 h-12 text-primary mb-4" />
-             <h3 className="text-lg font-semibold font-headline">{t('profile.manageListingsButton')}</h3>
-             <p className="text-sm text-muted-foreground mt-1 mb-4">{t('dashboard.manageListingsDesc')}</p>
-             <Button asChild>
-                <Link href="/farmer/listings">
-                    <PlusCircle className="mr-2" />
-                    {t('dashboard.manageListingsBtn')}
-                </Link>
-             </Button>
-           </Card>
-            <Card className="flex flex-col items-center justify-center text-center p-6 hover:bg-muted/50 transition-colors">
-             <Leaf className="w-12 h-12 text-secondary mb-4" />
-             <h3 className="text-lg font-semibold font-headline">{t('header.cropAdvisory')}</h3>
-             <p className="text-sm text-muted-foreground mt-1 mb-4">{t('dashboard.cropAdvisoryDesc')}</p>
-             <Button asChild variant="secondary">
-                <Link href="/advisory">
-                    {t('dashboard.getAdviceBtn')}
-                </Link>
-             </Button>
-           </Card>
-           <Card className="flex flex-col items-center justify-center text-center p-6 hover:bg-muted/50 transition-colors">
-             <LineChart className="w-12 h-12 text-accent mb-4" />
-             <h3 className="text-lg font-semibold font-headline">{t('dashboard.salesOverview')}</h3>
-             <p className="text-sm text-muted-foreground mt-1 mb-4">{t('dashboard.salesAnalyticsDesc')}</p>
-             <Button asChild variant="outline">
-                <Link href="#sales-chart">
-                    {t('dashboard.viewAnalyticsBtn')}
-                </Link>
-             </Button>
-           </Card>
-       </div>
 
       <Card className="mt-10" id="sales-chart">
         <CardHeader>

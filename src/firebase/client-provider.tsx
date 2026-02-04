@@ -1,11 +1,10 @@
-
 'use client';
 
 import {createContext, useContext, useEffect, useState} from 'react';
 import type {FirebaseApp} from 'firebase/app';
 import {initializeApp} from 'firebase/app';
 import type {Auth} from 'firebase/auth';
-import {getAuth}_
+import {getAuth} from 'firebase/auth';
 import type {Firestore} from 'firebase/firestore';
 import {getFirestore} from 'firebase/firestore';
 
