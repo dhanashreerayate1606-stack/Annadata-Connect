@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview AI Agricultural Guide flow.
@@ -32,6 +33,11 @@ const prompt = ai.definePrompt({
   name: 'agriGuidePrompt',
   input: {schema: AgriGuideInputSchema},
   output: {schema: AgriGuideOutputSchema},
+  config: {
+    safetySettings: [
+      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
+    ]
+  },
   prompt: `You are a senior agricultural scientist at Annadata Connect. 
 Your goal is to provide a comprehensive, professional, and practical guide for Indian farmers on the topic: "{{{topic}}}".
 

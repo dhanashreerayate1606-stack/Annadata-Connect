@@ -46,7 +46,13 @@ const prompt = ai.definePrompt({
   name: 'aiCropAdvisoryPrompt',
   input: {schema: AICropAdvisoryInputSchema},
   output: {schema: AICropAdvisoryOutputSchema},
-  prompt: `You are a Senior Agronomist at Annadata Connect specializing in Indian agriculture. 
+  config: {
+    safetySettings: [
+      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+    ]
+  },
+  prompt: `You are a Senior Agronomist at Annadata Connect, an expert in Indian agriculture. 
 Your task is to analyze the following farm conditions and provide high-quality crop recommendations.
 
 Input Data:
@@ -54,12 +60,13 @@ Input Data:
 - Soil Type/Conditions: {{{soilConditions}}}
 
 Instructions:
-1. Identify 3-4 crops that are most suitable for the specified soil and regional climate.
-2. For each crop, explain WHY it is a good fit (e.g., "Well-suited for black soil", "High market demand in {{{region}}}").
-3. Include brief notes on water requirements or potential inter-cropping benefits (like pulses for nitrogen fixation).
-4. Maintain a professional, scientific, and encouraging tone for the farmer.
+1. Identify 3-4 specific crops that are most suitable for the specified soil and regional climate of {{{region}}}.
+2. For each crop, explain exactly WHY it is a good fit (e.g., "The well-draining nature of {{{soilConditions}}} is perfect for this crop").
+3. Include market insights for {{{region}}} if available.
+4. Include brief notes on water requirements or potential inter-cropping benefits (like pulses for nitrogen fixation).
+5. Maintain a professional, scientific, and encouraging tone.
 
-Provide the recommendations as a detailed, multi-paragraph text response.`,
+Return the recommendations as a detailed, multi-paragraph text response in the 'suggestedCrops' field.`,
 });
 
 const aiCropAdvisoryFlow = ai.defineFlow(
@@ -75,14 +82,13 @@ const aiCropAdvisoryFlow = ai.defineFlow(
       return output;
     } catch (error) {
       console.error('Crop Advisory AI Flow failed:', error);
-      // Enhanced fallback with helpful context
+      // Enhanced fallback with helpful context if the API fails
       return {
-        suggestedCrops: `We are currently experiencing high demand for our AI Agronomist services. 
+        suggestedCrops: `Our AI Agronomist is currently processing a high volume of requests for ${input.region}.
 
-General recommendation for ${input.region} with ${input.soilConditions} soil:
-Most farmers in this region find success with local hardy varieties. We recommend testing your soil pH at a local Krishi Vigyan Kendra (KVK) and considering nitrogen-rich organic fertilizers like Jeevamrut. 
+Based on ${input.soilConditions} soil in this region, most experts recommend starting with hardy indigenous varieties. For a personalized 5-page soil health report, we recommend visiting your nearest Krishi Vigyan Kendra (KVK). 
 
-Please try again in a few minutes for a detailed personalized analysis.`
+General Tip: For ${input.soilConditions} soil, ensure you are using organic matter like Vermicompost to maintain long-term fertility. Please try again in a moment for a detailed AI analysis.`
       };
     }
   }
