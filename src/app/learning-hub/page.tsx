@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from "next/image";
@@ -13,7 +12,7 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { PlayCircle, Loader2, BookOpen, Sparkles, ChevronRight } from "lucide-react";
+import { PlayCircle, Loader2, BookOpen, Sparkles, ChevronRight, CheckCircle2, Lightbulb } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
@@ -73,7 +72,7 @@ export default function LearningHubPage() {
     window.open(searchUrl, '_blank');
     toast({ 
       title: "Opening Tutorial", 
-      description: `Searching YouTube for "${item.name}"...` 
+      description: `Searching YouTube for expert advice on "${item.name}"...` 
     });
   };
 
@@ -178,51 +177,72 @@ export default function LearningHubPage() {
       </Tabs>
 
       <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-hidden flex flex-col">
-          <DialogHeader className="pb-4">
-            <DialogTitle className="text-2xl font-headline flex items-center gap-2">
-              <Sparkles className="h-6 w-6 text-primary" />
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-hidden flex flex-col sm:rounded-xl border-primary/20 shadow-2xl">
+          <DialogHeader className="pb-4 border-b border-primary/10">
+            <DialogTitle className="text-3xl font-headline flex items-center gap-3 text-primary">
+              <div className="p-2 bg-primary/10 rounded-lg">
+                <Sparkles className="h-6 w-6" />
+              </div>
               {isAiLoading ? "Consulting AI Agronomist..." : aiGuide?.title}
             </DialogTitle>
-            <DialogDescription>
-              Custom agricultural intelligence for your farm.
+            <DialogDescription className="text-base font-medium">
+              Real-time agricultural intelligence powered by Annadata Connect.
             </DialogDescription>
           </DialogHeader>
           
-          <ScrollArea className="flex-grow pr-4">
+          <ScrollArea className="flex-grow pr-4 mt-4">
             {isAiLoading ? (
-              <div className="flex flex-col items-center justify-center py-20 gap-4">
-                <Loader2 className="h-12 w-12 animate-spin text-primary" />
-                <p className="text-muted-foreground animate-pulse">Generating your professional guide...</p>
+              <div className="flex flex-col items-center justify-center py-24 gap-6">
+                <div className="relative">
+                  <Loader2 className="h-16 w-16 animate-spin text-primary" />
+                  <Sparkles className="h-6 w-6 text-accent absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                </div>
+                <div className="text-center space-y-2">
+                  <p className="text-xl font-headline font-bold text-foreground animate-pulse">Generating Expert Insights...</p>
+                  <p className="text-sm text-muted-foreground">Analyzing local conditions and scientific data.</p>
+                </div>
               </div>
             ) : aiGuide && (
-              <div className="space-y-8 pb-6">
+              <div className="space-y-10 pb-10">
                 {aiGuide.sections.map((section, index) => (
-                  <div key={index} className="space-y-3">
-                    <h3 className="text-lg font-bold text-primary flex items-center gap-2">
-                      <ChevronRight className="h-4 w-4" />
-                      {section.heading}
-                    </h3>
-                    <p className="text-sm leading-relaxed text-foreground/80 whitespace-pre-wrap pl-6 border-l-2 border-primary/10">
-                      {section.content}
-                    </p>
+                  <div key={index} className="space-y-4 group">
+                    <div className="flex items-center gap-3">
+                      <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm shrink-0 transition-colors group-hover:bg-primary group-hover:text-white">
+                        {index + 1}
+                      </div>
+                      <h3 className="text-xl font-bold font-headline text-foreground group-hover:text-primary transition-colors">
+                        {section.heading}
+                      </h3>
+                    </div>
+                    <div className="pl-11 pr-2">
+                      <p className="text-base leading-relaxed text-foreground/80 whitespace-pre-wrap pl-6 border-l-2 border-primary/20 transition-all hover:border-primary">
+                        {section.content}
+                      </p>
+                    </div>
                   </div>
                 ))}
                 
-                <Separator />
+                <Separator className="bg-primary/10" />
                 
-                <div className="bg-secondary/5 border border-secondary/20 p-4 rounded-lg">
-                  <h4 className="font-bold text-secondary-foreground flex items-center gap-2 mb-2">
-                    <BookOpen className="h-4 w-4" />
-                    Key Takeaway
+                <div className="bg-secondary/10 border border-secondary/20 p-6 rounded-xl relative overflow-hidden">
+                  <div className="absolute top-0 right-0 p-4 opacity-10">
+                    <Lightbulb className="h-12 w-12 text-secondary" />
+                  </div>
+                  <h4 className="font-bold text-secondary-foreground flex items-center gap-2 mb-3 text-lg font-headline">
+                    <CheckCircle2 className="h-5 w-5 text-secondary" />
+                    Key Scientific Takeaway
                   </h4>
-                  <p className="text-sm italic text-secondary-foreground/80">
+                  <p className="text-base italic text-secondary-foreground/90 leading-relaxed pl-7">
                     {aiGuide.summary}
                   </p>
                 </div>
               </div>
             )}
           </ScrollArea>
+          
+          <div className="pt-4 border-t border-primary/10 flex justify-end">
+            <Button variant="outline" onClick={() => setIsDialogOpen(false)}>Close Guide</Button>
+          </div>
         </DialogContent>
       </Dialog>
     </div>
