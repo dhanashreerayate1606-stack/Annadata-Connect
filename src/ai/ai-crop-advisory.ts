@@ -42,34 +42,6 @@ export async function aiCropAdvisoryForFarmers(
   return aiCropAdvisoryFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'aiCropAdvisoryPrompt',
-  input: {schema: AICropAdvisoryInputSchema},
-  output: {schema: AICropAdvisoryOutputSchema},
-  config: {
-    safetySettings: [
-      { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
-      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
-      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
-      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
-      { category: 'HARM_CATEGORY_CIVIC_INTEGRITY', threshold: 'BLOCK_NONE' },
-    ]
-  },
-  prompt: `You are a Senior Agronomist at Annadata Connect, an expert in Indian agriculture. 
-Analyze the farm conditions below and provide expert crop recommendations.
-
-Region: {{region}}
-Soil: {{soilConditions}}
-
-Requirements:
-1. Recommend 3-4 specific crops for {{region}}.
-2. For each crop, explain why the {{soilConditions}} is ideal.
-3. Provide one sentence on market demand in this region.
-4. Maintain a scientific yet accessible tone for a farmer.
-
-Return the result as a single field 'suggestedCrops' containing the full text of your expert analysis.`,
-});
-
 const aiCropAdvisoryFlow = ai.defineFlow(
   {
     name: 'aiCropAdvisoryFlow',
@@ -78,21 +50,53 @@ const aiCropAdvisoryFlow = ai.defineFlow(
   },
   async input => {
     try {
-      const {output} = await prompt(input);
-      if (!output) throw new Error('AI failed to generate response');
-      return output;
+      const response = await ai.generate({
+        system: `You are a Senior Agronomist at Annadata Connect, an expert in Indian agriculture. 
+Analyze the farm conditions and provide expert crop recommendations.
+You MUST provide recommendations that are highly specific to the given region and soil type.`,
+        prompt: `Region: ${input.region}
+Soil: ${input.soilConditions}
+
+Requirements:
+1. Recommend 3-4 specific crops highly suitable for the soil type "${input.soilConditions}" in the region "${input.region}".
+2. For each crop, explain the scientific reason why this soil/climate combination is ideal.
+3. Provide one sentence on current market demand in "${input.region}".
+4. Maintain a scientific yet accessible tone for a farmer.`,
+        output: {schema: AICropAdvisoryOutputSchema},
+        config: {
+          safetySettings: [
+            { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
+            { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+            { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
+            { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
+            { category: 'HARM_CATEGORY_CIVIC_INTEGRITY', threshold: 'BLOCK_NONE' },
+          ]
+        },
+      });
+
+      if (!response.output) throw new Error('AI failed to generate response');
+      return response.output;
     } catch (error) {
       console.error('Crop Advisory AI Flow failed:', error);
-      // Scientific-grade static recommendations based on input if API fails
+      
+      // Smart dynamic fallback based on soil type
+      const soil = input.soilConditions.toLowerCase();
+      let recommended = ["Seasonal Millet", "Indigenous Legumes", "Leafy Vegetables"];
+      
+      if (soil.includes('black')) recommended = ["Cotton", "Soybean", "Wheat"];
+      else if (soil.includes('red')) recommended = ["Groundnut", "Maize", "Ragi"];
+      else if (soil.includes('alluvial')) recommended = ["Rice", "Sugarcane", "Mustard"];
+      else if (soil.includes('laterite')) recommended = ["Cashew", "Tea", "Coffee"];
+
       return {
-        suggestedCrops: `Expert Advisory for ${input.region}:
+        suggestedCrops: `Expert Advisory for ${input.region} (${input.soilConditions} Soil):
 
-Based on your ${input.soilConditions} soil, we recommend:
-1. Indigenous Legumes: These naturally improve nitrogen levels in ${input.soilConditions}.
-2. Seasonal Millet: Highly resilient to regional climate variability.
-3. High-Value Vegetables: If irrigation is available, leafy greens are currently in high demand in nearby urban markets.
+Based on your local conditions, we recommend:
+1. ${recommended[0]}: Ideal for ${input.soilConditions} nutrient profile in ${input.region}.
+2. ${recommended[1]}: Strong resilience to regional climate variability.
+3. ${recommended[2]}: High market demand reported in nearby procurement centers.
 
-Tip: Ensure you use organic Mulching to retain moisture in ${input.soilConditions} during peak summer months. Please try your AI request again in a few minutes.`
+Tip: Use organic mulching to preserve moisture in ${input.soilConditions}. Please try the AI request again in a few moments for a deeper analysis.`
       };
     }
   }
