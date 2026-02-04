@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from "next/image";
@@ -13,10 +12,16 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Download, Video, Sprout, HandHelping, Laptop, Presentation, TrendingUp, Loader2 } from "lucide-react";
+import { Download, Video, Sprout, HandHelping, Laptop, Presentation, TrendingUp, Loader2, X } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
 const tutorials = allLearningContent.filter(p => p.id.startsWith("tutorial"));
@@ -39,7 +44,15 @@ const cardColors: { [key: string]: string } = {
     webinar2: 'bg-primary/10',
 }
 
-const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => {
+const LearningCard = ({ 
+  item, 
+  type, 
+  onWatch 
+}: { 
+  item: ImagePlaceholder, 
+  type: 'tutorial' | 'webinar' | 'resource',
+  onWatch: (url: string, title: string) => void
+}) => {
   const { t } = useTranslation();
   const { toast } = useToast();
   const [isProcessing, setIsProcessing] = useState(false);
@@ -48,27 +61,31 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
   const color = cardColors[item.id];
 
   const handleAction = () => {
-    setIsProcessing(true);
-    
-    // Simulate network delay for "accessibility" feel
-    setTimeout(() => {
-      setIsProcessing(false);
-      if (type === 'resource') {
+    if (type === 'resource') {
+      if (!item.fileUrl) {
+        toast({ variant: "destructive", title: "Resource missing", description: "This file is not currently available." });
+        return;
+      }
+      setIsProcessing(true);
+      setTimeout(() => {
+        setIsProcessing(false);
+        window.open(item.fileUrl, '_blank');
         toast({
           title: "Download Started",
-          description: `The guide "${item.name}" is being saved to your device.`,
+          description: `Opening "${item.name}"...`,
         });
-      } else {
-        toast({
-          title: "Opening Video Player",
-          description: `Connecting to secure stream for "${item.name}"...`,
-        });
+      }, 800);
+    } else {
+      if (!item.videoUrl) {
+        toast({ variant: "destructive", title: "Video missing", description: "This video is not currently available." });
+        return;
       }
-    }, 1000);
+      onWatch(item.videoUrl, item.name || "Learning Session");
+    }
   };
   
   return (
-    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
+    <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col h-full">
       <CardHeader className="p-0">
         <div className="relative aspect-video w-full">
           {item.imageUrl ? (
@@ -89,7 +106,7 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
         <CardTitle className="text-lg font-bold font-headline">
           {item.name || "Learning Material"}
         </CardTitle>
-        <CardDescription className="mt-2 text-sm">
+        <CardDescription className="mt-2 text-sm line-clamp-3">
           {item.description}
         </CardDescription>
       </CardContent>
@@ -121,6 +138,12 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
 
 export default function LearningHubPage() {
   const { t } = useTranslation();
+  const [activeVideo, setActiveVideo] = useState<{ url: string, title: string } | null>(null);
+
+  const handleWatch = (url: string, title: string) => {
+    setActiveVideo({ url, title });
+  };
+
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
       <div className="text-center">
@@ -141,20 +164,46 @@ export default function LearningHubPage() {
 
         <TabsContent value="tutorials" className="mt-8">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {tutorials.map(item => <LearningCard key={item.id} item={item} type="tutorial" />)}
+            {tutorials.map(item => <LearningCard key={item.id} item={item} type="tutorial" onWatch={handleWatch} />)}
           </div>
         </TabsContent>
         <TabsContent value="webinars" className="mt-8">
            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {webinars.map(item => <LearningCard key={item.id} item={item} type="webinar" />)}
+            {webinars.map(item => <LearningCard key={item.id} item={item} type="webinar" onWatch={handleWatch} />)}
           </div>
         </TabsContent>
         <TabsContent value="resources" className="mt-8">
            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {resources.map(item => <LearningCard key={item.id} item={item} type="resource" />)}
+            {resources.map(item => <LearningCard key={item.id} item={item} type="resource" onWatch={handleWatch} />)}
           </div>
         </TabsContent>
       </Tabs>
+
+      <Dialog open={!!activeVideo} onOpenChange={(open) => !open && setActiveVideo(null)}>
+        <DialogContent className="max-w-4xl p-0 overflow-hidden bg-black aspect-video border-none shadow-2xl">
+          <DialogHeader className="sr-only">
+            <DialogTitle>{activeVideo?.title}</DialogTitle>
+          </DialogHeader>
+          {activeVideo && (
+            <div className="relative w-full h-full">
+              <iframe
+                src={activeVideo.url}
+                className="absolute inset-0 w-full h-full"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="absolute top-4 right-4 z-50 text-white hover:bg-white/20"
+                onClick={() => setActiveVideo(null)}
+              >
+                <X className="h-6 w-6" />
+              </Button>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

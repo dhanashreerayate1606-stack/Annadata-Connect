@@ -10,6 +10,8 @@ export type ImagePlaceholder = {
   name?: string;
   price?: string;
   farmer?: string;
+  videoUrl?: string;
+  fileUrl?: string;
 };
 
 export const PlaceHolderImages: ImagePlaceholder[] = data.placeholderImages;

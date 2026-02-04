@@ -132,57 +132,64 @@
       "id": "tutorial1",
       "category": "learning",
       "name": "Improving Your Farm's Soil Health",
-      "description": "A farmer inspecting crops in a field, representing a tutorial on crop management.",
-      "imageUrl": "",
-      "imageHint": "soil health"
+      "description": "Learn scientific methods to test and improve soil fertility for better yields.",
+      "imageUrl": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "soil health",
+      "videoUrl": "https://www.youtube.com/embed/Hu6mQ_BR6to"
     },
     {
       "id": "webinar1",
       "category": "learning",
       "name": "Webinar: Modern Farming Technologies",
-      "description": "A person giving a presentation, representing a webinar on modern farming techniques.",
-      "imageUrl": "",
-      "imageHint": "business webinar"
+      "description": "How IoT and drones are transforming the agricultural landscape in India.",
+      "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farm technology",
+      "videoUrl": "https://www.youtube.com/embed/7Z0Wuv_of34"
     },
     {
       "id": "resource1",
       "category": "learning",
       "name": "Guide to Organic Farming",
-      "description": "An open book with illustrations of plants, representing a downloadable guide.",
+      "description": "A comprehensive guide on transitioning to chemical-free farming.",
       "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "reading book"
+      "imageHint": "reading book",
+      "fileUrl": "https://www.fao.org/3/i2150e/i2150e.pdf"
     },
     {
       "id": "tutorial2",
       "category": "learning",
       "name": "Effective Crop Management Techniques",
-      "description": "A close-up of a farmer's hands checking the leaves of a young plant.",
-      "imageUrl": "",
-      "imageHint": "farmer checking plant"
+      "description": "Strategies for weed control, irrigation, and pest management.",
+      "imageUrl": "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwbWFuYWdlbWVudHxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farm management",
+      "videoUrl": "https://www.youtube.com/embed/uMT9u_ivhyc"
     },
     {
       "id": "tutorial3",
       "category": "learning",
       "name": "Agri-Tech: Using Technology on Your Farm",
-      "description": "Farmer using a laptop in a field",
-      "imageUrl": "",
-      "imageHint": "farmer with laptop"
+      "description": "Introduction to digital apps and tools for farm inventory tracking.",
+      "imageUrl": "https://images.unsplash.com/photo-1560493676-04071c5f467b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtZXIlMjB3aXRoJTIwbGFwdG9wfGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "farmer with laptop",
+      "videoUrl": "https://www.youtube.com/embed/fXp0ToZ6X_M"
     },
     {
       "id": "webinar2",
       "category": "learning",
       "name": "Financial Planning for Farmers",
-      "description": "A group of farmers in a meeting discussing finances.",
-      "imageUrl": "",
-      "imageHint": "business meeting"
+      "description": "Understanding credits, subsidies, and insurance for your crops.",
+      "imageUrl": "https://images.unsplash.com/photo-1454165833767-02acd057c2a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYW5raW5nfGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "business banking",
+      "videoUrl": "https://www.youtube.com/embed/gvXreS_OfXo"
     },
     {
       "id": "resource2",
       "category": "learning",
       "name": "Seasonal Planting Calendar",
-      "description": "A calendar with seasonal vegetables, representing a planting guide.",
+      "description": "A month-by-month guide for planting across different Indian climate zones.",
       "imageUrl": "https://images.unsplash.com/photo-1526319238109-524eecb9b913?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxlbmRhciUyMHBsYW5uaW5nfGVufDB8fHx8MTc2MTMwNDMwOHww&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "calendar planning"
+      "imageHint": "calendar planning",
+      "fileUrl": "https://www.agri.state.id.us/AGRI/Categories/PlantsInsects/Documents/Organic/OrganicHandbook.pdf"
     },
     {
       "id": "schemes-hero",
@@ -195,14 +202,14 @@
       "id": "bulk-hero",
       "category": "hero",
       "description": "A crate of fresh vegetables ready for bulk delivery.",
-      "imageUrl": "https://images.unsplash.com/photo-1669154777196-aca4d45b581a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxBJTIwQ1JBVEUlMjBPRiUyMEZSRVNIJTIwVkVHRVRBQkxFUyUyMFJFQURZJTIwRk9SJTIwQlVMSyUyMERFTElWRVJZfGVufDB8fHx8MTc2MDk1NzU4NXww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1669154777196-aca4d45b581a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxBJTIwQ1JBVEUlMjBPRiUyMEZSRVNIJTIwVkVHRVRBQkxFUyUyMFJFQURZJTIwRk9SJTIwQlVMSyUyMERFTElWRVJZfGVufDB8fHx8MTc2MDk1NzU4NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vegetable crate"
     },
     {
       "id": "subscription-hero",
       "category": "hero",
       "description": "A person holding a subscription box full of fresh produce.",
-      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1601614389617-4a51996773a4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwcm9kdWNlJTIwc3Vic2NyaXB0aW9uJTIwYm94fGVufDB8fHx8MTc2MTMwNDM1Nnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "produce subscription box"
     },
     {
