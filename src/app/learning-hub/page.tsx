@@ -13,8 +13,10 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages, ImagePlaceholder } from "@/lib/placeholder-images";
 import { Button } from "@/components/ui/button";
-import { Download, Video, Sprout, HandHelping, Laptop, Presentation, TrendingUp } from "lucide-react";
+import { Download, Video, Sprout, HandHelping, Laptop, Presentation, TrendingUp, Loader2 } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
 
 const allLearningContent = PlaceHolderImages.filter(p => p.category === 'learning');
 const tutorials = allLearningContent.filter(p => p.id.startsWith("tutorial"));
@@ -39,9 +41,31 @@ const cardColors: { [key: string]: string } = {
 
 const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial' | 'webinar' | 'resource' }) => {
   const { t } = useTranslation();
+  const { toast } = useToast();
+  const [isProcessing, setIsProcessing] = useState(false);
   
   const icon = cardIcons[item.id];
   const color = cardColors[item.id];
+
+  const handleAction = () => {
+    setIsProcessing(true);
+    
+    // Simulate network delay for "accessibility" feel
+    setTimeout(() => {
+      setIsProcessing(false);
+      if (type === 'resource') {
+        toast({
+          title: "Download Started",
+          description: `The guide "${item.name}" is being saved to your device.`,
+        });
+      } else {
+        toast({
+          title: "Opening Video Player",
+          description: `Connecting to secure stream for "${item.name}"...`,
+        });
+      }
+    }, 1000);
+  };
   
   return (
     <Card className="overflow-hidden transition-all duration-300 hover:shadow-lg flex flex-col">
@@ -71,12 +95,23 @@ const LearningCard = ({ item, type }: { item: ImagePlaceholder, type: 'tutorial'
       </CardContent>
       <CardFooter className="p-4 pt-0">
         {type === 'resource' ? (
-          <Button variant="outline" className="w-full">
-            <Download className="mr-2 h-4 w-4" /> {t('learning.downloadButton')}
+          <Button 
+            variant="outline" 
+            className="w-full" 
+            onClick={handleAction}
+            disabled={isProcessing}
+          >
+            {isProcessing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
+            {t('learning.downloadButton')}
           </Button>
         ) : (
-          <Button className="w-full">
-            <Video className="mr-2 h-4 w-4" /> {t('learning.watchButton')}
+          <Button 
+            className="w-full" 
+            onClick={handleAction}
+            disabled={isProcessing}
+          >
+            {isProcessing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Video className="mr-2 h-4 w-4" />}
+            {t('learning.watchButton')}
           </Button>
         )}
       </CardFooter>
