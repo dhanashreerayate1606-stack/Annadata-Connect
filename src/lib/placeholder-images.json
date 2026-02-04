@@ -50,7 +50,7 @@
       "description": "Learn scientific methods to test and improve soil fertility for better yields.",
       "imageUrl": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "soil health",
-      "searchQuery": "Improving farm soil health science"
+      "searchQuery": "Improving farm soil health science for Indian farmers"
     },
     {
       "id": "tutorial2",
@@ -59,7 +59,7 @@
       "description": "Advanced strategies for managing pests and maximizing harvest cycles.",
       "imageUrl": "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "crop management",
-      "searchQuery": "advanced crop management techniques"
+      "searchQuery": "advanced crop management techniques India"
     },
     {
       "id": "tutorial3",
@@ -68,7 +68,7 @@
       "description": "A guide to using sensors, drones, and mobile apps to optimize farming.",
       "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "agri tech",
-      "searchQuery": "IoT drones agriculture technology"
+      "searchQuery": "IoT drones agriculture technology for small farmers"
     },
     {
       "id": "webinar1",
@@ -77,7 +77,7 @@
       "description": "How IoT and drones are transforming the agricultural landscape in India.",
       "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farm technology",
-      "searchQuery": "IoT drones agriculture India webinar"
+      "searchQuery": "IoT drones agriculture India webinar 2024"
     },
     {
       "id": "webinar2",
@@ -86,32 +86,25 @@
       "description": "Expert advice on managing loans, insurance, and investments for small-scale farms.",
       "imageUrl": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "finance",
-      "searchQuery": "financial planning for small farmers India"
+      "searchQuery": "financial planning for farmers India expert session"
     },
     {
       "id": "resource1",
       "category": "learning",
       "name": "Guide to Organic Farming",
-      "description": "Comprehensive Indian training manual for organic agriculture, focusing on sustainable and chemical-free practices.",
+      "description": "A comprehensive guide on transitioning to chemical-free farming using sustainable practices.",
       "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib-rb-4.1.0&q=80&w=1080",
-      "imageHint": "reading book",
+      "imageHint": "organic farming",
       "fileUrl": "https://www.manage.gov.in/publications/ebulletin/Organic%20Farming.pdf"
     },
     {
       "id": "resource2",
       "category": "learning",
       "name": "Seasonal Planting Calendar",
-      "description": "A detailed month-by-month guide for what to sow and harvest in different Indian regions.",
+      "description": "A month-by-month guide for what to sow and harvest in different Indian regions.",
       "imageUrl": "https://images.unsplash.com/photo-1505235687559-28b5f54645b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
-      "imageHint": "planting",
+      "imageHint": "planting calendar",
       "fileUrl": "https://www.manage.gov.in/publications/farmer-guide/farmer-guide-english.pdf"
-    },
-    {
-      "id": "schemes-hero",
-      "category": "hero",
-      "description": "An Indian farmer smiling in a field.",
-      "imageUrl": "https://images.unsplash.com/photo-1617192213511-2c9a1a63de40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxpbmRpYW4lMjBmYXJtZXJ8ZW58MHx8fHwxNzYxMzA0MzMxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "indian farmer"
     }
   ]
 }
