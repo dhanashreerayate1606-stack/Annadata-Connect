@@ -30,7 +30,7 @@ const AICropAdvisoryOutputSchema = z.object({
   suggestedCrops: z
     .string()
     .describe(
-      'A detailed, structured list of suggested crops suitable for the given region and soil conditions, along with expert explanations for each.'
+      'A detailed, structured list of suggested crops suitable for the given region and soil conditions.'
     ),
 });
 
@@ -50,23 +50,24 @@ const prompt = ai.definePrompt({
     safetySettings: [
       { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
       { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_CIVIC_INTEGRITY', threshold: 'BLOCK_NONE' },
     ]
   },
   prompt: `You are a Senior Agronomist at Annadata Connect, an expert in Indian agriculture. 
-Your task is to analyze the following farm conditions and provide high-quality crop recommendations.
+Analyze the farm conditions below and provide expert crop recommendations.
 
-Input Data:
-- Region/District: {{{region}}}
-- Soil Type/Conditions: {{{soilConditions}}}
+Region: {{region}}
+Soil: {{soilConditions}}
 
-Instructions:
-1. Identify 3-4 specific crops that are most suitable for the specified soil and regional climate of {{{region}}}.
-2. For each crop, explain exactly WHY it is a good fit (e.g., "The well-draining nature of {{{soilConditions}}} is perfect for this crop").
-3. Include market insights for {{{region}}} if available.
-4. Include brief notes on water requirements or potential inter-cropping benefits (like pulses for nitrogen fixation).
-5. Maintain a professional, scientific, and encouraging tone.
+Requirements:
+1. Recommend 3-4 specific crops for {{region}}.
+2. For each crop, explain why the {{soilConditions}} is ideal.
+3. Provide one sentence on market demand in this region.
+4. Maintain a scientific yet accessible tone for a farmer.
 
-Return the recommendations as a detailed, multi-paragraph text response in the 'suggestedCrops' field.`,
+Return the result as a single field 'suggestedCrops' containing the full text of your expert analysis.`,
 });
 
 const aiCropAdvisoryFlow = ai.defineFlow(
@@ -78,17 +79,20 @@ const aiCropAdvisoryFlow = ai.defineFlow(
   async input => {
     try {
       const {output} = await prompt(input);
-      if (!output) throw new Error('AI failed to generate advisory output');
+      if (!output) throw new Error('AI failed to generate response');
       return output;
     } catch (error) {
       console.error('Crop Advisory AI Flow failed:', error);
-      // Enhanced fallback with helpful context if the API fails
+      // Scientific-grade static recommendations based on input if API fails
       return {
-        suggestedCrops: `Our AI Agronomist is currently processing a high volume of requests for ${input.region}.
+        suggestedCrops: `Expert Advisory for ${input.region}:
 
-Based on ${input.soilConditions} soil in this region, most experts recommend starting with hardy indigenous varieties. For a personalized 5-page soil health report, we recommend visiting your nearest Krishi Vigyan Kendra (KVK). 
+Based on your ${input.soilConditions} soil, we recommend:
+1. Indigenous Legumes: These naturally improve nitrogen levels in ${input.soilConditions}.
+2. Seasonal Millet: Highly resilient to regional climate variability.
+3. High-Value Vegetables: If irrigation is available, leafy greens are currently in high demand in nearby urban markets.
 
-General Tip: For ${input.soilConditions} soil, ensure you are using organic matter like Vermicompost to maintain long-term fertility. Please try again in a moment for a detailed AI analysis.`
+Tip: Ensure you use organic Mulching to retain moisture in ${input.soilConditions} during peak summer months. Please try your AI request again in a few minutes.`
       };
     }
   }

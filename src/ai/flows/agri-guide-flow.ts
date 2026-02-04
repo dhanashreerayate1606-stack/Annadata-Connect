@@ -36,24 +36,22 @@ const prompt = ai.definePrompt({
   config: {
     safetySettings: [
       { category: 'HARM_CATEGORY_DANGEROUS_CONTENT', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_HARASSMENT', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_HATE_SPEECH', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT', threshold: 'BLOCK_NONE' },
+      { category: 'HARM_CATEGORY_CIVIC_INTEGRITY', threshold: 'BLOCK_NONE' },
     ]
   },
-  prompt: `You are a senior agricultural scientist at Annadata Connect. 
-Your goal is to provide a comprehensive, professional, and practical guide for Indian farmers on the topic: "{{{topic}}}".
+  prompt: `You are a senior agricultural scientist. Generate a professional guide for: "{{topic}}".
+Language: {{language}}.
 
-Requirements:
-1. Use clear, actionable language suitable for farmers.
-2. Focus on techniques that are effective for small-to-medium scale Indian farms.
-3. Include specific local examples of crops, organic fertilizers (like Jeevamrut), or traditional tools where relevant.
-4. Language context: {{{language}}}. (IMPORTANT: Generate ALL content in the language corresponding to this code).
+Structure the response into 4 logical sections:
+1. Preparation (Land & Soil)
+2. Implementation (Techniques)
+3. Maintenance (Irrigation & Pests)
+4. Expert Tips (Harvest & Market)
 
-Structure the response into exactly 4 logical sections covering:
-- Phase 1: Preparation (Land, Soil Health, and Seed Selection)
-- Phase 2: Implementation (Sowing techniques and Initial Input Application)
-- Phase 3: Maintenance (Irrigation, Organic Pest Control, and Weeding)
-- Phase 4: Expert Tips (Harvesting signs and Market Preparation)
-
-Return the output strictly in the requested JSON format. Ensure the tone is encouraging and scientific.`,
+Ensure all content is in the specified language ({{language}}). Return strict JSON format.`,
 });
 
 const agriGuideFlow = ai.defineFlow(
@@ -69,35 +67,31 @@ const agriGuideFlow = ai.defineFlow(
         language: input.language || 'English'
       });
       
-      if (!output) {
-        throw new Error('AI produced no content');
-      }
-      
+      if (!output) throw new Error('AI produced no content');
       return output;
     } catch (error) {
       console.error('Agri Guide AI Flow failed:', error);
-      // Enhanced fallback with high-quality static data if the API fails
       return {
-        title: "Agricultural Guide: " + input.topic,
+        title: "Standard Guide: " + input.topic,
         sections: [
           {
-            heading: "Standard Preparation",
-            content: "For " + input.topic + ", ensure your field is cleared of previous crop residue. Test soil pH levels and aim for a balanced organic matter content using compost or well-decomposed manure."
+            heading: "Standard Land Preparation",
+            content: "Clear the field of residue. Test soil pH and add organic compost like Jeevamrut."
           },
           {
-            heading: "Core Implementation",
-            content: "Sow seeds at the recommended depth (typically 2-3 times the seed width). For Indian conditions, ensure rows are spaced to allow for adequate ventilation and sunlight penetration."
+            heading: "Core Techniques",
+            content: "Sow at recommended depths and ensure proper row spacing for sunlight."
           },
           {
-            heading: "Maintenance & Care",
-            content: "Implement drip irrigation if possible to conserve water. Use Neem oil or Dashparni Ark for natural pest management. Regular weeding in the first 30 days is critical for success."
+            heading: "Care & Maintenance",
+            content: "Monitor moisture levels daily. Use Neem oil for organic pest management."
           },
           {
-            heading: "Expert Recommendations",
-            content: "Harvest during the cooler parts of the day (early morning or late evening) to maintain freshness. Grade your produce before taking it to the Annadata Connect marketplace for better prices."
+            heading: "Expert Tips",
+            content: "Grade your produce before sale at the Annadata Connect marketplace for better prices."
           }
         ],
-        summary: "For site-specific issues, please consult your local KVK (Krishi Vigyan Kendra) or use the Annadata Community Hub to ask fellow successful farmers."
+        summary: "Please consult a local KVK (Krishi Vigyan Kendra) for site-specific verification."
       };
     }
   }
