@@ -53,13 +53,40 @@
       "searchQuery": "Improving farm soil health science"
     },
     {
+      "id": "tutorial2",
+      "category": "learning",
+      "name": "Effective Crop Management Techniques",
+      "description": "Advanced strategies for managing pests and maximizing harvest cycles.",
+      "imageUrl": "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageHint": "crop management",
+      "searchQuery": "advanced crop management techniques"
+    },
+    {
+      "id": "tutorial3",
+      "category": "learning",
+      "name": "Agri-Tech: Using Technology on Your Farm",
+      "description": "A guide to using sensors, drones, and mobile apps to optimize farming.",
+      "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageHint": "agri tech",
+      "searchQuery": "IoT drones agriculture technology"
+    },
+    {
       "id": "webinar1",
       "category": "learning",
       "name": "Webinar: Modern Farming Technologies",
       "description": "How IoT and drones are transforming the agricultural landscape in India.",
       "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "farm technology",
-      "searchQuery": "IoT drones agriculture India"
+      "searchQuery": "IoT drones agriculture India webinar"
+    },
+    {
+      "id": "webinar2",
+      "category": "learning",
+      "name": "Financial Planning for Farmers",
+      "description": "Expert advice on managing loans, insurance, and investments for small-scale farms.",
+      "imageUrl": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageHint": "finance",
+      "searchQuery": "financial planning for small farmers India"
     },
     {
       "id": "resource1",
@@ -69,6 +96,15 @@
       "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "reading book",
       "fileUrl": "https://www.fao.org/3/i2150e/i2150e.pdf"
+    },
+    {
+      "id": "resource2",
+      "category": "learning",
+      "name": "Seasonal Planting Calendar",
+      "description": "A month-by-month guide for what to sow and harvest in different Indian regions.",
+      "imageUrl": "https://images.unsplash.com/photo-1505235687559-28b5f54645b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageHint": "planting",
+      "fileUrl": "https://www.fao.org/3/ca1496en/ca1496en.pdf"
     },
     {
       "id": "schemes-hero",
