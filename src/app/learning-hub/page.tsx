@@ -35,25 +35,18 @@ const LearningCard = ({
   const [isProcessing, setIsProcessing] = useState(false);
 
   const handleAction = () => {
-    setIsProcessing(true);
-    
+    // We remove the artificial delay to prevent pop-up blockers from interrupting window.open
     if (type === 'resource') {
-      setTimeout(() => {
-        setIsProcessing(false);
-        if (item.fileUrl) {
-          window.open(item.fileUrl, '_blank');
-          toast({ title: "Opening Resource", description: `Downloading ${item.name}...` });
-        } else {
-          toast({ variant: "destructive", title: "Missing File", description: "This resource is currently being updated." });
-        }
-      }, 800);
+      if (item.fileUrl) {
+        window.open(item.fileUrl, '_blank');
+        toast({ title: "Opening Resource", description: `Accessing ${item.name}...` });
+      } else {
+        toast({ variant: "destructive", title: "Missing File", description: "This resource is currently being updated." });
+      }
     } else {
-      setTimeout(() => {
-        setIsProcessing(false);
-        const query = item.searchQuery || item.name;
-        window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query!)}`, '_blank');
-        toast({ title: "Opening YouTube", description: `Searching for "${query}"...` });
-      }, 800);
+      const query = item.searchQuery || item.name;
+      window.open(`https://www.youtube.com/results?search_query=${encodeURIComponent(query!)}`, '_blank');
+      toast({ title: "Opening YouTube", description: `Searching for "${query}"...` });
     }
   };
   
