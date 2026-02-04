@@ -24,7 +24,7 @@
       "category": "product",
       "productType": "vegetables",
       "description": "Earthy potatoes freshly harvested",
-      "imageUrl": "https://images.unsplash.com/photo-1508313880080-c4bef0730395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuYXRydWFsJTIwcG90YXRvZXN8ZW58MHx8fHwxNzYwOTAwODY2fDA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1508313880080-c4bef0730395?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxuYXRydWFsJTIwcG90YXRvZXN8ZW58MHx8fHwxNzYwOTAwODY2fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "raw potatoes",
       "name": "बటాటా (Potato)",
       "price": "30",
@@ -36,9 +36,9 @@
       "category": "product",
       "productType": "grains",
       "description": "Long-grain Basmati rice in a burlap sack",
-      "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5MDA5MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1586201375761-83865001e31c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHxiYXNtYXRpJTIwcmljZXxlbnwwfHx8fDE3NjA5MDA5MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "basmati rice",
-      "name": "बासमती चावल (Basmati Rice)",
+      "name": "బాసమతి బియ్యం (Basmati Rice)",
       "price": "120",
       "farmer": "Golden Fields",
       "location": "Punjab"
@@ -48,9 +48,9 @@
       "category": "learning",
       "name": "Improving Your Farm's Soil Health",
       "description": "Learn scientific methods to test and improve soil fertility for better yields.",
-      "imageUrl": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2lsJTIwaGVhbHRofGVufDB8fHx8MTc2MTMwNDE0M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1592982537447-7440770cbfc9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "soil health",
-      "searchQuery": "Improving farm soil health science for Indian farmers"
+      "searchQuery": "Improving farm soil health techniques for Indian farmers"
     },
     {
       "id": "tutorial2",
@@ -59,7 +59,7 @@
       "description": "Advanced strategies for managing pests and maximizing harvest cycles.",
       "imageUrl": "https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "crop management",
-      "searchQuery": "advanced crop management techniques India"
+      "searchQuery": "Advanced crop management techniques for high yield India"
     },
     {
       "id": "tutorial3",
@@ -68,16 +68,16 @@
       "description": "A guide to using sensors, drones, and mobile apps to optimize farming.",
       "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "agri tech",
-      "searchQuery": "IoT drones agriculture technology for small farmers"
+      "searchQuery": "How to use drones and IoT in Indian agriculture"
     },
     {
       "id": "webinar1",
       "category": "learning",
       "name": "Webinar: Modern Farming Technologies",
-      "description": "How IoT and drones are transforming the agricultural landscape in India.",
-      "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdGVjaG5vbG9neXxlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Expert session on how technology is transforming the agricultural landscape in India.",
+      "imageUrl": "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "farm technology",
-      "searchQuery": "IoT drones agriculture India webinar 2024"
+      "searchQuery": "Modern farming technology webinar for Indian farmers 2024"
     },
     {
       "id": "webinar2",
@@ -86,14 +86,14 @@
       "description": "Expert advice on managing loans, insurance, and investments for small-scale farms.",
       "imageUrl": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "finance",
-      "searchQuery": "financial planning for farmers India expert session"
+      "searchQuery": "Financial management and loans for farmers India webinar"
     },
     {
       "id": "resource1",
       "category": "learning",
       "name": "Guide to Organic Farming",
       "description": "A comprehensive guide on transitioning to chemical-free farming using sustainable practices.",
-      "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxyZWFkaW5nJTIwYm9va3xlbnwwfHx8fDE3NjEzMDQxNDN8MA&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
       "imageHint": "organic farming",
       "fileUrl": "https://www.manage.gov.in/publications/ebulletin/Organic%20Farming.pdf"
     },

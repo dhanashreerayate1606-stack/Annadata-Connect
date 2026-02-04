@@ -37,23 +37,23 @@ const LearningCard = ({
   const handleAction = () => {
     setIsProcessing(true);
     
-    // Using setTimeout to give a natural feel, then redirecting/opening
-    setTimeout(() => {
-      if (type === 'resource') {
-        if (item.fileUrl) {
-          window.open(item.fileUrl, '_blank');
-          toast({ title: "Opening Guide", description: `Accessing ${item.name}...` });
-        } else {
-          toast({ variant: "destructive", title: "Resource Unavailable", description: "This document is currently being updated." });
-        }
+    // Immediate action to prevent popup blockers
+    if (type === 'resource') {
+      if (item.fileUrl) {
+        window.open(item.fileUrl, '_blank');
+        toast({ title: "Opening Guide", description: `Accessing ${item.name}...` });
       } else {
-        const query = item.searchQuery || item.name;
-        const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query!)}`;
-        window.open(searchUrl, '_blank');
-        toast({ title: "Redirecting to YouTube", description: `Finding expert content for "${item.name}"...` });
+        toast({ variant: "destructive", title: "Resource Unavailable", description: "This document is currently being updated." });
       }
-      setIsProcessing(false);
-    }, 800);
+    } else {
+      const query = item.searchQuery || item.name;
+      const searchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(query!)}`;
+      window.open(searchUrl, '_blank');
+      toast({ title: "Redirecting to YouTube", description: `Finding expert content for "${item.name}"...` });
+    }
+
+    // Small delay just for the loading animation cleanup
+    setTimeout(() => setIsProcessing(false), 1000);
   };
   
   return (
@@ -154,5 +154,3 @@ export default function LearningHubPage() {
     </div>
   );
 }
-
-    
