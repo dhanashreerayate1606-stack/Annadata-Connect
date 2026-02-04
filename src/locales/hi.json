@@ -188,7 +188,11 @@
     "toastPaymentErrorTitle": "भुगतान त्रुटि",
     "toastPaymentErrorDescription": "कृपया पहले भुगतान विधि चुनें।",
     "toastPaymentConfirmedTitle": "भुगतान की पुष्टि हुई",
-    "toastPaymentConfirmedDescription": "अब आप अपना ऑर्डर दे सकते हैं।"
+    "toastPaymentConfirmedDescription": "अब आप अपना ऑर्डर दे सकते हैं।",
+    "csrTitle": "हमारे किसानों का समर्थन करें",
+    "csrDescription": "पूरे भारत में छोटे किसानों को वित्तीय सुरक्षा प्रदान करने की हमारी पहल में शामिल हों।",
+    "donateLabel": "किसान कल्याण कोष में ₹{amount} दान करें",
+    "summaryDonation": "दान"
   },
   "community": {
     "title": "किसान समुदाय हब",

@@ -1,3 +1,4 @@
+
 {
   "header": {
     "marketplace": "Marketplace",
@@ -188,7 +189,11 @@
     "toastPaymentErrorTitle": "Payment Error",
     "toastPaymentErrorDescription": "Please select a payment method first.",
     "toastPaymentConfirmedTitle": "Payment Confirmed",
-    "toastPaymentConfirmedDescription": "You can now place your order."
+    "toastPaymentConfirmedDescription": "You can now place your order.",
+    "csrTitle": "Support Our Farmers",
+    "csrDescription": "Join our initiative to provide financial security to small-scale farmers across India.",
+    "donateLabel": "Donate ₹{amount} to the Farmer Welfare Fund",
+    "summaryDonation": "Donation"
   },
   "community": {
     "title": "Farmer Community Hub",

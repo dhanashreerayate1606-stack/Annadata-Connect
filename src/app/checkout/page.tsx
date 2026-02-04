@@ -16,11 +16,12 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Terminal, ShoppingBag } from 'lucide-react';
+import { Terminal, ShoppingBag, Heart } from 'lucide-react';
 import { useTranslation } from '@/hooks/use-translation';
 import { useCart } from '@/context/cart-context';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { Checkbox } from '@/components/ui/checkbox';
 
 export default function CheckoutPage() {
   const { toast } = useToast();
@@ -30,13 +31,15 @@ export default function CheckoutPage() {
 
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
+  const [isDonating, setIsDonating] = useState(false);
+  const donationAmount = 10;
 
   const subtotal = cartItems.reduce(
     (acc, item) => acc + (item.price ? parseFloat(item.price) : 0) * item.quantity,
     0
   );
   const gst = subtotal * 0.05;
-  const total = subtotal + gst;
+  const total = subtotal + gst + (isDonating ? donationAmount : 0);
 
   const handlePlaceOrder = () => {
     toast({
@@ -154,6 +157,35 @@ export default function CheckoutPage() {
               </div>
             </CardContent>
           </Card>
+
+          {/* CSR Donation Section */}
+          <Card className="mt-8 border-primary/20 bg-primary/5">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-lg flex items-center gap-2">
+                <Heart className="h-5 w-5 text-primary fill-current" />
+                {t('checkout.csrTitle')}
+              </CardTitle>
+              <CardDescription>
+                {t('checkout.csrDescription')}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center space-x-2">
+                <Checkbox 
+                  id="donate" 
+                  checked={isDonating} 
+                  onCheckedChange={(checked) => setIsDonating(!!checked)} 
+                />
+                <Label 
+                  htmlFor="donate" 
+                  className="text-sm font-medium leading-none cursor-pointer select-none"
+                >
+                  {t('checkout.donateLabel', { amount: donationAmount })}
+                </Label>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card className="mt-8">
             <CardHeader>
               <CardTitle>{t('checkout.paymentTitle')}</CardTitle>
@@ -258,6 +290,12 @@ export default function CheckoutPage() {
                 <span>GST (5%)</span>
                 <span>₹{gst.toFixed(2)}</span>
               </div>
+              {isDonating && (
+                <div className="flex justify-between text-primary font-medium">
+                  <span>{t('checkout.summaryDonation')}</span>
+                  <span>₹{donationAmount.toFixed(2)}</span>
+                </div>
+              )}
               <Separator />
               <div className="flex justify-between text-lg font-bold">
                 <span>{t('checkout.summaryTotal')}</span>
