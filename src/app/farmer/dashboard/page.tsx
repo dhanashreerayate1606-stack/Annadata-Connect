@@ -33,9 +33,10 @@ import {
   YAxis,
 } from 'recharts';
 import { ChartContainer } from '@/components/ui/chart';
-import Link from 'next/link';
+import Link from 'link';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from '@/hooks/use-translation';
+import { useLanguage } from '@/context/language-context';
 import { useEffect, useState } from 'react';
 import { weatherAdvisory, WeatherAdvisoryOutput } from '@/ai/flows/weather-advisory-flow';
 
@@ -61,15 +62,18 @@ const chartConfig = {
 
 export default function FarmerDashboardPage() {
   const { t } = useTranslation();
+  const { language } = useLanguage();
   const [advisory, setAdvisory] = useState<WeatherAdvisoryOutput | null>(null);
   const [isLoadingWeather, setIsLoadingWeather] = useState(true);
 
   useEffect(() => {
     const fetchWeather = async () => {
+      setIsLoadingWeather(true);
       try {
         const result = await weatherAdvisory({
           location: 'Nashik, Maharashtra',
-          forecast: 'Day 1-2: Clear skies, High 32°C. Day 3-5: Moderate rainfall expected, 15mm/day, Low 22°C.'
+          forecast: 'Day 1-2: Clear skies, High 32°C. Day 3-5: Moderate rainfall expected, 15mm/day, Low 22°C.',
+          language: language
         });
         setAdvisory(result);
       } catch (e) {
@@ -79,7 +83,7 @@ export default function FarmerDashboardPage() {
       }
     };
     fetchWeather();
-  }, []);
+  }, [language]);
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
@@ -159,28 +163,28 @@ export default function FarmerDashboardPage() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   <div className="p-4 rounded-lg bg-blue-50 border border-blue-100 flex flex-col items-center">
                     <CloudRain className="text-blue-500 mb-2" />
-                    <span className="text-xs font-medium text-blue-700">Precipitation</span>
+                    <span className="text-xs font-medium text-blue-700">{t('dashboard.weatherPrecipitation')}</span>
                     <span className="text-lg font-bold">15mm</span>
                   </div>
                   <div className="p-4 rounded-lg bg-orange-50 border border-orange-100 flex flex-col items-center">
                     <Thermometer className="text-orange-500 mb-2" />
-                    <span className="text-xs font-medium text-orange-700">Soil Temp</span>
+                    <span className="text-xs font-medium text-orange-700">{t('dashboard.weatherSoilTemp')}</span>
                     <span className="text-lg font-bold">24°C</span>
                   </div>
                   <div className="p-4 rounded-lg bg-green-50 border border-green-100 flex flex-col items-center">
                     <Leaf className="text-green-500 mb-2" />
-                    <span className="text-xs font-medium text-green-700">Soil Moisture</span>
+                    <span className="text-xs font-medium text-green-700">{t('dashboard.weatherSoilMoisture')}</span>
                     <span className="text-lg font-bold">68%</span>
                   </div>
                   <div className="p-4 rounded-lg bg-yellow-50 border border-yellow-100 flex flex-col items-center">
                     <Sun className="text-yellow-500 mb-2" />
-                    <span className="text-xs font-medium text-yellow-700">UV Index</span>
+                    <span className="text-xs font-medium text-yellow-700">{t('dashboard.weatherUVIndex')}</span>
                     <span className="text-lg font-bold">6.2 Low</span>
                   </div>
                 </div>
                 
                 <div className="p-4 rounded-lg bg-secondary/10 border-l-4 border-secondary">
-                  <h4 className="font-bold text-sm mb-2 uppercase tracking-wider text-secondary-foreground">AI Farming Advice</h4>
+                  <h4 className="font-bold text-sm mb-2 uppercase tracking-wider text-secondary-foreground">{t('dashboard.weatherAIAdviceTitle')}</h4>
                   <p className="text-sm leading-relaxed">{advisory?.farmingTips}</p>
                 </div>
               </div>
@@ -196,12 +200,20 @@ export default function FarmerDashboardPage() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {advisory?.alerts.map((alert, idx) => (
-              <div key={idx} className="flex gap-3 p-3 rounded-md bg-destructive/5 border border-destructive/20">
-                <AlertTriangle className="h-4 w-4 text-destructive shrink-0 mt-0.5" />
-                <p className="text-sm font-medium">{alert}</p>
-              </div>
-            )) || <p className="text-sm text-muted-foreground">No active threats detected.</p>}
+            {isLoadingWeather ? (
+               <div className="flex items-center justify-center py-4">
+                  <Loader2 className="animate-spin h-6 w-6 text-muted-foreground" />
+               </div>
+            ) : advisory?.alerts.length ? (
+              advisory.alerts.map((alert, idx) => (
+                <div key={idx} className="flex gap-3 p-3 rounded-md bg-destructive/5 border border-destructive/20">
+                  <AlertTriangle className="h-4 w-4 text-destructive shrink-0 mt-0.5" />
+                  <p className="text-sm font-medium">{alert}</p>
+                </div>
+              ))
+            ) : (
+              <p className="text-sm text-muted-foreground">No active threats detected.</p>
+            )}
           </CardContent>
         </Card>
       </div>

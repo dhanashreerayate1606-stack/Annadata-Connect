@@ -13,6 +13,7 @@ import {z} from 'genkit';
 const WeatherAdvisoryInputSchema = z.object({
   location: z.string().describe('The location of the farm (e.g., "Nashik").'),
   forecast: z.string().describe('A summary of the upcoming 5-day weather forecast.'),
+  language: z.string().optional().describe('The language code for the response (e.g., "en", "hi", "mr").'),
 });
 export type WeatherAdvisoryInput = z.infer<typeof WeatherAdvisoryInputSchema>;
 
@@ -42,6 +43,8 @@ Forecast Summary: {{{forecast}}}
 Focus on:
 1. Identifying risks (pests, irrigation needs, harvest timing).
 2. Explaining to consumers why certain produce might be delayed or extra fresh.
+
+IMPORTANT: You MUST generate the response in the language corresponding to this code: "{{{language}}}". (e.g. if code is 'hi', respond in Hindi; if 'mr', respond in Marathi; etc.). Default to English if the code is unknown.
 `,
 });
 

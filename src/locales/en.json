@@ -28,7 +28,8 @@
     "bulkOrdersSubtitle": "Running a restaurant, housing society, or school? Get special pricing and dedicated support for bulk orders of fresh produce.",
     "bulkOrdersButton": "Enquire Now",
     "featuredProducts": "Featured Products",
-    "featuredProductsDesc": "Handpicked for you from the best farms."
+    "featuredProductsDesc": "Handpicked for you from the best farms.",
+    "weatherInsightTitle": "Weather Insight"
   },
   "login": {
     "welcome": "Welcome Back",
@@ -226,7 +227,12 @@
     "viewAnalyticsBtn": "View Analytics",
     "weatherTitle": "IoT Weather & Alerts",
     "weatherSubtitle": "Real-time Hyperlocal Climate Monitoring",
-    "criticalAlerts": "Critical Risk Alerts"
+    "criticalAlerts": "Critical Risk Alerts",
+    "weatherPrecipitation": "Precipitation",
+    "weatherSoilTemp": "Soil Temp",
+    "weatherSoilMoisture": "Soil Moisture",
+    "weatherUVIndex": "UV Index",
+    "weatherAIAdviceTitle": "AI Farming Advice"
   },
   "listings": {
     "title": "My Product Listings",
@@ -410,6 +416,9 @@
     "supportTitle": "Need Help?",
     "supportDescription": "Contact our support team for any issues with your order.",
     "callSupport": "Call Support",
-    "chatSupport": "Chat with Us"
+    "chatSupport": "Chat with Us",
+    "weatherDelayTitle": "Weather Delay Advisory",
+    "weatherDelayDescription": "Heavy rainfall in the Nashik-Pune corridor may cause a slight delay in your delivery. Our drivers are prioritizing safety.",
+    "weatherDelayAdjusted": "Adjusted"
   }
 }

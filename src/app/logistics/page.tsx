@@ -9,7 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Phone, MessageSquare, Package, Truck, Home, User, Star, CloudRain, AlertTriangle } from "lucide-react";
+import { Phone, MessageSquare, Package, Truck, Home, Star, AlertTriangle } from "lucide-react";
 import { useTranslation } from "@/hooks/use-translation";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -75,12 +75,12 @@ const LogisticsContent = () => {
                     <CardHeader className="pb-2">
                       <CardTitle className="text-orange-800 text-sm flex items-center gap-2">
                         <AlertTriangle className="h-4 w-4" />
-                        Weather Delay Advisory
+                        {t('logistics.weatherDelayTitle')}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm text-orange-700">
-                        Heavy rainfall in the Nashik-Pune corridor may cause a slight delay in your delivery. Our drivers are prioritizing safety.
+                        {t('logistics.weatherDelayDescription')}
                       </p>
                     </CardContent>
                   </Card>
@@ -105,7 +105,7 @@ const LogisticsContent = () => {
                                         <div className="flex items-center gap-2">
                                           <p className="font-semibold">{t(`logistics.step_${step.id}`)}</p>
                                           {isDelayedByWeather && step.id === 'delivery' && (
-                                            <span className="text-[10px] font-bold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded uppercase">Adjusted</span>
+                                            <span className="text-[10px] font-bold bg-orange-100 text-orange-700 px-1.5 py-0.5 rounded uppercase">{t('logistics.weatherDelayAdjusted')}</span>
                                           )}
                                         </div>
                                         <p className="text-sm text-muted-foreground">{step.date}</p>

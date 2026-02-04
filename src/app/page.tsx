@@ -13,11 +13,12 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, ChevronRight, Mic, CloudRain, Sun, Leaf } from 'lucide-react';
+import { Search, ChevronRight, Mic, Sun } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
 import { useTranslation } from '@/hooks/use-translation';
+import { useLanguage } from '@/context/language-context';
 import {
   Carousel,
   CarouselContent,
@@ -25,7 +26,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel';
-import { weatherAdvisory, WeatherAdvisoryOutput } from '@/ai/flows/weather-advisory-flow';
+import { weatherAdvisory } from '@/ai/flows/weather-advisory-flow';
 
 const heroImage = PlaceHolderImages.find(p => p.id === 'hero-market');
 const allProducts = PlaceHolderImages.filter(p => p.category === 'product');
@@ -39,13 +40,15 @@ export default function Home() {
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
   const { t } = useTranslation();
+  const { language } = useLanguage();
 
   useEffect(() => {
     const loadWeatherInsights = async () => {
       try {
         const result = await weatherAdvisory({
           location: 'Maharashtra',
-          forecast: 'Moderate rainfall expected this week.'
+          forecast: 'Moderate rainfall expected this week.',
+          language: language
         });
         setWeatherInsight(result.consumerInsight);
       } catch (e) {
@@ -53,7 +56,7 @@ export default function Home() {
       }
     };
     loadWeatherInsights();
-  }, []);
+  }, [language]);
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -183,7 +186,7 @@ export default function Home() {
               <Sun className="h-5 w-5 text-primary" />
             </div>
             <div className="flex-grow">
-              <span className="text-xs font-bold uppercase tracking-wider text-primary mr-2">Weather Insight</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-primary mr-2">{t('home.weatherInsightTitle')}</span>
               <p className="text-sm text-foreground/80 italic">"{weatherInsight}"</p>
             </div>
             <Link href="/learning-hub" className="text-xs font-semibold text-primary hover:underline shrink-0">
