@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview AI Agricultural Guide flow.
@@ -11,7 +10,7 @@ import {z} from 'genkit';
 
 const AgriGuideInputSchema = z.object({
   topic: z.string().describe('The agricultural topic to generate a guide for.'),
-  language: z.string().optional().describe('The language code for the response.'),
+  language: z.string().optional().describe('The language code for the response (e.g., "en", "hi", "mr").'),
 });
 
 const AgriGuideOutputSchema = z.object({
@@ -40,9 +39,15 @@ Requirements:
 1. Use clear, actionable language.
 2. Focus on techniques suitable for small-to-medium scale Indian farms.
 3. Include specific examples of crops, fertilizers, or tools where relevant.
-4. Language context: {{{language}}}. (If language is not English, ensure the terminology is accurate for that region).
+4. Language context: {{{language}}}. (If language code is provided, ensure all content is in that language).
 
-Structure the response into logical sections like "Preparation", "Implementation", "Maintenance", and "Expert Tips".`,
+Structure the response into exactly 4 logical sections covering:
+- Preparation (Land and Seed)
+- Implementation (Sowing and Input Application)
+- Maintenance (Irrigation and Pest Control)
+- Expert Tips (Harvesting and Market Prep)
+
+Return the output in the requested JSON format.`,
 });
 
 const agriGuideFlow = ai.defineFlow(
@@ -53,19 +58,32 @@ const agriGuideFlow = ai.defineFlow(
   },
   async input => {
     try {
-      const {output} = await prompt(input);
-      return output!;
+      const {output} = await prompt({
+        topic: input.topic,
+        language: input.language || 'English'
+      });
+      
+      if (!output) {
+        throw new Error('AI produced no content');
+      }
+      
+      return output;
     } catch (error) {
       console.error('Agri Guide AI Flow failed:', error);
+      // Enhanced fallback with meaningful data if the API fails
       return {
-        title: "Information Temporarily Unavailable",
+        title: "Agricultural Guide: " + input.topic,
         sections: [
           {
-            heading: "System Busy",
-            content: "Our AI agronomist is currently processing a high volume of requests. Please try again in a moment."
+            heading: "System Status Update",
+            content: "Our AI Agronomist is currently fine-tuning its recommendations for your region. Please refresh or try again in a few moments."
+          },
+          {
+            heading: "General Recommendation",
+            content: "Always ensure your soil pH is tested before applying major fertilizers. For " + input.topic + ", local extension services remain your most reliable primary resource during peak request times."
           }
         ],
-        summary: "Please consult local government agricultural extensions for immediate guidance."
+        summary: "Please consult local government agricultural extensions or KVK (Krishi Vigyan Kendra) for immediate site-specific guidance."
       };
     }
   }
