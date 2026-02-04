@@ -52,7 +52,13 @@ const voiceSearchFlow = ai.defineFlow(
     outputSchema: VoiceSearchOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    try {
+      const {output} = await prompt(input);
+      return output!;
+    } catch (error) {
+      console.error('Voice Search AI Flow failed:', error);
+      // Return empty query on failure
+      return { query: "" };
+    }
   }
 );

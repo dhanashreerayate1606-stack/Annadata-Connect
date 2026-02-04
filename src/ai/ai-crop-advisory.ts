@@ -1,3 +1,4 @@
+
 'use server';
 
 /**
@@ -63,7 +64,14 @@ const aiCropAdvisoryFlow = ai.defineFlow(
     outputSchema: AICropAdvisoryOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    try {
+      const {output} = await prompt(input);
+      return output!;
+    } catch (error) {
+      console.error('Crop Advisory AI Flow failed:', error);
+      return {
+        suggestedCrops: "Personalized crop recommendations are currently unavailable. Please consult local agricultural experts or historical planting data for your region."
+      };
+    }
   }
 );

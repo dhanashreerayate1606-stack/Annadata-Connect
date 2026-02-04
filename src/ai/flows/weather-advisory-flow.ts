@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview AI weather advisory flow for localized farming.
@@ -55,7 +56,17 @@ const weatherAdvisoryFlow = ai.defineFlow(
     outputSchema: WeatherAdvisoryOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    try {
+      const {output} = await prompt(input);
+      return output!;
+    } catch (error) {
+      console.error('Weather Advisory AI Flow failed:', error);
+      // Graceful fallback for quota or other API errors
+      return {
+        alerts: [],
+        farmingTips: "Weather-based farming advice is temporarily unavailable. Please rely on local meteorological reports.",
+        consumerInsight: "Extreme weather conditions may occasionally impact logistics and crop availability."
+      };
+    }
   }
 );
