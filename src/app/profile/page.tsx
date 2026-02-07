@@ -1,4 +1,3 @@
-
 'use client';
 
 import {
@@ -11,7 +10,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { User, MapPin, Edit, History, Star, Package, LineChart, Wallet } from "lucide-react";
+import { User, MapPin, Edit, History, Star, Package, LineChart, Wallet, Loader2 } from "lucide-react";
 import Link from "next/link";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -29,47 +28,59 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useTranslation } from "@/hooks/use-translation";
 import { useWallet } from "@/context/wallet-context";
+import { useUser, useFirestore, useDoc, useMemoFirebase } from "@/firebase";
+import { doc } from "firebase/firestore";
 import TransactionHistory from "@/components/transaction-history";
-
-
-const initialConsumer = {
-  name: "Radhika Sharma",
-  email: "radhika.sharma@example.com",
-  avatar: "https://picsum.photos/seed/profile-avatar/200/200",
-  location: "Pune, Maharashtra",
-  type: "Consumer",
-  joinDate: "2025",
-};
-
-const farmer = {
-  name: "Suresh Patil",
-  email: "suresh.patil@example.com",
-  avatar: "https://picsum.photos/seed/farmer1/200/200",
-  location: "Nashik, Maharashtra",
-  type: "Farmer",
-  joinDate: "June 2023",
-  rating: 4.8,
-  totalSales: 150,
-  produce: ["Tomatoes", "Onions", "Grapes"],
-};
+import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 
 const ProfilePageClient = () => {
   const { t } = useTranslation();
-  const [consumer, setConsumer] = useState(initialConsumer);
-  const [editedName, setEditedName] = useState(consumer.name);
-  const [editedLocation, setEditedLocation] = useState(consumer.location);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { balance: consumerBalance, transactions: consumerTransactions } = useWallet();
-  const { balance: farmerBalance, transactions: farmerTransactions } = useWallet();
+  const { user, isUserLoading } = useUser();
+  const firestore = useFirestore();
+  const { balance, transactions } = useWallet();
 
+  // Load secure data from Firestore
+  const consumerRef = useMemoFirebase(() => user ? doc(firestore, 'consumers', user.uid) : null, [user, firestore]);
+  const { data: consumerData, isLoading: isConsumerLoading } = useDoc(consumerRef);
+
+  const farmerRef = useMemoFirebase(() => user ? doc(firestore, 'farmers', user.uid) : null, [user, firestore]);
+  const { data: farmerData, isLoading: isFarmerLoading } = useDoc(farmerRef);
+
+  const [editedName, setEditedName] = useState('');
+  const [editedLocation, setEditedLocation] = useState('');
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleProfileSave = () => {
-    setConsumer({ ...consumer, name: editedName, location: editedLocation });
+    if (!user) return;
+    const ref = consumerData ? consumerRef : farmerRef;
+    if (ref) {
+      setDocumentNonBlocking(ref, {
+        name: editedName || (consumerData?.name || farmerData?.name),
+        address: editedLocation || (consumerData?.address || farmerData?.address),
+      }, { merge: true });
+    }
     setIsDialogOpen(false);
   };
 
+  if (isUserLoading || isConsumerLoading || isFarmerLoading) {
+    return (
+      <div className="flex h-[60vh] items-center justify-center">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  // Fallback for demo users who haven't registered in Firestore yet
+  const profile = consumerData || farmerData || {
+    name: user?.displayName || "Guest User",
+    email: user?.email || "No email linked",
+    address: "Location not set",
+    joinDate: "2025",
+    type: farmerData ? 'Farmer' : 'Consumer'
+  };
+
   return (
-      <Tabs defaultValue="consumer" className="max-w-4xl mx-auto">
+      <Tabs defaultValue={farmerData ? "farmer" : "consumer"} className="max-w-4xl mx-auto">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="consumer">{t('profile.consumerTab')}</TabsTrigger>
           <TabsTrigger value="farmer">{t('profile.farmerTab')}</TabsTrigger>
@@ -79,21 +90,21 @@ const ProfilePageClient = () => {
           <Card>
             <CardHeader className="text-center">
               <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-primary">
-                <AvatarImage src={consumer.avatar} alt={consumer.name} />
-                <AvatarFallback>{consumer.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={`https://picsum.photos/seed/${user?.uid}/200/200`} alt={profile.name} />
+                <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
               </Avatar>
-              <CardTitle className="text-3xl font-headline">{consumer.name}</CardTitle>
+              <CardTitle className="text-3xl font-headline">{profile.name}</CardTitle>
               <CardDescription className="flex items-center justify-center gap-2">
                 <User className="w-4 h-4" />
                 {t('profile.consumerType')}
                 <Separator orientation="vertical" className="h-4 mx-2" />
                 <MapPin className="w-4 h-4" />
-                {consumer.location}
+                {profile.address || "No address set"}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-center mb-6">
-                <p className="text-sm text-muted-foreground">{t('profile.memberSince')} {consumer.joinDate}</p>
+                <p className="text-sm text-muted-foreground">{t('profile.memberSince')} {profile.joinDate}</p>
               </div>
               <Separator />
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -105,12 +116,15 @@ const ProfilePageClient = () => {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2 text-sm">
-                        <p><strong>{t('profile.infoName')}:</strong> {consumer.name}</p>
-                        <p><strong>{t('profile.infoEmail')}:</strong> {consumer.email}</p>
-                        <p><strong>{t('profile.infoLocation')}:</strong> {consumer.location}</p>
+                        <p><strong>{t('profile.infoName')}:</strong> {profile.name}</p>
+                        <p><strong>{t('profile.infoEmail')}:</strong> {profile.email}</p>
+                        <p><strong>{t('profile.infoLocation')}:</strong> {profile.address}</p>
                         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                           <DialogTrigger asChild>
-                            <Button variant="outline" size="sm" className="mt-2">
+                            <Button variant="outline" size="sm" className="mt-2" onClick={() => {
+                              setEditedName(profile.name);
+                              setEditedLocation(profile.address);
+                            }}>
                                 <Edit className="w-4 h-4 mr-2"/>
                                 {t('profile.editProfileButton')}
                             </Button>
@@ -150,9 +164,9 @@ const ProfilePageClient = () => {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2 text-sm">
-                        <p><strong>{t('profile.activityOrders')}:</strong> 5</p>
-                        <p><strong>{t('profile.activityReviews')}:</strong> 2</p>
-                        <p><strong>{t('profile.activityFavorites')}:</strong> 8</p>
+                        <p><strong>{t('profile.activityOrders')}:</strong> 0</p>
+                        <p><strong>{t('profile.activityReviews')}:</strong> 0</p>
+                        <p><strong>{t('profile.activityFavorites')}:</strong> 0</p>
                         <Button asChild variant="outline" size="sm" className="mt-2">
                             <Link href="/orders">
                                 <History className="w-4 h-4 mr-2"/>
@@ -171,9 +185,9 @@ const ProfilePageClient = () => {
                     <CardContent>
                         <div className="flex justify-between items-center mb-4">
                             <span className="text-muted-foreground">Current Balance</span>
-                            <span className="text-2xl font-bold">₹{consumerBalance.toFixed(2)}</span>
+                            <span className="text-2xl font-bold">₹{balance.toFixed(2)}</span>
                         </div>
-                        <TransactionHistory transactions={consumerTransactions} />
+                        <TransactionHistory transactions={transactions} />
                     </CardContent>
                 </Card>
               </div>
@@ -185,21 +199,21 @@ const ProfilePageClient = () => {
           <Card>
              <CardHeader className="text-center">
               <Avatar className="w-24 h-24 mx-auto mb-4 border-4 border-secondary">
-                <AvatarImage src={farmer.avatar} alt={farmer.name} />
-                <AvatarFallback>{farmer.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={`https://picsum.photos/seed/${user?.uid}-farmer/200/200`} alt={profile.name} />
+                <AvatarFallback>{profile.name.charAt(0)}</AvatarFallback>
               </Avatar>
-              <CardTitle className="text-3xl font-headline">{farmer.name}</CardTitle>
+              <CardTitle className="text-3xl font-headline">{profile.name}</CardTitle>
               <CardDescription className="flex items-center justify-center gap-2">
                 <User className="w-4 h-4" />
                 {t('profile.farmerType')}
                 <Separator orientation="vertical" className="h-4 mx-2" />
                 <MapPin className="w-4 h-4" />
-                {farmer.location}
+                {profile.address || "Address hidden for privacy"}
               </CardDescription>
             </CardHeader>
             <CardContent>
                <div className="text-center mb-6">
-                <p className="text-sm text-muted-foreground">{t('profile.memberSince')} {farmer.joinDate}</p>
+                <p className="text-sm text-muted-foreground">{t('profile.memberSince')} {profile.joinDate}</p>
               </div>
               <Separator />
                <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -211,9 +225,9 @@ const ProfilePageClient = () => {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2 text-sm">
-                        <p><strong>{t('profile.reputationRating')}:</strong> {farmer.rating} / 5.0</p>
-                        <p><strong>{t('profile.reputationSales')}:</strong> {farmer.totalSales}</p>
-                        <p><strong>{t('profile.memberSince')}:</strong> {farmer.joinDate}</p>
+                        <p><strong>{t('profile.reputationRating')}:</strong> {farmerData?.rating || "New"} / 5.0</p>
+                        <p><strong>{t('profile.reputationSales')}:</strong> {farmerData?.totalSales || 0}</p>
+                        <p><strong>{t('profile.memberSince')}:</strong> {profile.joinDate}</p>
                     </CardContent>
                 </Card>
                 <Card className="bg-background">
@@ -225,7 +239,7 @@ const ProfilePageClient = () => {
                     </CardHeader>
                     <CardContent className="space-y-2 text-sm">
                         <ul className="list-disc list-inside">
-                           {farmer.produce.map(p => <li key={p}>{p}</li>)}
+                           {(farmerData?.produce || ["No active listings"]).map((p: string) => <li key={p}>{p}</li>)}
                         </ul>
                          <Button asChild variant="outline" size="sm" className="mt-2">
                             <Link href="/farmer/listings">
@@ -262,9 +276,9 @@ const ProfilePageClient = () => {
                     <CardContent>
                         <div className="flex justify-between items-center mb-4">
                             <span className="text-muted-foreground">Current Balance</span>
-                            <span className="text-2xl font-bold">₹{farmerBalance.toFixed(2)}</span>
+                            <span className="text-2xl font-bold">₹{balance.toFixed(2)}</span>
                         </div>
-                        <TransactionHistory transactions={farmerTransactions} />
+                        <TransactionHistory transactions={transactions} />
                     </CardContent>
                 </Card>
               </div>

@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from "next/link";
@@ -24,9 +23,11 @@ import { useLanguage, LANGUAGES } from "@/context/language-context";
 import { useTranslation } from "@/hooks/use-translation";
 import { useState } from "react";
 import { createUserWithEmailAndPassword, signInAnonymously } from "firebase/auth";
+import { doc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/firebase";
+import { useAuth, useFirestore } from "@/firebase";
+import { setDocumentNonBlocking } from "@/firebase/non-blocking-updates";
 import { Loader2, User, Phone, MapPin, CreditCard } from "lucide-react";
 
 export default function SignupPage() {
@@ -35,6 +36,7 @@ export default function SignupPage() {
   const router = useRouter();
   const { toast } = useToast();
   const auth = useAuth();
+  const firestore = useFirestore();
 
   // Consumer State
   const [name, setName] = useState('');
@@ -55,8 +57,20 @@ export default function SignupPage() {
     e.preventDefault();
     setIsCreating(true);
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      toast({ title: "Signup Successful", description: "Your account has been created." });
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Persist Consumer Profile for Data Integrity
+      const consumerRef = doc(firestore, 'consumers', user.uid);
+      setDocumentNonBlocking(consumerRef, {
+        id: user.uid,
+        name: name,
+        email: email,
+        languagePreference: language,
+        joinDate: new Date().getFullYear().toString(),
+      }, { merge: true });
+
+      toast({ title: "Signup Successful", description: "Your consumer account has been created." });
       router.push('/');
     } catch (error: any) {
       toast({ variant: "destructive", title: "Signup Failed", description: error.message });
@@ -91,7 +105,22 @@ export default function SignupPage() {
 
     setIsVerifying(true);
     try {
-      await signInAnonymously(auth);
+      const userCredential = await signInAnonymously(auth);
+      const user = userCredential.user;
+
+      // Persist Farmer Profile for Data Integrity
+      const farmerRef = doc(firestore, 'farmers', user.uid);
+      setDocumentNonBlocking(farmerRef, {
+        id: user.uid,
+        name: farmerName,
+        phoneNumber: farmerPhone,
+        aadhaarNumber: farmerAadhaar,
+        address: farmerAddress,
+        languagePreference: language,
+        type: 'Farmer',
+        joinDate: new Date().toLocaleDateString('en-IN', { month: 'long', year: 'numeric' }),
+      }, { merge: true });
+
       toast({ title: "Registration Successful", description: `Welcome ${farmerName} to Annadata Connect.` });
       router.push('/farmer/dashboard');
     } catch (error: any) {
