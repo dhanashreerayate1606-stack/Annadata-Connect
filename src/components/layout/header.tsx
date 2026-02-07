@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users, Handshake, Landmark, Globe } from "lucide-react";
+import { Menu, ShoppingCart, User, Leaf, BookOpen, Tractor, Users, Handshake, Landmark, Globe, Info } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -32,6 +32,7 @@ const Header = () => {
     { href: "/community", label: t('header.community'), icon: Users },
     { href: "/bulk-orders", label: t('header.bulkOrders'), icon: Handshake },
     { href: "/schemes", label: t('header.govtSchemes'), icon: Landmark },
+    { href: "/about", label: t('header.about'), icon: Info },
   ];
 
   const NavLinks = ({ className }: { className?: string }) => (
