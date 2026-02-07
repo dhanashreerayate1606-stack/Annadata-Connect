@@ -23,16 +23,18 @@ import {
 } from "@/components/ui/select";
 import { useLanguage, LANGUAGES } from "@/context/language-context";
 import { useTranslation } from "@/hooks/use-translation";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/firebase";
 
 export default function LoginPage() {
   const { language, setLanguage } = useLanguage();
   const { t } = useTranslation();
   const router = useRouter();
   const { toast } = useToast();
+  const auth = useAuth();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,7 +43,6 @@ export default function LoginPage() {
   const handleConsumerLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const auth = getAuth();
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast({ title: "Login Successful", description: "Welcome back!" });

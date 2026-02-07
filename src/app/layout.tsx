@@ -9,6 +9,7 @@ import Footer from '@/components/layout/footer';
 import { CartProvider } from '@/context/cart-context';
 import { LanguageProvider } from '@/context/language-context';
 import { WalletProvider } from '@/context/wallet-context';
+import { FirebaseClientProvider } from '@/firebase';
 
 
 // export const metadata: Metadata = {
@@ -31,18 +32,20 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className="font-body antialiased">
-        <LanguageProvider>
-          <CartProvider>
-            <WalletProvider>
-                <div className="flex min-h-screen flex-col">
-                  <Header />
-                  <main className="flex-grow">{children}</main>
-                  <Footer />
-                </div>
-                <Toaster />
-            </WalletProvider>
-          </CartProvider>
-        </LanguageProvider>
+        <FirebaseClientProvider>
+          <LanguageProvider>
+            <CartProvider>
+              <WalletProvider>
+                  <div className="flex min-h-screen flex-col">
+                    <Header />
+                    <main className="flex-grow">{children}</main>
+                    <Footer />
+                  </div>
+                  <Toaster />
+              </WalletProvider>
+            </CartProvider>
+          </LanguageProvider>
+        </FirebaseClientProvider>
       </body>
     </html>
   );

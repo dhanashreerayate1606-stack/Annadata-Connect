@@ -23,15 +23,17 @@ import {
 import { useLanguage, LANGUAGES } from "@/context/language-context";
 import { useTranslation } from "@/hooks/use-translation";
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/firebase";
 
 export default function SignupPage() {
   const { language, setLanguage } = useLanguage();
   const { t } = useTranslation();
   const router = useRouter();
   const { toast } = useToast();
+  const auth = useAuth();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -41,7 +43,6 @@ export default function SignupPage() {
   const handleConsumerSignup = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const auth = getAuth();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       toast({ title: "Signup Successful", description: "Your account has been created." });
