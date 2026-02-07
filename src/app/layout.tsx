@@ -1,22 +1,30 @@
-
-'use client';
-
 import type { Metadata } from 'next';
+import { Alegreya, Belleza } from 'next/font/google';
 import './globals.css';
-import { Toaster } from '@/components/ui/toaster';
+import { Providers } from '@/components/providers';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import { CartProvider } from '@/context/cart-context';
-import { LanguageProvider } from '@/context/language-context';
-import { WalletProvider } from '@/context/wallet-context';
-import { FirebaseClientProvider } from '@/firebase';
+import { Toaster } from '@/components/ui/toaster';
 
+const alegreya = Alegreya({
+  subsets: ['latin'],
+  variable: '--font-alegreya',
+  weight: ['400', '700'],
+  display: 'swap',
+});
 
-// export const metadata: Metadata = {
-//   title: 'Annadata Connect',
-//   description: 'Connecting farmers directly with consumers.',
-//   manifest: '/manifest.json',
-// };
+const bellezza = Belleza({
+  subsets: ['latin'],
+  variable: '--font-belleza',
+  weight: '400',
+  display: 'swap',
+});
+
+export const metadata: Metadata = {
+  title: 'Annadata Connect | Direct Farmer-to-Consumer Marketplace',
+  description: 'Empowering Indian farmers by connecting them directly with consumers for fresh, local, and sustainable produce.',
+  manifest: '/manifest.json',
+};
 
 export default function RootLayout({
   children,
@@ -24,28 +32,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Belleza&display=swap" rel="stylesheet" />
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body className="font-body antialiased">
-        <FirebaseClientProvider>
-          <LanguageProvider>
-            <CartProvider>
-              <WalletProvider>
-                  <div className="flex min-h-screen flex-col">
-                    <Header />
-                    <main className="flex-grow">{children}</main>
-                    <Footer />
-                  </div>
-                  <Toaster />
-              </WalletProvider>
-            </CartProvider>
-          </LanguageProvider>
-        </FirebaseClientProvider>
+    <html lang="en" className={`${alegreya.variable} ${bellezza.variable}`}>
+      <body className="font-body antialiased bg-background text-foreground">
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+          </div>
+          <Toaster />
+        </Providers>
       </body>
     </html>
   );

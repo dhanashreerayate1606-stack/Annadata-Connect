@@ -1,10 +1,7 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-body {
-  font-family: 'Alegreya', serif;
-}
 
 @layer base {
   :root {
@@ -84,8 +81,9 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-alegreya), serif;
   }
   h1, h2, h3, h4, h5, h6 {
-    @apply font-headline;
+    font-family: var(--font-belleza), sans-serif;
   }
 }
