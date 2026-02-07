@@ -16,22 +16,27 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Separator } from '@/components/ui/separator';
 import { useToast } from '@/hooks/use-toast';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { Terminal, ShoppingBag, Heart } from 'lucide-react';
+import { Terminal, ShoppingBag, Heart, Loader2 } from 'lucide-react';
 import { useTranslation } from '@/hooks/use-translation';
 import { useCart } from '@/context/cart-context';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Checkbox } from '@/components/ui/checkbox';
+import { useUser, useFirestore, addDocumentNonBlocking } from '@/firebase';
+import { collection } from 'firebase/firestore';
 
 export default function CheckoutPage() {
   const { toast } = useToast();
   const { t } = useTranslation();
   const { cartItems, clearCart } = useCart();
+  const { user } = useUser();
+  const firestore = useFirestore();
   const router = useRouter();
 
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
   const [paymentConfirmed, setPaymentConfirmed] = useState(false);
   const [isDonating, setIsDonating] = useState(false);
+  const [isPlacingOrder, setIsPlacingOrder] = useState(false);
   const donationAmount = 10;
 
   const subtotal = cartItems.reduce(
@@ -41,13 +46,51 @@ export default function CheckoutPage() {
   const gst = subtotal * 0.05;
   const total = subtotal + gst + (isDonating ? donationAmount : 0);
 
-  const handlePlaceOrder = () => {
-    toast({
-      title: t('checkout.toastOrderPlacedTitle'),
-      description: t('checkout.toastOrderPlacedDescription'),
-    });
-    clearCart();
-    router.push('/orders');
+  const handlePlaceOrder = async () => {
+    if (!user) {
+      toast({
+        variant: 'destructive',
+        title: 'Authentication Required',
+        description: 'Please log in to complete your purchase.',
+      });
+      router.push('/login');
+      return;
+    }
+
+    setIsPlacingOrder(true);
+    try {
+      const transactionsRef = collection(firestore, 'transactions');
+      
+      // Save order to Firestore
+      // For this MVP, we save a consolidated transaction record
+      addDocumentNonBlocking(transactionsRef, {
+        consumerId: user.uid,
+        productId: cartItems[0]?.id || 'order_consolidated',
+        farmerId: cartItems[0]?.farmerId || 'farmer_unknown',
+        paymentMethod: paymentMethod,
+        amount: total,
+        transactionDate: new Date().toISOString(),
+        status: 'Completed',
+        items: cartItems.map(item => ({ id: item.id, name: item.name, quantity: item.quantity })),
+      });
+
+      toast({
+        title: t('checkout.toastOrderPlacedTitle'),
+        description: t('checkout.toastOrderPlacedDescription'),
+      });
+      
+      clearCart();
+      router.push('/orders');
+    } catch (e) {
+      console.error(e);
+      toast({
+        variant: 'destructive',
+        title: 'Order Failed',
+        description: 'Something went wrong while placing your order. Please try again.',
+      });
+    } finally {
+      setIsPlacingOrder(false);
+    }
   };
 
   const handlePaymentConfirm = () => {
@@ -158,7 +201,6 @@ export default function CheckoutPage() {
             </CardContent>
           </Card>
 
-          {/* CSR Donation Section */}
           <Card className="mt-8 border-primary/20 bg-primary/5">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg flex items-center gap-2">
@@ -305,8 +347,9 @@ export default function CheckoutPage() {
                 className="w-full"
                 size="lg"
                 onClick={handlePlaceOrder}
-                disabled={!paymentConfirmed}
+                disabled={!paymentConfirmed || isPlacingOrder}
               >
+                {isPlacingOrder && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                 {t('checkout.placeOrderButton')}
               </Button>
             </CardContent>

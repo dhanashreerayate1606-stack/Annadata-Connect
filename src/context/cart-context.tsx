@@ -10,6 +10,7 @@ export interface CartItem {
   quantity: number;
   imageUrl: string;
   description: string;
+  farmerId?: string;
 }
 
 interface CartContextType {

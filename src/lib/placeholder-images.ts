@@ -1,3 +1,4 @@
+
 import rawData from './placeholder-images.json';
 
 export type ImagePlaceholder = {
@@ -10,6 +11,7 @@ export type ImagePlaceholder = {
   name?: string;
   price?: string;
   farmer?: string;
+  farmerId?: string;
   location?: string;
   searchQuery?: string;
   fileUrl?: string;

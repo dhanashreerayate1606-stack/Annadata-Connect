@@ -17,6 +17,7 @@
       "name": "Desi Tomato",
       "price": "40",
       "farmer": "Pawar Farms",
+      "farmerId": "farmer_pawar_001",
       "location": "Kalyan, MH"
     },
     {
@@ -29,6 +30,7 @@
       "name": "Potato",
       "price": "30",
       "farmer": "Shinde Organics",
+      "farmerId": "farmer_shinde_002",
       "location": "Nashik, MH"
     },
     {
@@ -41,10 +43,11 @@
       "name": "Basmati Rice",
       "price": "120",
       "farmer": "Golden Fields",
+      "farmerId": "farmer_golden_003",
       "location": "Punjab"
     },
     {
-      "id": "jowar",
+      "id": "sorghum",
       "category": "product",
       "productType": "grains",
       "description": "Wholesome white Jowar (Sorghum) grains, gluten-free and nutritious.",
@@ -53,6 +56,7 @@
       "name": "sorghum",
       "price": "65",
       "farmer": "Shanti Farms",
+      "farmerId": "farmer_shanti_004",
       "location": "Solapur, MH"
     },
     {
@@ -65,6 +69,7 @@
       "name": "Bajra (Pearl Millet)",
       "price": "55",
       "farmer": "Marwar Harvest",
+      "farmerId": "farmer_marwar_005",
       "location": "Rajasthan"
     },
     {
@@ -77,6 +82,7 @@
       "name": "Corn (Maize)",
       "price": "30",
       "farmer": "Deshmukh Farms",
+      "farmerId": "farmer_deshmukh_006",
       "location": "Satara, MH"
     },
     {
@@ -89,6 +95,7 @@
       "name": "Matki (Moth Beans)",
       "price": "140",
       "farmer": "Sahyadri Pulses",
+      "farmerId": "farmer_sahyadri_007",
       "location": "Satara, MH"
     },
     {
@@ -101,6 +108,7 @@
       "name": "Chawali (Black-eyed Peas)",
       "price": "110",
       "farmer": "Konkan Sprouts",
+      "farmerId": "farmer_konkan_008",
       "location": "Ratnagiri, MH"
     },
     {
@@ -113,6 +121,7 @@
       "name": "Spinach",
       "price": "25",
       "farmer": "Green Earth Farms",
+      "farmerId": "farmer_green_009",
       "location": "Pune, MH"
     },
     {
@@ -125,6 +134,7 @@
       "name": "Okra (Bhindi)",
       "price": "45",
       "farmer": "Sun Valley",
+      "farmerId": "farmer_sun_010",
       "location": "Satara, MH"
     },
     {
@@ -137,6 +147,7 @@
       "name": "bitter gourd",
       "price": "35",
       "farmer": "Vedic Harvest",
+      "farmerId": "farmer_vedic_011",
       "location": "Kalyan, MH"
     },
     {
@@ -149,6 +160,7 @@
       "name": "Alphonso Mango",
       "price": "600",
       "farmer": "Konkan Belts",
+      "farmerId": "farmer_konkan_012",
       "location": "Ratnagiri, MH"
     },
     {
@@ -161,6 +173,7 @@
       "name": "Nagpur Orange",
       "price": "80",
       "farmer": "Orange City Farms",
+      "farmerId": "farmer_orange_013",
       "location": "Nagpur, MH"
     },
     {
@@ -173,6 +186,7 @@
       "name": "Banana",
       "price": "40",
       "farmer": "Tropical Orchards",
+      "farmerId": "farmer_tropical_014",
       "location": "Jalgaon, MH"
     },
     {

@@ -29,6 +29,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       quantity: 1,
       imageUrl: product.imageUrl,
       description: product.description,
+      farmerId: product.farmerId,
     });
     toast({
       title: t('product.toastAddedTitle'),

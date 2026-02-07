@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from "next/image";
@@ -32,6 +33,7 @@ export default function ProductDetailsClient({ product }: { product: ImagePlaceh
         quantity: 1,
         imageUrl: product.imageUrl,
         description: product.description,
+        farmerId: product.farmerId,
       });
       toast({
         title: t('product.toastAddedTitle'),
