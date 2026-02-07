@@ -27,7 +27,7 @@ import { createUserWithEmailAndPassword, signInAnonymously } from "firebase/auth
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/firebase";
-import { Loader2 } from "lucide-react";
+import { Loader2, User, Phone, MapPin, CreditCard } from "lucide-react";
 
 export default function SignupPage() {
   const { language, setLanguage } = useLanguage();
@@ -43,7 +43,10 @@ export default function SignupPage() {
   const [isCreating, setIsCreating] = useState(false);
 
   // Farmer State
+  const [farmerName, setFarmerName] = useState('');
+  const [farmerPhone, setFarmerPhone] = useState('');
   const [farmerAadhaar, setFarmerAadhaar] = useState('');
+  const [farmerAddress, setFarmerAddress] = useState('');
   const [farmerOtp, setFarmerOtp] = useState('');
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -68,10 +71,14 @@ export default function SignupPage() {
       toast({ variant: "destructive", title: "Invalid Aadhaar", description: "Aadhaar must be 12 digits." });
       return;
     }
+    if (farmerPhone.length < 10) {
+      toast({ variant: "destructive", title: "Invalid Phone", description: "Please enter a valid 10-digit mobile number." });
+      return;
+    }
     setIsOtpSent(true);
     toast({ 
       title: "OTP Sent", 
-      description: "A verification code has been sent to your linked mobile. (Use 123456 for demo)" 
+      description: `A verification code has been sent to ${farmerPhone}. (Use 123456 for demo)` 
     });
   };
 
@@ -85,7 +92,7 @@ export default function SignupPage() {
     setIsVerifying(true);
     try {
       await signInAnonymously(auth);
-      toast({ title: "Registration Successful", description: "Welcome to Annadata Connect." });
+      toast({ title: "Registration Successful", description: `Welcome ${farmerName} to Annadata Connect.` });
       router.push('/farmer/dashboard');
     } catch (error: any) {
       toast({ variant: "destructive", title: "Error", description: error.message });
@@ -96,15 +103,16 @@ export default function SignupPage() {
 
   return (
     <div className="flex min-h-[80vh] items-center justify-center bg-background px-4 py-12">
-      <div className="w-full max-w-md">
-         <div className="flex justify-between items-center mb-4">
-            <h2 className="text-3xl font-bold text-center font-headline">{t('signup.title')}</h2>
+      <div className="w-full max-w-lg">
+         <div className="flex justify-between items-center mb-6">
+            <h2 className="text-3xl font-bold text-center font-headline w-full">{t('signup.title')}</h2>
         </div>
         <Tabs defaultValue="consumer" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
+          <TabsList className="grid w-full grid-cols-2 mb-6">
             <TabsTrigger value="consumer">{t('signup.consumerTab')}</TabsTrigger>
             <TabsTrigger value="farmer">{t('signup.farmerTab')}</TabsTrigger>
           </TabsList>
+          
           <TabsContent value="consumer">
             <Card>
               <CardHeader>
@@ -142,7 +150,7 @@ export default function SignupPage() {
                           </SelectContent>
                       </Select>
                   </div>
-                  <Button type="submit" className="w-full" disabled={isCreating}>
+                  <Button type="submit" className="w-full mt-2" disabled={isCreating}>
                     {isCreating && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                     {t('signup.createAccountButton')}
                   </Button>
@@ -156,6 +164,7 @@ export default function SignupPage() {
               </CardContent>
             </Card>
           </TabsContent>
+
           <TabsContent value="farmer">
             <Card>
               <CardHeader>
@@ -168,17 +177,81 @@ export default function SignupPage() {
                 {!isOtpSent ? (
                   <form onSubmit={handleFarmerSendOtp} className="space-y-4">
                     <div className="space-y-2">
-                      <Label htmlFor="f-aadhaar">{t('signup.aadhaarLabel')}</Label>
+                      <Label htmlFor="f-name" className="flex items-center gap-2">
+                        <User className="h-4 w-4 text-muted-foreground" />
+                        {t('signup.nameLabel')}
+                      </Label>
                       <Input 
-                        id="f-aadhaar" 
-                        placeholder={t('signup.aadhaarPlaceholder')} 
+                        id="f-name" 
+                        placeholder={t('signup.namePlaceholder')} 
                         required 
-                        maxLength={12}
-                        value={farmerAadhaar}
-                        onChange={(e) => setFarmerAadhaar(e.target.value.replace(/\D/g, ''))}
+                        value={farmerName}
+                        onChange={(e) => setFarmerName(e.target.value)}
                       />
                     </div>
-                    <Button type="submit" className="w-full">{t('signup.verifyButton')}</Button>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="space-y-2">
+                        <Label htmlFor="f-phone" className="flex items-center gap-2">
+                          <Phone className="h-4 w-4 text-muted-foreground" />
+                          {t('signup.phoneLabel')}
+                        </Label>
+                        <Input 
+                          id="f-phone" 
+                          placeholder="10-digit Mobile" 
+                          required 
+                          maxLength={10}
+                          value={farmerPhone}
+                          onChange={(e) => setFarmerPhone(e.target.value.replace(/\D/g, ''))}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label htmlFor="f-aadhaar" className="flex items-center gap-2">
+                          <CreditCard className="h-4 w-4 text-muted-foreground" />
+                          {t('signup.aadhaarLabel')}
+                        </Label>
+                        <Input 
+                          id="f-aadhaar" 
+                          placeholder={t('signup.aadhaarPlaceholder')} 
+                          required 
+                          maxLength={12}
+                          value={farmerAadhaar}
+                          onChange={(e) => setFarmerAadhaar(e.target.value.replace(/\D/g, ''))}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="f-address" className="flex items-center gap-2">
+                        <MapPin className="h-4 w-4 text-muted-foreground" />
+                        {t('signup.addressLabel')}
+                      </Label>
+                      <Input 
+                        id="f-address" 
+                        placeholder={t('signup.addressPlaceholder')} 
+                        required 
+                        value={farmerAddress}
+                        onChange={(e) => setFarmerAddress(e.target.value)}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>{t('signup.languageLabel')}</Label>
+                      <Select value={language} onValueChange={setLanguage}>
+                          <SelectTrigger>
+                              <SelectValue placeholder={t('signup.languagePlaceholder')} />
+                          </SelectTrigger>
+                          <SelectContent>
+                              {LANGUAGES.map((lang) => (
+                                <SelectItem key={lang.code} value={lang.code}>
+                                  {lang.name}
+                                </SelectItem>
+                              ))}
+                          </SelectContent>
+                      </Select>
+                    </div>
+
+                    <Button type="submit" className="w-full mt-2">{t('signup.verifyButton')}</Button>
                   </form>
                 ) : (
                   <form onSubmit={handleFarmerVerify} className="space-y-4">
@@ -198,7 +271,7 @@ export default function SignupPage() {
                       Complete Registration
                     </Button>
                     <Button variant="ghost" onClick={() => setIsOtpSent(false)} className="w-full text-xs">
-                      Back to Aadhaar
+                      Back to Edit Details
                     </Button>
                   </form>
                 )}
