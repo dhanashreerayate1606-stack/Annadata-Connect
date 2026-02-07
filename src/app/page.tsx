@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -156,7 +157,7 @@ export default function Home() {
   }, [searchQuery, selectedCategory]);
 
   const featuredProducts = useMemo(
-    () => allProducts.slice(0, 5),
+    () => allProducts.filter(p => ['mango', 'bitter-gourd', 'spinach', 'tomatoes', 'orange', 'basmati-rice'].includes(p.id)),
     []
   );
 
@@ -235,8 +236,8 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
           </Carousel>
       </section>
 
