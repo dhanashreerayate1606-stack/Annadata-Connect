@@ -68,6 +68,18 @@
       "location": "Rajasthan"
     },
     {
+      "id": "maize",
+      "category": "product",
+      "productType": "grains",
+      "description": "Golden yellow Maize (Corn), freshly dried and packed.",
+      "imageUrl": "https://images.unsplash.com/photo-1551754655-cd27e38d2076?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080",
+      "imageHint": "corn cob",
+      "name": "Corn (Maize)",
+      "price": "30",
+      "farmer": "Deshmukh Farms",
+      "location": "Satara, MH"
+    },
+    {
       "id": "matki",
       "category": "product",
       "productType": "pulses",
