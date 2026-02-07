@@ -22,7 +22,8 @@ import {
   AlertTriangle,
   Loader2,
   TrendingUp,
-  Award
+  Award,
+  MapPin,
 } from 'lucide-react';
 import {
   Bar,
@@ -41,6 +42,7 @@ import { useTranslation } from '@/hooks/use-translation';
 import { useLanguage } from '@/context/language-context';
 import { useEffect, useState } from 'react';
 import { weatherAdvisory, WeatherAdvisoryOutput } from '@/ai/flows/weather-advisory-flow';
+import { useToast } from '@/hooks/use-toast';
 
 const salesData = [
   { month: 'Jan', revenue: 4000, orders: 24 },
@@ -65,15 +67,18 @@ const chartConfig = {
 export default function FarmerDashboardPage() {
   const { t } = useTranslation();
   const { language } = useLanguage();
+  const { toast } = useToast();
   const [advisory, setAdvisory] = useState<WeatherAdvisoryOutput | null>(null);
   const [isLoadingWeather, setIsLoadingWeather] = useState(true);
+  const [locationName, setLocationName] = useState('Nashik, Maharashtra');
+  const [isLocationEnabled, setIsLocationEnabled] = useState(false);
 
   useEffect(() => {
-    const fetchWeather = async () => {
+    const fetchWeather = async (loc: string) => {
       setIsLoadingWeather(true);
       try {
         const result = await weatherAdvisory({
-          location: 'Nashik, Maharashtra',
+          location: loc,
           forecast: 'Day 1-2: Clear skies, High 32°C. Day 3-5: Moderate rainfall expected, 15mm/day, Low 22°C.',
           language: language
         });
@@ -84,8 +89,37 @@ export default function FarmerDashboardPage() {
         setIsLoadingWeather(false);
       }
     };
-    fetchWeather();
-  }, [language]);
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        async (position) => {
+          setIsLocationEnabled(true);
+          const { latitude, longitude } = position.coords;
+          // In a real app, we'd use a reverse geocoding API here.
+          // For the prototype, we'll indicate coords are active.
+          const detectedLoc = `Local Area (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`;
+          setLocationName(detectedLoc);
+          fetchWeather(detectedLoc);
+          toast({
+            title: "Location Enabled",
+            description: "Providing hyper-local weather insights for your coordinates.",
+          });
+        },
+        (error) => {
+          console.warn("Geolocation access denied", error);
+          setIsLocationEnabled(false);
+          fetchWeather(locationName);
+          toast({
+            variant: "destructive",
+            title: "Location Access Denied",
+            description: "Using default regional weather. Enable location for hyper-local accuracy.",
+          });
+        }
+      );
+    } else {
+      fetchWeather(locationName);
+    }
+  }, [language, toast]);
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
@@ -96,6 +130,13 @@ export default function FarmerDashboardPage() {
         <p className="mt-2 text-lg text-muted-foreground">
           {t('dashboard.subtitle')}
         </p>
+        <div className="mt-4 flex items-center justify-center gap-2 text-sm font-medium">
+          <MapPin className={isLocationEnabled ? "text-primary" : "text-muted-foreground"} size={16} />
+          <span>{locationName}</span>
+          {!isLocationEnabled && (
+            <span className="text-xs bg-muted px-2 py-0.5 rounded text-muted-foreground">Default</span>
+          )}
+        </div>
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">

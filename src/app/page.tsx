@@ -13,7 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, ChevronRight, Mic, Sun } from 'lucide-react';
+import { Search, ChevronRight, Mic, Sun, MapPin } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
@@ -36,6 +36,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isRecording, setIsRecording] = useState(false);
   const [weatherInsight, setWeatherInsight] = useState<string | null>(null);
+  const [locationName, setLocationName] = useState('Maharashtra');
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
   const { toast } = useToast();
@@ -43,10 +44,10 @@ export default function Home() {
   const { language } = useLanguage();
 
   useEffect(() => {
-    const loadWeatherInsights = async () => {
+    const loadWeatherInsights = async (loc: string) => {
       try {
         const result = await weatherAdvisory({
-          location: 'Maharashtra',
+          location: loc,
           forecast: 'Moderate rainfall expected this week.',
           language: language
         });
@@ -55,8 +56,22 @@ export default function Home() {
         console.error(e);
       }
     };
-    loadWeatherInsights();
-  }, [language]);
+
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const loc = `your local area (${position.coords.latitude.toFixed(1)}, ${position.coords.longitude.toFixed(1)})`;
+          setLocationName(loc);
+          loadWeatherInsights(loc);
+        },
+        () => {
+          loadWeatherInsights(locationName);
+        }
+      );
+    } else {
+      loadWeatherInsights(locationName);
+    }
+  }, [language, locationName]);
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -186,7 +201,12 @@ export default function Home() {
               <Sun className="h-5 w-5 text-primary" />
             </div>
             <div className="flex-grow">
-              <span className="text-xs font-bold uppercase tracking-wider text-primary mr-2">{t('home.weatherInsightTitle')}</span>
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-xs font-bold uppercase tracking-wider text-primary">{t('home.weatherInsightTitle')}</span>
+                <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+                  <MapPin size={10} /> {locationName}
+                </span>
+              </div>
               <p className="text-sm text-foreground/80 italic">"{weatherInsight}"</p>
             </div>
             <Link href="/learning-hub" className="text-xs font-semibold text-primary hover:underline shrink-0">
