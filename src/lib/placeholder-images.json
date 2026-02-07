@@ -44,6 +44,54 @@
       "location": "Punjab"
     },
     {
+      "id": "jowar",
+      "category": "product",
+      "productType": "grains",
+      "description": "Wholesome white Jowar (Sorghum) grains, gluten-free and nutritious.",
+      "imageUrl": "https://images.unsplash.com/photo-1623066798929-946425dbe1b0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb3JnaHVtJTIwZ3JhaW5zfGVufDB8fHx8MTc3MDQ4NTgwNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sorghum grains",
+      "name": "Jowar (Sorghum)",
+      "price": "65",
+      "farmer": "Shanti Farms",
+      "location": "Solapur, MH"
+    },
+    {
+      "id": "bajra",
+      "category": "product",
+      "productType": "grains",
+      "description": "Traditional Bajra (Pearl Millet) sourced from organic drylands.",
+      "imageUrl": "https://images.unsplash.com/photo-1639086407827-0dadcd5718c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZWFybCUyMG1pbGxldHxlbnwwfHx8fDE3NzA0ODU4MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "pearl millet",
+      "name": "Bajra (Pearl Millet)",
+      "price": "55",
+      "farmer": "Marwar Harvest",
+      "location": "Rajasthan"
+    },
+    {
+      "id": "matki",
+      "category": "product",
+      "productType": "pulses",
+      "description": "Tiny, protein-packed Matki (Moth Beans), perfect for traditional Usal.",
+      "imageUrl": "https://images.unsplash.com/photo-1644432758003-536a7e0a7544?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8bW90aCUyMGJlYW5zfGVufDB8fHx8MTc3MDQ4NTgwNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "moth beans",
+      "name": "Matki (Moth Beans)",
+      "price": "140",
+      "farmer": "Sahyadri Pulses",
+      "location": "Satara, MH"
+    },
+    {
+      "id": "chawali",
+      "category": "product",
+      "productType": "pulses",
+      "description": "Fresh Chawali (Black-eyed Peas), high in fiber and minerals.",
+      "imageUrl": "https://images.unsplash.com/photo-1515347272087-685ce5a1fc8b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxibGFjay1leWVkJTIwcGVhc3xlbnwwfHx8fDE3NzA0ODU4MDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "black-eyed peas",
+      "name": "Chawali (Black-eyed Peas)",
+      "price": "110",
+      "farmer": "Konkan Sprouts",
+      "location": "Ratnagiri, MH"
+    },
+    {
       "id": "spinach",
       "category": "product",
       "productType": "vegetables",
