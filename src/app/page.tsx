@@ -71,7 +71,7 @@ export default function Home() {
     } else {
       loadWeatherInsights(locationName);
     }
-  }, [language, locationName]);
+  }, [language]);
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -128,7 +128,6 @@ export default function Home() {
               });
             }
           };
-          // Stop all media tracks to turn off the microphone
           stream.getTracks().forEach(track => track.stop());
         };
 
@@ -193,7 +192,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Weather & Harvest Insight Banner */}
       {weatherInsight && (
         <div className="bg-primary/5 border-y border-primary/10">
           <div className="container mx-auto px-4 py-4 flex items-center gap-4">

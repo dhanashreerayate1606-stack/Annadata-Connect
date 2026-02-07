@@ -13,7 +13,7 @@ const alegreya = Alegreya({
   display: 'swap',
 });
 
-const bellezza = Belleza({
+const belleza = Belleza({
   subsets: ['latin'],
   variable: '--font-belleza',
   weight: '400',
@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${alegreya.variable} ${bellezza.variable}`}>
+    <html lang="en" className={`${alegreya.variable} ${belleza.variable}`}>
       <body className="font-body antialiased bg-background text-foreground">
         <Providers>
           <div className="flex min-h-screen flex-col">
