@@ -1,0 +1,357 @@
+{
+  "entities": {
+    "Farmer": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Farmer",
+      "type": "object",
+      "description": "Represents a farmer in the Annadata Connect system.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Farmer entity."
+        },
+        "aadhaarNumber": {
+          "type": "string",
+          "description": "Aadhaar number of the farmer."
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Phone number of the farmer."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the farmer."
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of the farmer."
+        },
+        "languagePreference": {
+          "type": "string",
+          "description": "Preferred language of the farmer."
+        }
+      },
+      "required": [
+        "id",
+        "aadhaarNumber",
+        "phoneNumber",
+        "name"
+      ]
+    },
+    "Consumer": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Consumer",
+      "type": "object",
+      "description": "Represents a consumer in the Annadata Connect system.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Consumer entity."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the consumer."
+        },
+        "email": {
+          "type": "string",
+          "description": "Email address of the consumer.",
+          "format": "email"
+        },
+        "phoneNumber": {
+          "type": "string",
+          "description": "Phone number of the consumer."
+        },
+        "address": {
+          "type": "string",
+          "description": "Address of the consumer."
+        },
+        "languagePreference": {
+          "type": "string",
+          "description": "Preferred language of the consumer."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "email",
+        "phoneNumber"
+      ]
+    },
+    "Product": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Product",
+      "type": "object",
+      "description": "Represents a product listed by a farmer.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Product entity."
+        },
+        "farmerId": {
+          "type": "string",
+          "description": "Reference to Farmer. (Relationship: Farmer 1:N Product)"
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the product."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the product."
+        },
+        "price": {
+          "type": "number",
+          "description": "Price of the product."
+        },
+        "quantity": {
+          "type": "number",
+          "description": "Available quantity of the product."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL of the product image.",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "id",
+        "farmerId",
+        "name",
+        "price",
+        "quantity"
+      ]
+    },
+    "QrCode": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "QrCode",
+      "type": "object",
+      "description": "Represents a QR code associated with a product.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the QrCode entity."
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to Product. (Relationship: Product 1:1 QrCode)"
+        },
+        "code": {
+          "type": "string",
+          "description": "The actual QR code data (e.g., a URL or encoded data)."
+        },
+        "generationDate": {
+          "type": "string",
+          "description": "Date and time when the QR code was generated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "productId",
+        "code",
+        "generationDate"
+      ]
+    },
+    "Transaction": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Transaction",
+      "type": "object",
+      "description": "Represents a payment transaction between a consumer and a farmer.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Transaction entity."
+        },
+        "consumerId": {
+          "type": "string",
+          "description": "Reference to Consumer. (Relationship: Consumer 1:N Transaction)"
+        },
+        "productId": {
+          "type": "string",
+          "description": "Reference to Product. (Relationship: Product 1:N Transaction)"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Payment method used for the transaction (e.g., UPI, Card, COD)."
+        },
+        "amount": {
+          "type": "number",
+          "description": "Amount of the transaction."
+        },
+        "transactionDate": {
+          "type": "string",
+          "description": "Date and time of the transaction.",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "description": "Status of the transaction (e.g., Pending, Completed, Failed)."
+        }
+      },
+      "required": [
+        "id",
+        "consumerId",
+        "productId",
+        "paymentMethod",
+        "amount",
+        "transactionDate",
+        "status"
+      ]
+    },
+    "LearningResource": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "LearningResource",
+      "type": "object",
+      "description": "Represents a learning resource available in the Learning Hub.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the LearningResource entity."
+        },
+        "title": {
+          "type": "string",
+          "description": "Title of the learning resource."
+        },
+        "description": {
+          "type": "string",
+          "description": "Description of the learning resource."
+        },
+        "resourceType": {
+          "type": "string",
+          "description": "Type of the learning resource (e.g., Tutorial, Webinar, Downloadable)."
+        },
+        "url": {
+          "type": "string",
+          "description": "URL of the learning resource.",
+          "format": "uri"
+        },
+        "region": {
+          "type": "string",
+          "description": "The targeted region/state for the tutorial. If global, then this would be set to null/empty."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "resourceType",
+        "url"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/farmers/{farmerId}",
+        "definition": {
+          "entityName": "Farmer",
+          "schema": {
+            "$ref": "#/backend/entities/Farmer"
+          },
+          "description": "Stores farmer profiles, accessible only to the farmer themselves and authorized admins. Includes farmer ID for access control.",
+          "params": [
+            {
+              "name": "farmerId",
+              "description": "The unique ID of the farmer."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/consumers/{consumerId}",
+        "definition": {
+          "entityName": "Consumer",
+          "schema": {
+            "$ref": "#/backend/entities/Consumer"
+          },
+          "description": "Stores consumer profiles, accessible only to the consumer themselves and authorized admins. Includes consumer ID for access control.",
+          "params": [
+            {
+              "name": "consumerId",
+              "description": "The unique ID of the consumer."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/farmers/{farmerId}/products/{productId}",
+        "definition": {
+          "entityName": "Product",
+          "schema": {
+            "$ref": "#/backend/entities/Product"
+          },
+          "description": "Stores product listings for each farmer. Includes denormalized 'farmerId' for authorization independence. Products can only be created, updated or deleted by the farmer.",
+          "params": [
+            {
+              "name": "farmerId",
+              "description": "The unique ID of the farmer."
+            },
+            {
+              "name": "productId",
+              "description": "The unique ID of the product."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/products/{productId}/qrCodes/{qrCodeId}",
+        "definition": {
+          "entityName": "QrCode",
+          "schema": {
+            "$ref": "#/backend/entities/QrCode"
+          },
+          "description": "Stores QR codes associated with products.  Product ownership is verified through the product path. Read access can be public or restricted based on business requirements.",
+          "params": [
+            {
+              "name": "productId",
+              "description": "The unique ID of the product."
+            },
+            {
+              "name": "qrCodeId",
+              "description": "The unique ID of the QR code."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/transactions/{transactionId}",
+        "definition": {
+          "entityName": "Transaction",
+          "schema": {
+            "$ref": "#/backend/entities/Transaction"
+          },
+          "description": "Stores transaction data. Open reads are allowed to ensure that farmers and consumers can verify transactions. Includes consumerId and productId.",
+          "params": [
+            {
+              "name": "transactionId",
+              "description": "The unique ID of the transaction."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/learningResources/{learningResourceId}",
+        "definition": {
+          "entityName": "LearningResource",
+          "schema": {
+            "$ref": "#/backend/entities/LearningResource"
+          },
+          "description": "Stores learning resources. Can be publicly accessible or restricted based on the 'region' and other criteria.",
+          "params": [
+            {
+              "name": "learningResourceId",
+              "description": "The unique ID of the learning resource."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to address the 'No Firebase App' error and ensure a secure and scalable Annadata Connect application. The error indicates that the Firebase app was not initialized before calling `getAuth()`.  This is a code-level error and will be addressed by initializing Firebase before any Firebase services are used.\n\nThe structure is crafted around the principles of Authorization Independence, Structural Segregation, Access Modeling, and Data Clarity to facilitate robust security rules and efficient data management.\n\n**Authorization Independence:**  Authorization information is denormalized where necessary to avoid `get()` calls in security rules, enabling atomic operations and simplifying security logic.  For example, the `products` subcollection under a farmer includes the `farmerId` which removes the need to query the parent farmer document to verify ownership.\n\n**Structural Segregation:** Different data types with varying access requirements are stored in separate collections. User profiles (`consumers` and `farmers`) are stored at the top level. Products are organized under the `/farmers/{farmerId}/products` structure enabling easy ownership verification and listing.\n\n**Access Modeling:** Path-based ownership is employed for user-owned data like products. Collaborative data is not explicitly present, but the structure is prepared for it by modeling the farmers and consumers at the top level.\n\n**QAPs Support:**\n*   Secure listing of products is achieved via the `/farmers/{farmerId}/products` structure. Security rules can easily filter products based on the farmer ID without requiring complex queries or filters in the rules themselves.\n*   The consumer profiles at the top level enable easy listing of all consumers, if needed (although this might require pagination for scalability).\n\n**Invariants:** Ownership is enforced through path-based access control. Timestamps could be added to entities like `Product` and `Transaction` to track creation and modification times. Denormalization is used to guarantee that each document contains all information that is needed for security rules, preventing race conditions and ensuring data consistency."
+  }
+}

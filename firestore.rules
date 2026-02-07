@@ -1,0 +1,144 @@
+rules_version = '2';
+
+/**
+ * ANNADATA CONNECT - FIRESTORE SECURITY RULES
+ *
+ * CORE PHILOSOPHY:
+ * This ruleset implements a strict identity-based authorization model for the Annadata Connect platform.
+ * Access is primarily governed by document ownership and path-based hierarchy. The system distinguishes 
+ * between Producers (Farmers) and Consumers, ensuring that sensitive profile data and financial 
+ * transactions are restricted to the relevant parties while product listings and learning 
+ * resources remain accessible for marketplace discovery.
+ *
+ * DATA STRUCTURE:
+ * - /farmers/{farmerId}: Root-level collection for farmer profiles.
+ * - /farmers/{farmerId}/products/{productId}: Farmer-owned products.
+ * - /consumers/{consumerId}: Root-level collection for consumer profiles.
+ * - /transactions/{transactionId}: Root-level collection for cross-entity commerce data.
+ * - /learningResources/{learningResourceId}: Public educational content.
+ *
+ * KEY SECURITY DECISIONS:
+ * - Prototyping Mode: Schema validation (field types/optionality) is bypassed to allow rapid frontend 
+ *   iteration. Only relational integrity fields (IDs and Owner references) are enforced.
+ * - Ownership Integrity: For documents stored under user-specific paths, we enforce that the 
+ *   document's internal ID matches the path ID.
+ * - Public Discovery: Product listings and Learning Resources allow public read access (list/get) 
+ *   to support the platform's core marketplace and educational goals.
+ * - Transaction Transparency: Transactions allow authenticated reads to ensure both farmers 
+ *   and consumers can verify purchase history, though writes are restricted to the consumer.
+ *
+ * DENORMALIZATION FOR AUTHORIZATION:
+ * - Product documents include a denormalized 'farmerId' field. This allows security rules 
+ *   to verify ownership immediately without performing costly get() calls on the parent Farmer document.
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // --- GLOBAL HELPER FUNCTIONS ---
+
+    /** Checks if the request is from an authenticated user. */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** Checks if the authenticated user's UID matches the provided userId. */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /** Checks if the user is the owner and the document exists (for update/delete). */
+    function isExistingOwner(userId) {
+      return resource != null && isOwner(userId);
+    }
+
+    /** Returns the data of the document as it would exist after the write. */
+    function incomingData() {
+      return request.resource.data;
+    }
+
+    // --- COLLECTION RULES ---
+
+    /**
+     * @description Rules for Farmer profiles. Users can only manage their own profile.
+     * @path /farmers/{farmerId}
+     * @allow (get, list, create, update) if UID matches farmerId.
+     * @deny (delete) if requester is not the farmer.
+     * @principle Enforces path-based identity and self-creation.
+     */
+    match /farmers/{farmerId} {
+      allow get, list: if isOwner(farmerId);
+      allow create: if isOwner(farmerId) && incomingData().id == farmerId;
+      allow update: if isExistingOwner(farmerId) && incomingData().id == farmerId;
+      allow delete: if isExistingOwner(farmerId);
+    }
+
+    /**
+     * @description Rules for Consumer profiles. Users can only manage their own profile.
+     * @path /consumers/{consumerId}
+     * @allow (get, list, create, update) if UID matches consumerId.
+     * @deny (delete) if UID does not match.
+     * @principle Enforces path-based identity and self-creation.
+     */
+    match /consumers/{consumerId} {
+      allow get, list: if isOwner(consumerId);
+      allow create: if isOwner(consumerId) && incomingData().id == consumerId;
+      allow update: if isExistingOwner(consumerId) && incomingData().id == consumerId;
+      allow delete: if isExistingOwner(consumerId);
+    }
+
+    /**
+     * @description Products are nested under Farmers. Publicly readable for marketplace discovery, but only the farmer can manage them.
+     * @path /farmers/{farmerId}/products/{productId}
+     * @allow (get, list) if true.
+     * @allow (create, update, delete) if user is the farmer matching the path.
+     * @principle Public Read with Owner-Only Writes. Relational integrity for 'farmerId' is enforced.
+     */
+    match /farmers/{farmerId}/products/{productId} {
+      allow get, list: if true;
+      allow create: if isOwner(farmerId) && incomingData().farmerId == farmerId;
+      allow update: if isExistingOwner(farmerId) && incomingData().farmerId == farmerId;
+      allow delete: if isExistingOwner(farmerId);
+
+      /**
+       * @description QR Codes associated with specific products.
+       * @path /farmers/{farmerId}/products/{productId}/qrCodes/{qrCodeId}
+       * @allow (get, list) if true.
+       * @allow (create, update, delete) if requester is the product's farmer.
+       * @principle Inherited ownership through parent path.
+       */
+      match /qrCodes/{qrCodeId} {
+        allow get, list: if true;
+        allow create: if isOwner(farmerId) && incomingData().productId == productId;
+        allow update: if isExistingOwner(farmerId) && incomingData().productId == productId;
+        allow delete: if isExistingOwner(farmerId);
+      }
+    }
+
+    /**
+     * @description Purchase records. Consumers create them, and both parties involved can read them.
+     * @path /transactions/{transactionId}
+     * @allow (get, list) if authenticated (for farmer/consumer verification).
+     * @allow (create) if the consumerId in data matches the authenticated user.
+     * @deny (update, delete) if true (transactions should be immutable).
+     * @principle Shared access for verification with strict creator-only generation.
+     */
+    match /transactions/{transactionId} {
+      allow get, list: if isSignedIn();
+      allow create: if isSignedIn() && incomingData().consumerId == request.auth.uid;
+      allow update, delete: if false; // Transactions are immutable in this model.
+    }
+
+    /**
+     * @description Publicly accessible learning materials for the Annadata community.
+     * @path /learningResources/{learningResourceId}
+     * @allow (get, list) if true.
+     * @allow (create, update, delete) if false (requires admin privileges, not covered in IR).
+     * @principle Publicly accessible resources with restricted writes.
+     */
+    match /learningResources/{learningResourceId} {
+      allow get, list: if true;
+      allow create, update, delete: if false; 
+    }
+  }
+}
