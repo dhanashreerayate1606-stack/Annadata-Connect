@@ -163,7 +163,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
-      <section className="relative h-[50vh] w-full bg-secondary">
+      <section className="relative h-[40vh] md:h-[50vh] w-full bg-secondary">
         {heroImage && (
           <Image
             src={heroImage.imageUrl}
@@ -175,16 +175,16 @@ export default function Home() {
           />
         )}
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white">
-          <h1 className="text-4xl font-bold md:text-6xl font-headline">
+        <div className="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
+          <h1 className="text-3xl font-bold md:text-6xl font-headline leading-tight">
             {t('home.heroTitle')}
           </h1>
-          <p className="mt-4 max-w-2xl text-lg md:text-xl font-body">
+          <p className="mt-4 max-w-2xl text-base md:text-xl font-body">
             {t('home.heroSubtitle')}
           </p>
           <Button
             asChild
-            className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
+            className="mt-6 md:mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-bold"
           >
             <Link href="#products">
               {t('home.exploreNow')} <ChevronRight className="ml-2 h-5 w-5" />
@@ -195,30 +195,30 @@ export default function Home() {
 
       {weatherInsight && (
         <div className="bg-primary/5 border-y border-primary/10">
-          <div className="container mx-auto px-4 py-4 flex items-center gap-4">
+          <div className="container mx-auto px-4 py-3 md:py-4 flex items-center gap-3 md:gap-4">
             <div className="bg-primary/10 p-2 rounded-full hidden sm:block">
               <Sun className="h-5 w-5 text-primary" />
             </div>
             <div className="flex-grow">
-              <div className="flex items-center gap-2 mb-1">
-                <span className="text-xs font-bold uppercase tracking-wider text-primary">{t('home.weatherInsightTitle')}</span>
-                <span className="flex items-center gap-1 text-[10px] text-muted-foreground">
+              <div className="flex items-center gap-2 mb-0.5 md:mb-1">
+                <span className="text-[10px] md:text-xs font-bold uppercase tracking-wider text-primary">{t('home.weatherInsightTitle')}</span>
+                <span className="flex items-center gap-1 text-[9px] md:text-[10px] text-muted-foreground">
                   <MapPin size={10} /> {locationName}
                 </span>
               </div>
-              <p className="text-sm text-foreground/80 italic">"{weatherInsight}"</p>
+              <p className="text-xs md:text-sm text-foreground/80 italic line-clamp-2 md:line-clamp-none">"{weatherInsight}"</p>
             </div>
-            <Link href="/learning-hub" className="text-xs font-semibold text-primary hover:underline shrink-0">
-              Why this matters?
+            <Link href="/learning-hub" className="text-[10px] md:text-xs font-semibold text-primary hover:underline shrink-0">
+              Why?
             </Link>
           </div>
         </div>
       )}
       
-      <section className="container mx-auto px-4 py-12 md:py-16">
-         <div className="mb-8 text-center">
-             <h2 className="text-3xl font-bold font-headline">{t('home.featuredProducts')}</h2>
-             <p className="text-muted-foreground mt-2">{t('home.featuredProductsDesc')}</p>
+      <section className="container mx-auto px-4 py-8 md:py-16">
+         <div className="mb-6 md:mb-8 text-center">
+             <h2 className="text-2xl md:text-3xl font-bold font-headline">{t('home.featuredProducts')}</h2>
+             <p className="text-sm md:text-base text-muted-foreground mt-1 md:mt-2">{t('home.featuredProductsDesc')}</p>
          </div>
          <Carousel
             opts={{
@@ -229,7 +229,7 @@ export default function Home() {
           >
             <CarouselContent>
               {featuredProducts.map((product) => (
-                <CarouselItem key={product.id} className="md:basis-1/2 lg:basis-1/3">
+                <CarouselItem key={product.id} className="basis-1/2 lg:basis-1/3">
                   <div className="p-1">
                      <ProductCard product={product} />
                   </div>
@@ -241,13 +241,13 @@ export default function Home() {
           </Carousel>
       </section>
 
-      <section id="products" className="container mx-auto px-4 py-12 md:py-16">
-        <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-center">
+      <section id="products" className="container mx-auto px-4 py-8 md:py-16">
+        <div className="mb-6 md:mb-8 flex flex-col gap-3 md:gap-4 md:flex-row md:items-center">
           <div className="relative flex-grow">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
               placeholder={t('home.searchPlaceholder')}
-              className="pl-10"
+              className="pl-9 h-10"
               value={searchQuery}
               onChange={e => setSearchQuery(e.target.value)}
             />
@@ -258,15 +258,15 @@ export default function Home() {
               size="icon"
               aria-label="Voice Search"
               onClick={handleVoiceSearch}
-              className={isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : ''}
+              className={`h-10 w-10 ${isRecording ? 'bg-red-500 hover:bg-red-600 text-white' : ''}`}
             >
-              <Mic className="h-5 w-5" />
+              <Mic className="h-4 w-4" />
             </Button>
             <Select
               onValueChange={setSelectedCategory}
               value={selectedCategory}
             >
-              <SelectTrigger className="w-full md:w-[180px]">
+              <SelectTrigger className="w-full md:w-[180px] h-10">
                 <SelectValue placeholder={t('home.categoryPlaceholder')} />
               </SelectTrigger>
               <SelectContent>
@@ -284,34 +284,34 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
           {filteredProducts.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
       </section>
 
-      <section className="bg-muted py-12 md:py-16">
-        <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-3xl font-bold font-headline">
+      <section className="bg-muted py-8 md:py-16">
+        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-bold font-headline">
               {t('home.subscriptionsTitle')}
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-3 md:mt-4 text-sm md:text-lg text-muted-foreground">
               {t('home.subscriptionsSubtitle')}
             </p>
-            <Button asChild className="mt-6">
+            <Button asChild className="mt-5 md:mt-6">
               <Link href="/subscriptions">{t('home.subscriptionsButton')}</Link>
             </Button>
           </div>
-          <div>
-            <h2 className="text-3xl font-bold font-headline">
+          <div className="text-center md:text-left">
+            <h2 className="text-2xl md:text-3xl font-bold font-headline">
               {t('home.bulkOrdersTitle')}
             </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-3 md:mt-4 text-sm md:text-lg text-muted-foreground">
               {t('home.bulkOrdersSubtitle')}
             </p>
-            <Button asChild className="mt-6">
+            <Button asChild className="mt-5 md:mt-6">
               <Link href="/bulk-orders">{t('home.bulkOrdersButton')}</Link>
             </Button>
           </div>
