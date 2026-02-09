@@ -14,7 +14,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Search, ChevronRight, Mic, Sun, MapPin } from 'lucide-react';
+import { Search, ChevronRight, Mic, Sun, MapPin, Loader2 } from 'lucide-react';
 import ProductCard from '@/components/product-card';
 import { voiceSearch } from '@/ai/flows/voice-search-flow';
 import { useToast } from '@/hooks/use-toast';
@@ -37,6 +37,7 @@ export default function Home() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [isRecording, setIsRecording] = useState(false);
   const [weatherInsight, setWeatherInsight] = useState<string | null>(null);
+  const [isWeatherLoading, setIsWeatherLoading] = useState(false);
   const [locationName, setLocationName] = useState('Maharashtra');
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
@@ -46,6 +47,14 @@ export default function Home() {
 
   useEffect(() => {
     const loadWeatherInsights = async (loc: string) => {
+      // Check session storage first to avoid redundant AI calls during page shuffling
+      const cached = sessionStorage.getItem(`weather_${loc}_${language}`);
+      if (cached) {
+        setWeatherInsight(cached);
+        return;
+      }
+
+      setIsWeatherLoading(true);
       try {
         const result = await weatherAdvisory({
           location: loc,
@@ -53,26 +62,36 @@ export default function Home() {
           language: language
         });
         setWeatherInsight(result.consumerInsight);
+        sessionStorage.setItem(`weather_${loc}_${language}`, result.consumerInsight);
       } catch (e) {
         console.error(e);
+      } finally {
+        setIsWeatherLoading(false);
       }
     };
 
     if ("geolocation" in navigator) {
+      // Use a timeout for geolocation to avoid blocking page feel
+      const geoTimeout = setTimeout(() => {
+        if (!weatherInsight && !isWeatherLoading) loadWeatherInsights(locationName);
+      }, 3000);
+
       navigator.geolocation.getCurrentPosition(
         (position) => {
+          clearTimeout(geoTimeout);
           const loc = `your local area (${position.coords.latitude.toFixed(1)}, ${position.coords.longitude.toFixed(1)})`;
           setLocationName(loc);
           loadWeatherInsights(loc);
         },
         () => {
+          clearTimeout(geoTimeout);
           loadWeatherInsights(locationName);
         }
       );
     } else {
       loadWeatherInsights(locationName);
     }
-  }, [language]);
+  }, [language, weatherInsight, isWeatherLoading, locationName]);
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -193,9 +212,15 @@ export default function Home() {
         </div>
       </section>
 
-      {weatherInsight && (
-        <div className="bg-primary/5 border-y border-primary/10">
-          <div className="container mx-auto px-4 py-3 md:py-4 flex items-center gap-3 md:gap-4">
+      {/* Weather Insight Banner - Fixed height to prevent layout shifts */}
+      <div className="min-h-[64px] bg-primary/5 border-y border-primary/10 flex items-center">
+        {isWeatherLoading ? (
+          <div className="container mx-auto px-4 py-3 flex items-center justify-center gap-2">
+            <Loader2 className="h-4 w-4 animate-spin text-primary" />
+            <span className="text-xs text-muted-foreground">Updating hyper-local insights...</span>
+          </div>
+        ) : weatherInsight ? (
+          <div className="container mx-auto px-4 py-3 md:py-4 flex items-center gap-3 md:gap-4 animate-in fade-in duration-500">
             <div className="bg-primary/10 p-2 rounded-full hidden sm:block">
               <Sun className="h-5 w-5 text-primary" />
             </div>
@@ -212,8 +237,8 @@ export default function Home() {
               Why?
             </Link>
           </div>
-        </div>
-      )}
+        ) : null}
+      </div>
       
       <section className="container mx-auto px-4 py-8 md:py-16">
          <div className="mb-6 md:mb-8 text-center">
@@ -285,8 +310,8 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3 xl:grid-cols-4">
-          {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
+          {filteredProducts.map((product, index) => (
+            <ProductCard key={product.id} product={product} priority={index < 4} />
           ))}
         </div>
       </section>

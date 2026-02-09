@@ -14,9 +14,10 @@ import { useTranslation } from "@/hooks/use-translation";
 
 interface ProductCardProps {
   product: ImagePlaceholder;
+  priority?: boolean;
 }
 
-const ProductCard = ({ product }: ProductCardProps) => {
+const ProductCard = ({ product, priority = false }: ProductCardProps) => {
   const { addToCart } = useCart();
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -49,6 +50,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               className="object-cover"
               data-ai-hint={product.imageHint}
               sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+              priority={priority}
             />
           </div>
         </Link>

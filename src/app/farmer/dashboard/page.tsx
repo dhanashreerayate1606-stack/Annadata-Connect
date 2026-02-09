@@ -1,3 +1,4 @@
+
 'use client';
 
 import {
@@ -75,6 +76,15 @@ export default function FarmerDashboardPage() {
 
   useEffect(() => {
     const fetchWeather = async (loc: string) => {
+      // Use caching to make dashboard transitions feel instant
+      const cacheKey = `advisory_${loc}_${language}`;
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        setAdvisory(JSON.parse(cached));
+        setIsLoadingWeather(false);
+        return;
+      }
+
       setIsLoadingWeather(true);
       try {
         const result = await weatherAdvisory({
@@ -83,6 +93,7 @@ export default function FarmerDashboardPage() {
           language: language
         });
         setAdvisory(result);
+        sessionStorage.setItem(cacheKey, JSON.stringify(result));
       } catch (e) {
         console.error(e);
       } finally {
@@ -91,35 +102,30 @@ export default function FarmerDashboardPage() {
     };
 
     if ("geolocation" in navigator) {
+      const geoTimeout = setTimeout(() => {
+        if (isLoadingWeather) fetchWeather(locationName);
+      }, 3000);
+
       navigator.geolocation.getCurrentPosition(
         async (position) => {
+          clearTimeout(geoTimeout);
           setIsLocationEnabled(true);
           const { latitude, longitude } = position.coords;
-          // In a real app, we'd use a reverse geocoding API here.
-          // For the prototype, we'll indicate coords are active.
           const detectedLoc = `Local Area (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`;
           setLocationName(detectedLoc);
           fetchWeather(detectedLoc);
-          toast({
-            title: "Location Enabled",
-            description: "Providing hyper-local weather insights for your coordinates.",
-          });
         },
         (error) => {
+          clearTimeout(geoTimeout);
           console.warn("Geolocation access denied", error);
           setIsLocationEnabled(false);
           fetchWeather(locationName);
-          toast({
-            variant: "destructive",
-            title: "Location Access Denied",
-            description: "Using default regional weather. Enable location for hyper-local accuracy.",
-          });
         }
       );
     } else {
       fetchWeather(locationName);
     }
-  }, [language, toast]);
+  }, [language, locationName]);
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
@@ -201,7 +207,7 @@ export default function FarmerDashboardPage() {
                 <Loader2 className="animate-spin h-8 w-8 text-primary" />
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="space-y-6 animate-in fade-in duration-500">
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                   <div className="p-4 rounded-lg bg-blue-50 border border-blue-100 flex flex-col items-center">
                     <CloudRain className="text-blue-500 mb-2" />
@@ -248,7 +254,7 @@ export default function FarmerDashboardPage() {
                </div>
             ) : advisory?.alerts.length ? (
               advisory.alerts.map((alert, idx) => (
-                <div key={idx} className="flex gap-3 p-3 rounded-md bg-destructive/5 border border-destructive/20">
+                <div key={idx} className="flex gap-3 p-3 rounded-md bg-destructive/5 border border-destructive/20 animate-in slide-in-from-right duration-300">
                   <AlertTriangle className="h-4 w-4 text-destructive shrink-0 mt-0.5" />
                   <p className="text-sm font-medium">{alert}</p>
                 </div>
