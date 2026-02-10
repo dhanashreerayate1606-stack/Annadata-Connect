@@ -1,3 +1,11 @@
+export async function generateStaticParams() {
+  return [
+    { id: "1" },
+    { id: "2" },
+    { id: "3" },
+  ];
+}
+
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { notFound } from "next/navigation";
 import ProductDetailsClient from "./product-details-client";

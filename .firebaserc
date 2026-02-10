@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "studio-9189363119-2ccc2"
+  },
+  "targets": {
+    "studio-9189363119-2ccc2": {
+      "hosting": {
+        "annadata": [
+          "annadataconnect"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
