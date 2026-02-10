@@ -47,7 +47,8 @@ export default function Home() {
 
   useEffect(() => {
     const loadWeatherInsights = async (loc: string) => {
-      const cached = sessionStorage.getItem(`weather_${loc}_${language}`);
+      const cacheKey = `weather_${loc}_${language}`;
+      const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
         setWeatherInsight(cached);
         return;
@@ -61,7 +62,7 @@ export default function Home() {
           language: language
         });
         setWeatherInsight(result.consumerInsight);
-        sessionStorage.setItem(`weather_${loc}_${language}`, result.consumerInsight);
+        sessionStorage.setItem(cacheKey, result.consumerInsight);
       } catch (e) {
         console.error(e);
       } finally {
@@ -89,7 +90,7 @@ export default function Home() {
     } else {
       loadWeatherInsights(locationName);
     }
-  }, [language]); // Only run when language changes, or once on mount
+  }, [language]); 
 
   const handleVoiceSearch = async () => {
     if (isRecording) {

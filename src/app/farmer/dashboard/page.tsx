@@ -68,7 +68,6 @@ const chartConfig = {
 export default function FarmerDashboardPage() {
   const { t } = useTranslation();
   const { language } = useLanguage();
-  const { toast } = useToast();
   const [advisory, setAdvisory] = useState<WeatherAdvisoryOutput | null>(null);
   const [isLoadingWeather, setIsLoadingWeather] = useState(true);
   const [locationName, setLocationName] = useState('Nashik, Maharashtra');
@@ -119,7 +118,7 @@ export default function FarmerDashboardPage() {
     } else {
       fetchWeather(locationName);
     }
-  }, [language]); // Run on language change or mount
+  }, [language]);
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">

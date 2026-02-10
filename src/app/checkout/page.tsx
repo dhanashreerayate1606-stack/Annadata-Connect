@@ -62,7 +62,6 @@ export default function CheckoutPage() {
       const transactionsRef = collection(firestore, 'transactions');
       
       // Save order to Firestore
-      // For this MVP, we save a consolidated transaction record
       addDocumentNonBlocking(transactionsRef, {
         consumerId: user.uid,
         productId: cartItems[0]?.id || 'order_consolidated',
@@ -71,7 +70,12 @@ export default function CheckoutPage() {
         amount: total,
         transactionDate: new Date().toISOString(),
         status: 'Completed',
-        items: cartItems.map(item => ({ id: item.id, name: item.name, quantity: item.quantity })),
+        items: cartItems.map(item => ({ 
+          id: item.id, 
+          name: item.name, 
+          quantity: item.quantity,
+          farmerId: item.farmerId 
+        })),
       });
 
       toast({
@@ -111,7 +115,7 @@ export default function CheckoutPage() {
 
   const handlePaymentMethodChange = (value: string) => {
     setPaymentMethod(value);
-    setPaymentConfirmed(false); // Reset confirmation when method changes
+    setPaymentConfirmed(false);
     if (value === 'upi' || value === 'cod') {
       setPaymentConfirmed(true);
     }
