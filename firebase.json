@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "annadata",
-      "public": ".",
+      "public": "public",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -17,4 +17,3 @@
     }
   ]
 }
-
