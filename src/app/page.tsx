@@ -47,7 +47,6 @@ export default function Home() {
 
   useEffect(() => {
     const loadWeatherInsights = async (loc: string) => {
-      // Check session storage first to avoid redundant AI calls during page shuffling
       const cached = sessionStorage.getItem(`weather_${loc}_${language}`);
       if (cached) {
         setWeatherInsight(cached);
@@ -71,9 +70,8 @@ export default function Home() {
     };
 
     if ("geolocation" in navigator) {
-      // Use a timeout for geolocation to avoid blocking page feel
       const geoTimeout = setTimeout(() => {
-        if (!weatherInsight && !isWeatherLoading) loadWeatherInsights(locationName);
+        loadWeatherInsights(locationName);
       }, 3000);
 
       navigator.geolocation.getCurrentPosition(
@@ -91,7 +89,7 @@ export default function Home() {
     } else {
       loadWeatherInsights(locationName);
     }
-  }, [language, weatherInsight, isWeatherLoading, locationName]);
+  }, [language]); // Only run when language changes, or once on mount
 
   const handleVoiceSearch = async () => {
     if (isRecording) {
@@ -212,7 +210,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Weather Insight Banner - Fixed height to prevent layout shifts */}
       <div className="min-h-[64px] bg-primary/5 border-y border-primary/10 flex items-center">
         {isWeatherLoading ? (
           <div className="container mx-auto px-4 py-3 flex items-center justify-center gap-2">

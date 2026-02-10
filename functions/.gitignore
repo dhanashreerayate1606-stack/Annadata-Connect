@@ -1,0 +1,14 @@
+# Node modules
+node_modules/
+
+# Firebase hosting cache
+hosting.*.cache
+
+# Build folders
+.out/
+.next/
+lib/
+
+# Log files
+*.log
+*.swp

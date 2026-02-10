@@ -76,7 +76,6 @@ export default function FarmerDashboardPage() {
 
   useEffect(() => {
     const fetchWeather = async (loc: string) => {
-      // Use caching to make dashboard transitions feel instant
       const cacheKey = `advisory_${loc}_${language}`;
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) {
@@ -102,13 +101,8 @@ export default function FarmerDashboardPage() {
     };
 
     if ("geolocation" in navigator) {
-      const geoTimeout = setTimeout(() => {
-        if (isLoadingWeather) fetchWeather(locationName);
-      }, 3000);
-
       navigator.geolocation.getCurrentPosition(
         async (position) => {
-          clearTimeout(geoTimeout);
           setIsLocationEnabled(true);
           const { latitude, longitude } = position.coords;
           const detectedLoc = `Local Area (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`;
@@ -116,16 +110,16 @@ export default function FarmerDashboardPage() {
           fetchWeather(detectedLoc);
         },
         (error) => {
-          clearTimeout(geoTimeout);
           console.warn("Geolocation access denied", error);
           setIsLocationEnabled(false);
           fetchWeather(locationName);
-        }
+        },
+        { timeout: 5000 }
       );
     } else {
       fetchWeather(locationName);
     }
-  }, [language, locationName]);
+  }, [language]); // Run on language change or mount
 
   return (
     <div className="container mx-auto px-4 py-12 md:py-16">
